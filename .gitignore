@@ -1,4 +1,5 @@
 .key
+.env
 
 # General
 .DS_Store
