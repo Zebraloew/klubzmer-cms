@@ -1,5 +1,5 @@
   /* Define CSS variables for colors and font */
-  :root {
+:root {
     --background-color: var(--base);
     --font-family: sans-serif;
   
@@ -19,26 +19,31 @@
     --highlight-low:   #21202e;
     --highlight-med:   #403d52;
     --highlight-high:  #524f67;
-  }
+}
   
   /* Set box-sizing to border-box globally */
-  *, *::before, *::after {
+*, *::before, *::after {
     box-sizing: border-box;
-  }
+}
   
-  body {
+body {
     background-color: var(--background-color);
+    
+    font-family: var(--font-family);
+    color: var(--text);
+    min-height: 100vh;
+    min-width: 100vw;
+    margin: 0;
+    padding: 20px;
+}
+  
+main {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-family);
-    color: var(--text);
-    min-height: 100vh;
-    margin: 0;
-    padding: 20px;
-  }
-  
+}
+
   table {
     border-collapse: collapse;
     width: 100%;
