@@ -18,11 +18,13 @@ app.use(express.static('public'));
 // Define a route for fetching data from Google Sheets
 app.get('/api/sheet-data', async (req, res) => {
     try {
-        const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Sheet1!A1?key=${apiKey}`);
+        // Adjust the range from 'Sheet1!A1' to the desired range, e.g., 'Sheet1!A1:Z100' for a large area
+        const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Sheet1!A1:Z100?key=${apiKey}`);
         if (!response.ok) throw new Error('Error fetching data from Google Sheets');
-        
+
         const data = await response.json();
         
+        // Send the fetched data as a JSON response
         res.json(data.values ? data.values : []);
     } catch (error) {
         res.status(500).json({ error: error.message });

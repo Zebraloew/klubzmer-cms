@@ -1,4 +1,4 @@
-async function fetchFirstCell() {
+async function fetchSheetData() {
     try {
         // Fetch data from the server endpoint
         const response = await fetch('/api/sheet-data');
@@ -17,18 +17,23 @@ async function fetchFirstCell() {
         // Create a new table element
         const table = document.createElement('table');
 
-        // Create a table row
-        const row = document.createElement('tr');
+        // Iterate over each row of data received from the server
+        data.forEach((row, rowIndex) => {
+            const tr = document.createElement('tr');
 
-        // Create a cell for the first value, with fallback text if empty
-        const cell = document.createElement('td');
-        cell.textContent = (data.length > 0 && data[0].length > 0) ? data[0][0] : 'No Data';
+            // Iterate over each cell in the row
+            row.forEach(cell => {
+                // Create and populate cell elements
+                const cellElement = document.createElement(rowIndex === 0 ? 'th' : 'td');
+                cellElement.textContent = cell;
 
-        // Append the cell to the row
-        row.appendChild(cell);
+                // Append the cell to the row
+                tr.appendChild(cellElement);
+            });
 
-        // Append the row to the table
-        table.appendChild(row);
+            // Append the row to the table
+            table.appendChild(tr);
+        });
 
         // Clear any previous content
         sheetDataDiv.innerHTML = '';
@@ -40,4 +45,4 @@ async function fetchFirstCell() {
     }
 }
 
-fetchFirstCell(); // Call the function to fetch and display the first cell
+fetchSheetData(); // Call the function to fetch and display the table
