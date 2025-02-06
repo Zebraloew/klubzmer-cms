@@ -1,21 +1,17 @@
 async function fetchData() {
     try {
-        // Fetch data from the server endpoint '/api/sheet-data'
-        const response = await fetch('/api/sheet-data');
+        // Static data for demonstration purposes
+        const staticData = [
+            ['Date', 'Location', 'Details'],
+            ['2023-11-01', 'Berlin', 'Concert at the Arena'],
+            ['2023-12-05', 'Munich', 'Festival Appearance'],
+        ];
 
-        // Check if the network response was successful (status code 200-299)
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-
-        // Parse the JSON data from the response
-        const data = await response.json();
-
-        // Pass the parsed data to the displayData function for rendering
-        displayData(data);
+        // Pass the static data to the displayData function for rendering
+        displayData(staticData);
     } catch (error) {
-        // If an error occurs, display an error message in the 'sheet-data' element
-        document.getElementById('sheet-data').textContent = `Error fetching data: ${error.message}`;
+        // Display an error message in case something unexpected occurs
+        document.getElementById('sheet-data').textContent = `Error displaying data: ${error.message}`;
     }
 }
 
@@ -35,24 +31,14 @@ function displayData(rows) {
     headerRow.appendChild(headerCell);
     table.appendChild(headerRow);
 
-    // Iterate over each row of data received from the server
+    // Iterate over each row of static data
     rows.forEach((row, rowIndex) => {
-        // Create a new table row element
         const tr = document.createElement('tr');
-
-        // Iterate over each cell in the row
         row.forEach(cell => {
-            // Create a table header ('th') for the first data row, otherwise create table data ('td')
             const cellElement = document.createElement(rowIndex === 0 ? 'th' : 'td');
-
-            // Set the text content of the cell
             cellElement.textContent = cell;
-
-            // Append the cell to the current row
             tr.appendChild(cellElement);
         });
-
-        // Append the row to the table
         table.appendChild(tr);
     });
 
