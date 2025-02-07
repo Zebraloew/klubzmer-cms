@@ -1,65 +1,87 @@
-/*
-Burger Menu
+/*  Burger Menu 
+    Pure CSS 
 */
-
-/* Use CSS variables from main.css for colors and themes */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background: var(--base);
-    color: var(--text);
-}
-
-.menu {
-    display: flex;
+  .navbar {
+    position: relative;
+    padding: 10px;
+  }
+  
+  .menu {
     list-style: none;
-    padding: 0;
     margin: 0;
-}
-
-.menu li {
-    margin: 0 10px;
-}
-
-.menu a {
+    padding: 0;
+    display: flex;
+    justify-content: right;
+    border-radius: 25px;
+  }
+  
+  .menu li a {
+    color: black;
     text-decoration: none;
-    color: var(--text);
-}
-
-/* BURGER MENU */
-.burger {
+    padding: 10px 20px;
+    display: block;
+  }
+  
+  .menu li a:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  /* Hamburger menu styles */
+  .menu-toggle {
+    display: none;
+  }
+  
+  .menu-icon {
     display: none;
     flex-direction: column;
     cursor: pointer;
-}
-
-.burger div {
-    width: 25px;
+  }
+  
+  .menu-icon span {
     height: 3px;
-    background: var(--text);
-    margin: 5px;
-    transition: 0.3s;
-}
-
-@media (max-width: 768px) {
+    width: 25px;
+    background-color: black;
+    margin: 2px 0;
+    transition: 0.4s;
+    border-radius: 3px;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
     .menu {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background: var(--surface);
-        position: absolute;
-        top: 50px;
-        left: 0;
-        text-align: center;
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background-color: tan; 
+  
     }
-
-    .menu.active {
-        display: flex;
+  
+    .menu li {
+      text-align: center;
     }
-
-    .burger {
-        display: flex;
+  
+    .menu-icon {
+      display: flex;
     }
-}
+  
+    .menu-toggle:checked ~ .menu {
+      display: flex;
+    }
+  
+    /* Hamburger animation */
+    .menu-toggle:checked ~ .menu-icon span:nth-child(1) {
+      transform: rotate(-45deg) translate(-6px, 5px);
+    }
+  
+    .menu-toggle:checked ~ .menu-icon span:nth-child(2) {
+      /* opacity: 0; */
+      translate:(5px, 5px);
+      width: 0;
+      background-color: tan;
+    }
+  
+    .menu-toggle:checked ~ .menu-icon span:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+  }
