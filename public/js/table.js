@@ -41,7 +41,9 @@ async function fetchSheetData() {
         // Append the newly created table to the 'sheet-data' div
         sheetDataDiv.appendChild(table);
     } catch (error) {
-        document.getElementById('sheet-data').textContent = `Error fetching data: ${error.message}`;
+        const sheetDataElement = document.getElementById('sheet-data');
+        sheetDataElement.style.color = 'beige';
+        sheetDataElement.textContent = `Error fetching data: ${error.message} ••• start server with »node server.js«`;
     }
 }
 
