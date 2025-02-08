@@ -4,30 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit About Text</title>
-    <style>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/theme-light.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/extras.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/section-about.css">
+    <link rel="stylesheet" href="css/section-landing.css">
+    <link rel="stylesheet" href="css/timetable.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <!-- <style>
         body { font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: auto; }
         textarea { width: 100%; height: 150px; margin-bottom: 10px; }
         button { padding: 10px 15px; background: teal; color: white; border: none; cursor: pointer; }
         button:hover { background: darkcyan; }
-    </style>
+    </style> -->
 </head>
 <body>
 
-    <h2>Edit About Text</h2>
-    <textarea id="adminAboutText"></textarea>
-    <br>
-    <button onclick="saveText()">Save</button>
-    <p id="status"></p>
-    <p id="test">testing</p>
+    <main id="admin">
+        <div id="admin-menu">
+            <ul>
+                <li><a href="#edit-about">Text: About</a></li>
+                <li><a href="#edit-gigs">Edit: Gigs</a></li>
+            </ul>
+        </div>
+        <div class="edit-outer">
+            <div class="edit-inner">
+                <h2>Edit About Text</h2>
+                <textarea id="adminAboutText"></textarea>
+                <button onclick="saveText()">Save</button>
+            </div>
+            <div class="edit-inner">
+                <p id="status"></p>
+                <div class="preview-heading">
+                    <h3>Preview</h3>
+                    <h5> — Reload to see changes</h5>
+                </div>
+                <p class="preview" id="preview-about">This display is updated automatically.</p>
+            </div>
+        </div>
 
-    <a href="https://docs.google.com/spreadsheets/d/1DUgBEpNiNear4spHeeysMkhfGlInb-StFHKaeO2laos/edit?usp=sharing">Manage Tour Dates</a>
+        <h2 id="edit-gigs">Edit Gigs</h2>
+        <a href="https://docs.google.com/spreadsheets/d/1DUgBEpNiNear4spHeeysMkhfGlInb-StFHKaeO2laos/edit?usp=sharing">Manage Tour Dates</a>
+    </main>
     <script>
         async function loadText() {
             try {
                 const response = await fetch('/api/about-text');
                 const data = await response.json();
                 document.getElementById('adminAboutText').value = data.text;
-                document.getElementById('test').textContent = data.text;
+                document.getElementById('preview-about').textContent = data.text;
             } catch (error) {
                 console.error("Failed to load text:", error);
                 document.getElementById('status').textContent = "⚠ Could not load text.";

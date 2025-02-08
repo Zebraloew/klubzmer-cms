@@ -1,0 +1,103 @@
+#admin main{
+    width: 100vw;
+    margin: 0;
+}
+.edit-outer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100vw;
+}
+.edit-inner {
+    width: 40%;
+    min-width: 500px;
+    margin: 20px;
+}
+/* Textfelder auf der selben Höhe */
+.edit-inner h2, .preview-heading {
+    height: 60px;
+}
+
+.edit-inner p, h2, h3, h5{ 
+    margin: 0px;
+    padding: 0px;
+}
+/* h3 und h5 in einer Reihe */
+.edit-inner h3, h5 {
+    display: inline-block;
+}
+
+.edit-inner .preview {
+    background-color: var(--surface);
+    padding: 25px;
+    border-radius: 30px;
+    font-size: large;
+    letter-spacing: 0.5px;
+}
+
+#admin textarea {
+    width: 100%;
+    height: 50vh;
+    max-height: 100%;
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: x-large;
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+
+    padding: 20px;
+    border-radius: 30px;
+    border: 0px solid var(--subtle);
+    box-shadow: inset 0 10px 20px var(--subtle);
+}
+
+#admin button {
+    width: 250px;
+    font-size: large;
+    font-family: var(--font-family);
+    padding: 20px;
+    margin: 0px 0 20px 0;
+    background-color: var(--base);
+    box-shadow: inset 0 -5px 10px var(--subtle);
+    border: 0;
+    border-radius: 30px;
+}
+
+#admin button:hover {
+    box-shadow: inset 0 -3px 10px var(--subtle);
+    transform: translateY(2px);
+    transition: 1s;
+}
+
+#admin button:active {
+    box-shadow: inset 0 5px 10px var(--subtle);
+}
+
+#admin-menu {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+
+    font-size: small;
+}
+#admin-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#admin-menu li {
+    display: inline-block;
+    margin: 0 10px;
+}
+#admin-menu a {
+    color: var(--text);
+    text-decoration: none;
+}
+#admin-menu a:hover {
+    color: var(--love);
+}
+#admin-menu a:active {
+    color: var(--gold);
+}
