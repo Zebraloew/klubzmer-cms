@@ -24,7 +24,10 @@ app.get('/admin', (req, res) => {
 app.get('/api/about-text', async (req, res) => {
     const text = await getText();
     res.json({ text });
+    // place text in <p id="abouttext">
+    // document.getElementById('abouttext').textContent = text;
 });
+
 
 // Route to update the text
 app.post('/api/update-text', async (req, res) => {
