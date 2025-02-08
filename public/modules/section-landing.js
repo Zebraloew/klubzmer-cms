@@ -7,7 +7,8 @@ export function createSectionLanding() {
     <div id="landingtext">
         <h3> Klubzmer </h3>
         <h2> Klezmer Musik Band </h2>
-        <p>Saiten, Bläser, Streicher, Stimme, Akkordeon, Tuba und Percussion bringen die Luft zum Vibrieren und die Hüften zum Schwingen</p>
+        <!--<p>Saiten, Bläser, Streicher, Stimme, Akkordeon, Tuba und Percussion bringen die Luft zum Vibrieren und die Hüften zum Schwingen</p> -->
+        <p>Handmade Guerilla Klezmer from Hamburg</p>
     </div>   `;
 
     document.querySelector('body').prepend(sectionLanding);
