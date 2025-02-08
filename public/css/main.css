@@ -69,3 +69,15 @@ section h2 {
     margin: 0px;
     font-size: xx-large;
 }
+
+a{
+    text-decoration: none;
+    color: var(--love);
+}
+a:hover{
+    color: var(--gold)
+}
+
+a:visited{
+    color: var(--foam);
+}
