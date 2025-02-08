@@ -1,0 +1,9 @@
+::selection {
+    background-color: var(--love); /* Pinkish highlight */
+    color: var(--base); /* Dark text */
+}
+
+::-moz-selection { /* Firefox support */
+    background-color: var(--love);
+    color: var(--base);
+}

@@ -1,8 +1,9 @@
   /* Define CSS variables for colors and font */
 :root {
     --background-color: var(--base);
-    --font-family: sans-serif;
-  
+    /* --font-family: 'Courier Prime', sans-serif; */
+    /* --font-family: 'Poppins', sans-serif; */
+    --font-family: 'Special Elite', sans-serif;
     /* Rose Pine Colors */
     --base:    #191724;
     --surface: #1f1d2e;
@@ -25,10 +26,13 @@
 *, *::before, *::after {
     box-sizing: border-box;
 }
-  
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: var(--background-color);
-    
     font-family: var(--font-family);
     color: var(--text);
     min-height: 100vh;
@@ -42,4 +46,14 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    max-width: 1000px; /* Set your desired maximum width */
+    margin: 0 auto; /* Center the element horizontally */
+    padding: 20px;
+    width: 100%; /* Ensure it takes full parent width when smaller */
+}
+
+section {
+    padding: 20px;
+    width: 100%;
+    margin: 0 auto;
 }

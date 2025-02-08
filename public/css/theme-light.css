@@ -1,0 +1,19 @@
+/* theme-light.css */
+:root {
+    --base:    #ffffff; /* Example colors */
+    --surface: #f5e8e1;
+    --overlay: #ece4e1;
+    --muted:   #b8b8b8;
+    --subtle:  #9d9d9d;
+    --text:    #5e5c64;
+    --love:    #b4637a;
+    --gold:    #ea9d34;
+    --rose:    #d7827e;
+    --pine:    #286983;
+    --foam:    #56949f;
+    --iris:    #907aa9;
+    --highlight-low:   #f3f0e8;
+    --highlight-med:   #d1c8d2;
+    --highlight-high:  #bac1d3;
+    --black:    #000000;
+}

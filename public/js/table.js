@@ -42,7 +42,7 @@ async function fetchSheetData() {
         sheetDataDiv.appendChild(table);
     } catch (error) {
         const sheetDataElement = document.getElementById('sheet-data');
-        sheetDataElement.style.color = 'beige';
+        sheetDataElement.style.color = 'var(--love)';
         sheetDataElement.textContent = `Error fetching data: ${error.message} ••• start server with »node server.js«`;
     }
 }
