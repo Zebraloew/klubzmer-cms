@@ -55,10 +55,17 @@ main {
 }
 
 section {
-    padding: 20px;
+    padding: 10px 20px;
     width: 100%;
     margin: 20px;
     border-radius: 20px;
     min-height: 90vh;
+    height: auto!important;
     box-shadow: 0 20px 30px var(--highlight-high);
+}
+
+section h2 {
+    padding: 0px;
+    margin: 0px;
+    font-size: xx-large;
 }

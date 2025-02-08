@@ -3,7 +3,7 @@ export function createSectionAbout() {
     sectionAbout.className = "section-about";
     sectionAbout.id = "about";
     sectionAbout.innerHTML = `
-    <h2>About</h2>
+    <h2>Über uns</h2>
     <p id="testabout">Klubzmer ist ein Kollektiv: Wir sind 12, 14, 16… Freunde, die die Liebe zu osteuropäischer und Klezmer-Musik teilen und mit wild vergnügten Arrangements und Spielfreude Wärme im kühlen Norden verbreiten. Saiten, Bläser, Streicher, Stimme, Akkordeon, Tuba und Percussion bringen die Luft zum Vibrieren und die Hüften zum Schwingen. Anfangs trafen wir uns einfach wöchentlich zur (von Marco Tabilio gegründeten) Jam-Session im Hamburger Gängeviertel – inzwischen haben wir auf Wohnprojektpartys, in Clubs und auf Straßenfesten reihenweise Menschen jeden Alters zum Tanzen gebracht!
    `;
 

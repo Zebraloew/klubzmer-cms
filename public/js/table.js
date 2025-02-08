@@ -2,7 +2,7 @@ async function fetchSheetData() {
     try {
         // Fetch data from the server endpoint
         const response = await fetch('/api/sheet-data');
-        
+
         // Check if the response is OK
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -17,18 +17,31 @@ async function fetchSheetData() {
         // Create a new table element
         const table = document.createElement('table');
 
+        // Container for header labels
+        let headers = [];
+
         // Iterate over each row of data received from the server
         data.forEach((row, rowIndex) => {
             const tr = document.createElement('tr');
 
-            // Iterate over each cell in the row
-            row.forEach(cell => {
-                // Create and populate cell elements
-                const cellElement = document.createElement(rowIndex === 0 ? 'th' : 'td');
-                cellElement.textContent = cell;
+            row.forEach((cell, colIndex) => {
+                // Use header labels from the first row
+                if (rowIndex === 0) {
+                    const th = document.createElement('th');
+                    th.textContent = cell;
+                    tr.appendChild(th);
+                    headers[colIndex] = cell; // Save header text for later rows
+                } else {
+                    const td = document.createElement('td');
+                    td.textContent = cell;
 
-                // Append the cell to the row
-                tr.appendChild(cellElement);
+                    // Add data-label attribute using corresponding header
+                    if (headers[colIndex]) {
+                        td.setAttribute('data-label', headers[colIndex]);
+                    }
+
+                    tr.appendChild(td);
+                }
             });
 
             // Append the row to the table

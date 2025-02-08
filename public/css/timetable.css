@@ -4,50 +4,88 @@ The table on its own
 2) Mobile Ansicht
 */
 table {
-    border-collapse: collapse;
+    /* border-collapse: collapse; */
     width: 100%;
     max-width: 1000px;
-    margin: 20px 0;
+    border-spacing: 0 20px; /* Horizontal (0) and Vertical (20px) spacing */
+
   }
   
   th, td {
-    border: 1px 0 solid var(--highlight-high);
-    padding: 10px;
     text-align: left;
     color: var(--text);
+    padding: 20px 6px;
   }
-  
+
   th {
-    background-color: var(--highlight-med);
+    padding: 0 6px;
   }
   
-  tr:nth-child(even) {
-    background-color: var(--highlight-low);
+  tr{
+    box-shadow: inset -5px -7px 25px var(--subtle);
+    border-radius: 20px;
+
+  }
+  
+  tr:nth-child(1) {
+    box-shadow: none;
+  }
+
+  td:nth-child(1), th:nth-child(1){
+    font-size: x-large;
+    padding-left: 20px;
+  }
+  td:nth-child(6){
+    font-size: small;
   }
 
   /* +++++++++++++++ */
   /* +++++++++++++++ */
   /* +++++++++++++++ */
   /* Mobile Ansicht */
-  @media (max-width: 768px) {
-/* Elemente ausblenden, die nicht auf mobilen Geräten angezeigt werden sollen */
-    th:nth-child(3),td:nth-child(3) {
-        display: none;
-    }
-    th:nth-child(4),td:nth-child(4) {
-        display: none;
-    }
-    th:nth-child(6),td:nth-child(6) {
-        display: none;
-    }
+  /* Stacking Display */
+@media (max-width: 1100px) {
+
+  table, thead, tbody, th, td, tr {
+    display: inline-block;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 20px;
   }
-  /* Intermediate screen size */
-  @media (max-width: 1000px) {
-      th:nth-child(3),td:nth-child(3) {
-        display: none;
+  thead, th {
+    display: none;
   }
-  
-      th:nth-child(4),td:nth-child(4) {
-        display: none;
+  tr {
+    padding: 20px 10px;
+    box-shadow: inset 0 -17px 25px var(--subtle);
+    margin: 10px 0;
   }
+
+tr:nth-child(1) {
+    display: none;
+}
+
+  td {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0px 14px;
   }
+  /* Titel Feld */
+  td:nth-child(1) {
+    font-size: x-large;
+    padding-left: 14px;
+  }
+  /* Infos */
+  td:nth-child(6) {
+    font-size: small;
+  }
+  td::before {
+    content: attr(data-label);
+    width: 120px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: small;
+    color: var(--gold);
+  }
+}

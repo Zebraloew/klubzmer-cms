@@ -3,7 +3,7 @@ export function createSectionTimetable() {
     sectionTimetable.className = "section-timetable";
     sectionTimetable.id = "gigs";
     sectionTimetable.innerHTML = `
-    <h2>Timetable</h2>
+    <h2>Gigs</h2>
     <div id="sheet-data"></div>
     `;
 

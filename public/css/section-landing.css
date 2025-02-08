@@ -13,7 +13,7 @@ Landing Section
 
 #home {
     margin: 0;
-    height: 98vh;
+    min-height: 98vh;
     display: flex;
     flex-direction: column;
     align-items: center;

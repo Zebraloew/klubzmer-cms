@@ -2,8 +2,8 @@
 The table itself has another ccs file
 timetable.css
  */
-
-#gigs {
+#gigs{
+    box-shadow: none;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -11,4 +11,16 @@ timetable.css
 
     margin: 20px;
     font-size: medium;
+}
+
+#gigs h2 {
+    padding: 0px;
+    margin: 0px;
+}
+/* Mobile Ansicht */
+@media (max-width: 1100px) {
+    #gigs h2{
+        left: 600px;
+        align-self: flex-start; 
+    }
 }
