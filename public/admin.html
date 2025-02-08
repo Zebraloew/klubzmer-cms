@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit About Text</title>
+    <!-- Add lodash CDN script -->
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/theme-light.css">
@@ -56,21 +58,32 @@
             try {
                 const response = await fetch('/api/about-text');
                 const data = await response.json();
-                document.getElementById('adminAboutText').value = data.text;
-                document.getElementById('preview-about').textContent = data.text;
+                const plainText = _.chain(data.text)
+                    .replace(/<\/p><p>/g, '\n\n') // Convert paragraph separation
+                    .replace(/<br>/g, '\n')       // Convert line breaks
+                    .replace(/^<p>|<\/p>$/g, '') // Remove outer <p> tags
+                    .value();
+                document.getElementById('adminAboutText').value = plainText;
+                document.getElementById('preview-about').innerHTML = data.text; // Preview with formatting
             } catch (error) {
                 console.error("Failed to load text:", error);
                 document.getElementById('status').textContent = "⚠ Could not load text.";
             }
         }
-
+    
         async function saveText() {
-            const newText = document.getElementById('adminAboutText').value;
+            const plainText = document.getElementById('adminAboutText').value;
+            const formattedText = _.chain(plainText)
+                .split(/\n{2,}/)
+                .map(paragraph => `<p>${_.replace(paragraph, /\n/g, '<br>')}</p>`)
+                .join('')
+                .value();
+    
             try {
                 const response = await fetch('/api/update-text', {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ text: newText })
+                    body: JSON.stringify({ text: formattedText })
                 });
                 const result = await response.json();
                 document.getElementById('status').textContent = result.message || "⚠ Error saving text.";
@@ -79,7 +92,7 @@
                 document.getElementById('status').textContent = "⚠ Could not save text.";
             }
         }
-
+    
         // Load existing text on page load
         loadText();
     </script>
