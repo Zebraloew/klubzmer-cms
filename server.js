@@ -3,11 +3,39 @@ const express = require('express');
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const dotenv = require('dotenv');
 
+const cors = require('cors');
+const { getText, updateText } = require('./developing/text-from-web/js/textHandler'); // Import text functions
+
 dotenv.config(); 
 
 const app = express(); 
 const port = 3000;
 
+app.use(cors());
+app.use(express.json());
+
+////// Text Micro CMS //////
+// Serve admin panel at `/admin`
+app.get('/admin', (req, res) => {
+    res.sendFile(__dirname + '/public/admin.html');
+});
+
+// Route to get the current about text
+app.get('/api/about-text', async (req, res) => {
+    const text = await getText();
+    res.json({ text });
+});
+
+// Route to update the text
+app.post('/api/update-text', async (req, res) => {
+    const { text } = req.body;
+    if (!text) return res.status(400).json({ error: "Text is required." });
+
+    const result = await updateText(text);
+    res.json(result);
+});
+
+////// Google Sheets API //////
 // Retrieve the Google Sheets ID and API key from environment variables
 const sheetId = process.env.SHEET_ID;  
 const apiKey = process.env.API_KEY;   
@@ -31,6 +59,7 @@ app.get('/api/sheet-data', async (req, res) => {
     }
 });
 
+////// Server Startup //////
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
