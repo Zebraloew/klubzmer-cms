@@ -1,4 +1,5 @@
 export function createNavbar() {
+  // Das Burger Menu und die Links oben erstellen
     const nav = document.createElement("nav");
     nav.className = "navbar";
     nav.innerHTML = `
@@ -18,7 +19,7 @@ export function createNavbar() {
 
     document.body.prepend(nav);
 
-    // Add event listener to close menu on link click
+  // Click schließt das Menu
     document.querySelectorAll('.menu li a').forEach(link => {
         link.addEventListener('click', () => {
             document.getElementById('menu-toggle').checked = false;
