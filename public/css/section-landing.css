@@ -2,8 +2,77 @@
 Landing Section
 */
 
-.section-landing img {
+#jumbo {
     width: 100%;
-    height: auto;
+    max-width: 100%;
     object-fit: cover;
+}
+
+#home {
+    padding: 0;
+    height: 98vh;
+    background-color: black;
+    color: var(--subtle);
+}
+#landingtext {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: larger;
+    text-align: center;
+}
+
+#landingtext h3 {
+    font-size: xx-large;
+}
+
+#landingtext h2 {
+    font-size: xxx-large;
+}   
+
+#landingtext p {
+    font-size: xx-large;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    #jumbo {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    #home {
+        padding: 0;
+        height: 98vh;
+        background-color: black;
+        color: var(--subtle);
+    }
+    #landingtext {
+        z-index: 1;
+        position: relative;
+        top: -100px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
+        font-size: larger;
+        text-align: center;
+    }
+
+    #landingtext h3 {
+        font-size:large;
+    }
+
+    #landingtext h2 {
+        font-size:large;
+    }   
+
+    #landingtext p {
+        font-size:large;
+    }
 }

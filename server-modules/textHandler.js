@@ -20,7 +20,7 @@ async function updateText(newText) {
     try {
         await fs.writeFile(textFile, newText, 'utf-8');
         console.log("✅ Text file updated successfully!");
-        return { success: true, message: "✅ Text updated!" };
+        return { success: true, message: "✅ Text updated! Reload to see changes." };
     } catch (error) {
         console.error("❌ Failed to update text file:", error.message);
         return { success: false, error: "⚠ Error saving text." };

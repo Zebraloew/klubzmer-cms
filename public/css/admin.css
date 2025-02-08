@@ -11,7 +11,7 @@
 }
 .edit-inner {
     width: 40%;
-    min-width: 500px;
+    min-width: 400px;
     margin: 20px;
 }
 /* Textfelder auf der selben Höhe */
@@ -26,6 +26,16 @@
 /* h3 und h5 in einer Reihe */
 .edit-inner h3, h5 {
     display: inline-block;
+}
+
+/* The button and status message in one row */
+.button-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.button-block p {
+    font-size: small;
 }
 
 .edit-inner .preview {
@@ -57,7 +67,7 @@
     font-size: large;
     font-family: var(--font-family);
     padding: 20px;
-    margin: 0px 0 20px 0;
+    margin: 0px 40px 20px 0;
     background-color: var(--base);
     box-shadow: inset 0 -5px 10px var(--subtle);
     border: 0;

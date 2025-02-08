@@ -34,10 +34,12 @@
             <div class="edit-inner">
                 <h2>Edit About Text</h2>
                 <textarea id="adminAboutText"></textarea>
-                <button onclick="saveText()">Save</button>
+                <div class="button-block">
+                    <button onclick="saveText()">Save</button>
+                    <p id="status"></p>
+                </div>
             </div>
             <div class="edit-inner">
-                <p id="status"></p>
                 <div class="preview-heading">
                     <h3>Preview</h3>
                     <h5> — Reload to see changes</h5>
