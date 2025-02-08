@@ -14,17 +14,20 @@
 <body>
 
     <h2>Edit About Text</h2>
-    <textarea id="aboutText"></textarea>
+    <textarea id="adminAboutText"></textarea>
     <br>
     <button onclick="saveText()">Save</button>
     <p id="status"></p>
+    <p id="test">testing</p>
 
+    <a href="https://docs.google.com/spreadsheets/d/1DUgBEpNiNear4spHeeysMkhfGlInb-StFHKaeO2laos/edit?usp=sharing">Manage Tour Dates</a>
     <script>
         async function loadText() {
             try {
                 const response = await fetch('/api/about-text');
                 const data = await response.json();
-                document.getElementById('aboutText').value = data.text;
+                document.getElementById('adminAboutText').value = data.text;
+                document.getElementById('test').textContent = data.text;
             } catch (error) {
                 console.error("Failed to load text:", error);
                 document.getElementById('status').textContent = "⚠ Could not load text.";
@@ -32,7 +35,7 @@
         }
 
         async function saveText() {
-            const newText = document.getElementById('aboutText').value;
+            const newText = document.getElementById('adminAboutText').value;
             try {
                 const response = await fetch('/api/update-text', {
                     method: "POST",
