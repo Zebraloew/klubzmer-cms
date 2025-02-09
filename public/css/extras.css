@@ -7,3 +7,18 @@
     background-color: var(--love);
     color: var(--base);
 }
+
+.rotating {
+    display: inline-block;
+    font-size: 3rem;
+    animation: rotating 2s linear infinite;
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
