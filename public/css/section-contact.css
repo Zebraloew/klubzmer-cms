@@ -23,6 +23,16 @@
     width: auto;
 }
 
-#contact a{
+#contact #main-contact-link {
     font-size: xx-large;
+}
+
+#contact p:nth-child(4) {
+    font-size: medium;
+}
+
+#contact .atsign{
+    position: relative;
+    top: 0.1em;
+    padding: 0 3px 0 3px;
 }

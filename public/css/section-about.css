@@ -15,3 +15,7 @@
 #about .head-img {
     max-width: 100%;
 }
+
+#about p:nth-child(1), p:nth-child(3) {
+    font-size: medium;
+}
