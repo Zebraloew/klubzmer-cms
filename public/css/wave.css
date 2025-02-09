@@ -3,6 +3,7 @@ Graphic: Wave
 This creates a wavy line
 */
 .wave{
+    
     mix-blend-mode: multiply;
     position: absolute;
     top: 50%;
@@ -20,6 +21,8 @@ This creates a wavy line
       radial-gradient(67.08px at 50% calc(100% + 60px),#0000 99%,#000 101%) calc(50% - 60px) calc(100% - 30px)/120px calc(51% - 30px) repeat-x;
     -webkit-mask: var(--mask);
             mask: var(--mask);
+
+    filter: blur(15px); 
   }
 
 .wave-container {
@@ -47,4 +50,14 @@ This creates a wavy line
   height: 30vh;
   width: 30vw;
   background-color: tomato;
+}
+
+.blur {
+  position: absolute;
+  top: 50%;
+  /* The Size */
+  height: 100px;
+  min-width: 120vw;
+  filter: blur(3px);
+  mix-blend-mode: multiply;
 }

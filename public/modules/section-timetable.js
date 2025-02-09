@@ -3,7 +3,9 @@ export function createSectionTimetable() {
     sectionTimetable.className = "container wave-container";
     sectionTimetable.id = "timetable-container";
     sectionTimetable.innerHTML = `
-    <div class="wave"></div>
+    <div class="blur">
+        <div class="wave"></div>
+    </div>
     <section class="section-timetable" id="gigs">
         <h2>Gigs</h2>
         <div id="sheet-data">

@@ -4,7 +4,9 @@ export function createSectionImgContact() {
     sectionImgContact.id = "img-container-1";
     sectionImgContact.innerHTML = `
 
-    <div class="wave"></div>
+    <div class="blur">
+        <div class="wave"></div>
+    </div>
     <section id="section-img-1" class="ontop">
         <a href="#contact">
             <img class="" src="img/hintereinander_j.jpg" alt="Gruppenfoto">

@@ -11,14 +11,19 @@
 .rotating {
     display: inline-block;
     font-size: 3rem;
-    animation: rotating 1s ease-in-out infinite;
+    animation: rotating 2s ease-in-out infinite alternate;
 }
-
 @keyframes rotating {
-    from {
-        transform: rotate(270deg);
+    0% {
+        transform: rotate(10deg);
     }
-    to {
-        transform: rotate(360deg);
+    30% {
+        transform: rotate(50deg);
+    }
+    70% {
+        transform: rotate(50deg);
+    }
+    100% {
+        transform: rotate(10deg);
     }
 }
