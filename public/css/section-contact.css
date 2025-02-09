@@ -1,3 +1,7 @@
+#contact-container {
+    align-items: flex-end;
+}
+
 #contact {
     max-width:1000px;
     display: flex;

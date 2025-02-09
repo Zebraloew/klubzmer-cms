@@ -1,6 +1,7 @@
 export function createSectionAbout() {
     const sectionAbout = document.createElement("div");
     sectionAbout.className = "container";
+    sectionAbout.id = "about-container";
     sectionAbout.innerHTML = `
     <section class="section-about" id="about">
         <img class="head-img" src="img/about.jpg" alt="Gruppenfoto">

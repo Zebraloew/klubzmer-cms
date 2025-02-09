@@ -1,3 +1,6 @@
+#about-container {
+    align-items: flex-start; 
+}
 .section-about {
     
     background-color: var(--text);
