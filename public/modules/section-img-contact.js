@@ -5,6 +5,8 @@ export function createSectionImgContact() {
     sectionImgContact.innerHTML = `
         <section class="section-img" id="section-img-1">
             <img class="" src="img/hintereinander_j.jpg" alt="Gruppenfoto">
+        </section>
+        
     `;
 
     // Correctly append the section to the <main> element
