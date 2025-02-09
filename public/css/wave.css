@@ -7,7 +7,7 @@ This creates a wavy line
     position: absolute;
     top: 50%;
     /* The Size */
-    height: 10vh;
+    height: 100px;
     min-width: 120vw;
     transform: rotate(10deg);
     /* Color */

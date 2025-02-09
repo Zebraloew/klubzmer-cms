@@ -90,10 +90,6 @@ a:hover{
     color: var(--gold)
 }
 
-a:visited{
-    color: var(--foam);
-}
-
 img {
     height: auto;
     border-radius: 5px;

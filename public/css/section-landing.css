@@ -34,6 +34,7 @@ Landing Section
     bottom: 30px;
     width: 444px;
     left: calc(50% - 222px);
+
     padding: 30px;
     display: flex;
     flex-direction: column;
@@ -42,21 +43,34 @@ Landing Section
     
     font-size: larger;
     text-align: center;
+
 }
 
 #landingtext h3 {
     font-size: xx-large;
+    transform: rotate(-1deg);
 }
 
 #landingtext h2 {
     font-size: xxx-large;
+    transform: rotate(1deg);
 }   
 
 #landingtext p {
     font-size: xx-large;
+    transform: rotate(-1deg);
 }
-#landingtext a, a:visited, a:hover, a:active {
-    color: var(--text);
+
+#landingtext h2, #landingtext h3 ,#landingtext p {
+    background-color: rgba(0, 0, 0, 0.85);
+    border-radius: 3px;
+    padding: 10px;
+    margin: 1px;
+}
+
+#landingtext a,#landingtext a:visited,#landingtext a:hover,#landingtext a:active {
+    color: rgba(255, 255, 255, 0.8);
+    
 }
 
 /* +++++++++++++++ */
