@@ -13,15 +13,17 @@ Landing Section
 
 #home {
     position: relative;
-    border-radius: 0 0 50px 50px;
     max-width: 100vw;
     max-height: 98vh;
     min-height: 98vh;
-    margin: 0;
+    border-radius: 0 0 30px 30px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: top;
+
+    margin: 0;
     padding: 0;
     
     background-color: black;
@@ -31,9 +33,11 @@ Landing Section
 
 #landingtext {
     position: absolute;
-    bottom: 30px;
-    width: 444px;
-    left: calc(50% - 222px);
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+    /* width: 444px; */
+    /* left: calc(50% - 222px); */
 
     padding: 30px;
     display: flex;
@@ -83,12 +87,12 @@ Landing Section
 
     #landingtext {
         z-index: 1;
-        bottom: 50px;
-        padding: 0px 30px;
+        bottom: 0px;
+        padding: 100px 30px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-end;
         
         font-size: larger;
         text-align: center;

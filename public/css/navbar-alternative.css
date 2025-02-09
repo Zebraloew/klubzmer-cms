@@ -18,8 +18,5 @@ Ungewöhnliche Positionierung
 }
 
 .menu li a {
-    color: var(--base);
-    opacity: 0.7;
-    mix-blend-mode: lighten;
-    text-shadow: none;
+    /* color: var(--text); */
 }
