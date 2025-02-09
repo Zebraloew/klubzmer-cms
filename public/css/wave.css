@@ -3,6 +3,10 @@ Graphic: Wave
 This creates a wavy line
 */
 .wave{
+    /* Place in background */
+    position: absolute;
+    top: 0;
+    left: 0;
     /* The Size */
     height: 10vh;
     min-width: 120vw;
@@ -20,12 +24,9 @@ This creates a wavy line
   }
 
 .wave-container {
-    height: 80vh;
-    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     
-    background-color: black;
 }
