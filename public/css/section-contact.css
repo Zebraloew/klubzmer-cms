@@ -12,10 +12,17 @@
 
 #contact .textwrapper {
     min-width: 500px;
-    padding: 0px 30px;
+    padding: 10px 30px;
+}
+#contact .textwrapper p {
+    padding-right: 20px;
 }
 
 #contact img {
     max-height: 40vw;
     width: auto;
+}
+
+#contact a{
+    font-size: xx-large;
 }
