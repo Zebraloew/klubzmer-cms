@@ -4,7 +4,7 @@ export function createSectionAbout() {
     sectionAbout.id = "about-container";
     sectionAbout.innerHTML = `
     <section class="section-about" id="about">
-        <img class="head-img" src="img/about.jpg" alt="Gruppenfoto">
+        <img class="head-img" src="img/about_j.jpg" alt="Gruppenfoto">
         <div class="textwrapper">
             <h2>Über uns</h2>
             <p id="aboutpaste"></p>
