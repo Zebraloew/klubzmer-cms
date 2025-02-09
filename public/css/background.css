@@ -1,0 +1,10 @@
+/* 
+This shall be them backgrunge
+*/
+
+body {
+    background-color: var(--gold);
+    background: radial-gradient(circle at center, var(--highlight-med), white), url('noise.svg');
+    background-blend-mode: overlay;
+
+}
