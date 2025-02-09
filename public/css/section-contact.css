@@ -1,9 +1,9 @@
 #contact-container {
-    align-items: flex-end;
+    align-items: flex-start;
 }
-
+}
 #contact {
-    max-width:1000px;
+    /* max-width 900px; */
     display: flex;
     flex-direction: row;
     align-items: center;

@@ -9,7 +9,7 @@ export function createSectionImgContact() {
     </div>
     <section id="section-img-1" class="ontop">
         <a href="#contact">
-            <img class="" src="img/hintereinander_j.jpg" alt="Gruppenfoto">
+            <img src="img/hintereinander_j.jpg" alt="Gruppenfoto">
         </a>
     </section>
 
