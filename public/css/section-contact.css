@@ -1,3 +1,17 @@
 #contact {
-    background-color: var(--rose);
+    max-width:1000px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#contact .textwrapper {
+    min-width: 500px;
+    padding: 0px 30px;
+}
+
+#contact img {
+    max-height: 40vw;
+    width: auto;
 }

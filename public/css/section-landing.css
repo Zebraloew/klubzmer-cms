@@ -9,6 +9,7 @@ Landing Section
     width: 100%;
     max-width: 100%;
     object-fit: cover;
+    border-radius: 0;
 }
 
 #home {

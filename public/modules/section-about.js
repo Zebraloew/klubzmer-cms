@@ -1,11 +1,14 @@
 export function createSectionAbout() {
-    const sectionAbout = document.createElement("section");
-    sectionAbout.className = "section-about";
-    sectionAbout.id = "about";
+    const sectionAbout = document.createElement("div");
+    sectionAbout.className = "container";
     sectionAbout.innerHTML = `
-    <h2>Über uns</h2>
-    <img src="img/about.png" alt="Gruppenfoto">
-    <p id="aboutpaste"></p>
+    <section class="section-about" id="about">
+        <img class="head-img" src="img/about.jpg" alt="Gruppenfoto">
+        <div class="textwrapper">
+            <h2>Über uns</h2>
+            <p id="aboutpaste"></p>
+        </div>
+    </section>
     `;
 
     async function loadText() {
