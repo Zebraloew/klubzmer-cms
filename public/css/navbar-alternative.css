@@ -2,3 +2,24 @@
 Navbar unten rechts
 Ungewöhnliche Positionierung
 */
+.menu {
+    bottom: 30px;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.menu li {
+    margin: 0px;
+}
+
+.menu li a {
+    color: var(--base);
+    opacity: 0.7;
+    mix-blend-mode: lighten;
+    text-shadow: none;
+}

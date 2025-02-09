@@ -11,6 +11,7 @@ footer {
     align-items: flex-end;
 
     box-shadow: none;
+    pointer-events: none;
 }
 
 footer a {
@@ -21,4 +22,5 @@ footer a {
     letter-spacing: .2rem;
     
     margin: 10px;
+    pointer-events: all;
 }
