@@ -1,13 +1,19 @@
 #contact-container {
     align-items: flex-start;
+    position: relative;
+    background-image: radial-gradient(circle at 80% 120%, var(--gold),rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+
 }
-}
+
 #contact {
     /* max-width 900px; */
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+
+    background: radial-gradient(circle at 20% 30%, var(--base), rgba(255, 255, 255, 0)), url('noise.svg');
+    background-blend-mode: overlay;
 }
 
 
@@ -24,7 +30,7 @@
     font-size: medium;
 }
 
-#contact .atsign{
+.atsign{
     position: relative;
     top: 0.1em;
     padding: 0 3px 0 3px;

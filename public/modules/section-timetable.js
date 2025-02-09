@@ -13,7 +13,7 @@ export function createSectionTimetable() {
         </div>
         <p>    Das reicht euch nicht?
         <br>   Bucht uns unter:
-        <br>   <a href="mailto:info@klubzmer.de">info@klubzmer.de</a></p>
+        <br>   <a href="mailto:info@klubzmer.de">info<span class="atsign">@</span>klubzmer.de</a></p>
     </section>
     `;
 

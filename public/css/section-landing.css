@@ -63,12 +63,13 @@ Landing Section
 
 #landingtext h2, #landingtext h3 ,#landingtext p {
     background-color: rgba(0, 0, 0, 0.85);
+    color: var(--muted);
     border-radius: 3px;
     padding: 10px;
     margin: 1px;
 }
 
-#landingtext a,#landingtext a:visited,#landingtext a:hover,#landingtext a:active {
+#landingtext a, #landingtext a:visited, #landingtext a:hover, #landingtext a:active {
     color: rgba(255, 255, 255, 0.8);
     
 }

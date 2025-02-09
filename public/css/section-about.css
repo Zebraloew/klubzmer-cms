@@ -3,7 +3,9 @@
 }
 .section-about {
     margin-top: 35px; 
-    background-color: var(--text);
+    /* background-color: var(--text); */
+    background: radial-gradient(circle at 20% 30%, var(--iris), rgba(255, 255, 255, 0));
+    background-blend-mode: overlay;
     color: var(--surface);
     padding: 0;
     display: flex;

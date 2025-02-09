@@ -84,7 +84,7 @@ section h2 {
 
 a{
     text-decoration: none;
-    color: var(--love);
+    color: var(--foam);
 }
 a:hover{
     color: var(--gold)

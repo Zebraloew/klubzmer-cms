@@ -14,6 +14,10 @@ export function createSectionContact() {
             </p>
         </div>
     </section>
+    <!-- Testing shadow at bottom -->
+    <div class="width-restrictor">
+        <div class="shadow"></div>
+    </div>
     `;
 
     // Correctly append the section to the <main> element

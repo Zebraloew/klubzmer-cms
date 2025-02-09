@@ -29,6 +29,7 @@ table {
   
   tr:nth-child(1) {
     box-shadow: none;
+    transform: translate(0, 15px);
   }
 
   td:nth-child(1), th:nth-child(1){
