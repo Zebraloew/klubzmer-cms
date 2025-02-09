@@ -1,0 +1,24 @@
+#img-container-1 {
+    box-shadow: none;
+}
+
+#img-container-1 section{
+    max-height: 90vh;
+    max-width: 90vw;
+    border-radius: 30px;
+    box-shadow: 0 30px 30px var(--subtle);
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Mobile View  */
+@media only screen and (max-width: 768px) {
+    #img-container-1 section img{
+        position: relative;
+        left: -50px;
+    }
+}
+
