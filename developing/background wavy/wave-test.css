@@ -1,0 +1,15 @@
+.container {
+    width: 60vh;
+    height: 60vh;
+    background-color: beige;
+    overflow: hidden;
+}
+
+.block {
+    position: absolute;
+    top: 30vh;
+    left: 30vh;
+    height: 30vh;
+    width: 30vw;
+    background-color: tomato;
+}
