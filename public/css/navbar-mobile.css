@@ -2,19 +2,24 @@
   @media (max-width: 768px) {
     .menu {
       display: none;
+      top: 0;
       flex-direction: column;
       justify-content: center;
       align-content: center;
-      align-items: center   ;
+      align-items: center;
       min-height: 100vh;
       min-width: 100vw;
       font-size: xx-large;
-      background-color:   var(--overlay);
+      background: radial-gradient(circle at 20% 30%, var(--text), var(--iris)),url('noise.svg');
+      color: var(--text);
     }
   
     .menu li {
-      text-align: center;
       margin: 40px;
+    }
+  
+    .menu li a, .menu li a:hover, .menu li a:visited, .menu li a:active {
+        /* color: black; */
     }
   
     .menu-icon {
@@ -32,9 +37,10 @@
     .menu-toggle:checked ~ .menu-icon span:nth-child(2) {
       transform: translate(0px, 0px);
       width: 0;
-      background-color:  var(--base);
+      background-color: var(--base);
     }
     .menu-toggle:checked ~ .menu-icon span:nth-child(3) {
       transform: rotate(45deg) translate(-5px, -6px);
     }
+  }
 }
