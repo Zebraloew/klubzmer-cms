@@ -1,6 +1,19 @@
 body{
     background-color: var(--overlay);
 }
+/* Hier wird ein Hintergrund erstellt
+   Rauschen mit Blur
+*/
+body::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -1; /* Keeps it behind content */
+    
+    background: url(noise.svg) repeat;
+    opacity: 0.9; /* Adjust the opacity */
+    filter: blur(0.3px);
+}
 
 
 #admin main{
@@ -30,6 +43,7 @@ body{
 }
 
 .edit-outer {
+    position: relative;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -41,10 +55,31 @@ body{
     padding: 10px 40px;
 
     /* border: 1px solid var(--subtle); */
-    background-color: var(--base);
+    /* background-color: var(--base); */
+    /* background-color: rgba(255, 255, 255, 0.51); */
+    background: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.51), rgba(255, 255, 255, 0.3));
     border-radius: 30px;
     box-shadow: 0 10px 10px var(--subtle);
 }
+
+.edit-outer::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -1; /* Keeps it behind content */
+    
+    background: 
+        /* linear-gradient(var(--base),var(--subtle)),  */
+        url(noise.svg) repeat; /* Farbe + Rauschen kombiniert */
+    opacity: 1; /* Adjust the opacity */
+    /* filter: blur(0.1px); */
+    pointer-events: none; /* Kein Klickblocker */
+    border-radius: 30px;
+
+}
+
+
+
 .edit-inner {
     width: 40%;
     min-width: 400px;

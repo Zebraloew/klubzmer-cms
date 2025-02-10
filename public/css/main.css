@@ -85,9 +85,18 @@ section h2 {
 a{
     text-decoration: none;
     color: var(--foam);
+    cursor: pointer;
 }
 a:hover{
     color: var(--gold)
+}
+
+button{
+    cursor: pointer;
+}
+
+button:hover{
+    color: var(--gold);
 }
 
 img {
