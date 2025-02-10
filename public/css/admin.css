@@ -1,13 +1,28 @@
+body{
+    background-color: var(--overlay);
+}
+
+
 #admin main{
     width: 100vw;
+    min-height: 100vh;
     margin: 0;
 }
 .edit-outer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    width: 100vw;
+    justify-content: flex-start;
+    align-content: flex-start;  
+
+    width: 98vw;
+    margin: 20px;
+    padding: 10px 40px;
+
+    /* border: 1px solid var(--subtle); */
+    background-color: var(--base);
+    border-radius: 30px;
+    box-shadow: 0 10px 10px var(--subtle);
 }
 .edit-inner {
     width: 40%;
@@ -24,7 +39,7 @@
     padding: 0px;
 }
 /* h3 und h5 in einer Reihe */
-.edit-inner h3, h5 {
+.edit-inner h3, .edit-inner h5, .edit-inner p {
     display: inline-block;
 }
 
@@ -42,8 +57,6 @@
     background-color: var(--surface);
     padding: 25px;
     border-radius: 30px;
-    font-size: large;
-    letter-spacing: 0.5px;
 }
 
 #admin textarea {

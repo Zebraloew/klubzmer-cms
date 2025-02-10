@@ -9,3 +9,7 @@ main {
     line-height: 1.5;
     letter-spacing: 0.12rem;
 }
+
+.text-small {
+    font-size: small;
+}
