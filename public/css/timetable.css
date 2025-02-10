@@ -83,10 +83,10 @@ tr:nth-child(1) {
   }
   td::before {
     content: attr(data-label);
-    width: 120px;
+    width: 100px;
     font-weight: bold;
     text-transform: uppercase;
     font-size: small;
-    color: var(--gold);
+    color: var(--muted);
   }
 }
