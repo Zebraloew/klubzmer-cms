@@ -60,23 +60,6 @@
         </div>
     </main>
     <script>
-        async function loadText() {
-            try {
-                const response = await fetch('/api/about-text');
-                const data = await response.json();
-                const plainText = _.chain(data.text)
-                    .replace(/<\/p><p>/g, '\n\n') // Convert paragraph separation
-                    .replace(/<br>/g, '\n')       // Convert line breaks
-                    .replace(/^<p>|<\/p>$/g, '') // Remove outer <p> tags
-                    .value();
-                document.getElementById('adminAboutText').value = plainText;
-                document.getElementById('preview-about').innerHTML = data.text; // Preview with formatting
-            } catch (error) {
-                console.error("Failed to load text:", error);
-                document.getElementById('status').textContent = "⚠ Could not load text.";
-            }
-        }
-    
         async function saveText() {
             const plainText = document.getElementById('adminAboutText').value;
             const formattedText = _.chain(plainText)
@@ -98,10 +81,32 @@
                 document.getElementById('status').textContent = "⚠ Could not save text.";
             }
         }
-    
-        // Load existing text on page load
-        loadText();
     </script>
-
+<!-- New Script -->
+<script type="module">
+    // ♥ Full script for admin about loader
+    import { loadText } from "./textLoader.js";
+  
+    /**
+     * @returns {Promise<void>}
+     */
+    async function loadAdminAbout() {
+      // Load formatted text into preview
+      await loadText("/api/about-text", "preview-about");
+  
+      // Then also fetch again for textarea parsing
+      const response = await fetch("/api/about-text");
+      const data = await response.json();
+      // Convert HTML back to plain text
+      const plainText = data.text
+        .replace(/<\/p><p>/g, "\n\n")
+        .replace(/<br>/g, "\n")
+        .replace(/^<p>|<\/p>$/g, "");
+      document.getElementById("adminAboutText").value = plainText;
+    }
+  
+    loadAdminAbout();
+  </script>
+<!-- End -->
 </body>
 </html>
