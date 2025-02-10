@@ -54,11 +54,11 @@ This creates a wavy line
 
 .blur {
   position: absolute;
-  top: 50%;
-  left: -50px;
+  top: 30%;
+  left: -70px;
   /* The Size */
   height: 100px;
-  min-width: 120vw;
+  min-width: 200vw;
   filter: blur(3px);
   mix-blend-mode: multiply;
 }
