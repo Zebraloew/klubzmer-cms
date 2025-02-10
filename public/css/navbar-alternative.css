@@ -20,6 +20,8 @@ Ungewöhnliche Positionierung
 .menu li a {
     color: var(--text);
 }
+
+/* Hack für Schrift-Farbe im Mobilen Modus */
 @media screen and (max-width: 768px) {
     .menu li a {
         color: var(--base);
