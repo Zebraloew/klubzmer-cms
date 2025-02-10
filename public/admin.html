@@ -18,44 +18,22 @@
     <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
-        <!-- Navbar -->
-        <div id="admin-menu">
-            <ul>
-                <li><a href="#edit-about">Text: About</a></li>
-                <li><a href="#edit-gigs">Edit: Gigs</a></li>
-            </ul>
-        </div>
-        <!-- Edit About Text -->
+
+<!-- Navbar -->
+    <div id="admin-menu">
+        <ul>
+            <li><a href="#edit-about">Text: About</a></li>
+            <li><a href="#edit-gigs">Edit: Gigs</a></li>
+        </ul>
+    </div>
     <main id="admin">
-
-
-
         <div class="admin-heading">
             <h5>Klubzmer Website</h5>
             <h1>Admin Area</h1> 
             <h5>VIP only</h5>
         </div>
 
-        <div class="edit-outer">
-            <div class="edit-inner">
-                <div class="edit-heading">
-                    <h2>Edit About Text</h2>
-                </div>
-                <textarea id="adminAboutText"></textarea>
-                <div class="button-block">
-                    <button class="save-button" onclick="saveText()">Save</button>
-                    <p id="status"></p>
-                </div>
-            </div>
-            <div class="edit-inner">
-                <div class="edit-heading">
-                    <h3>Preview</h3>
-                    <p class="text-small"> — Reload to see changes</h5>
-                </div>
-                <p class="preview text-small" id="preview-about">This display is updated automatically.</p>
-            </div>
-        </div>
-        <!-- Edit Gigs -->
+<!-- Edit Gigs -->
         <div class="edit-outer">
             <div class="edit-inner">
                 <h2 id="edit-gigs">Edit Gigs</h2>
@@ -69,9 +47,55 @@
                <p class="text-small">Momentan wird jeder Eintrag in der Tabelle ausgelesen. Möglich wäre es nur einen Teil der Tabelle in die Website zu übertragen.</p>
             </div>
         </div>
+
+<!-- Edit About Text -->
+        <div id="edit-about" class="edit-outer">
+            <div class="edit-inner">
+                <div class="edit-heading">
+                    <h2>Edit About Text</h2>
+                </div>
+                <textarea id="adminAboutText"></textarea>
+                <div class="button-block">
+                    <button class="save-button" onclick="saveTextAbout()">Save</button>
+                    <p id="status"></p>
+                </div>
+            </div>
+            <div class="edit-inner">
+                <div class="edit-heading">
+                    <h3>Preview</h3>
+                    <p class="text-small"> — Reload to see changes</h5>
+                </div>
+                <p class="preview text-small" id="preview-about">This display is updated automatically.</p>
+            </div>
+        </div>
+
+<!-- Edit Contact Text -->
+        <div id="edit-contact" class="edit-outer">
+            <div class="edit-inner">
+                <div class="edit-heading">
+                    <h2>Edit Contact Text</h2>
+                </div>
+                <textarea id="adminContactText"></textarea>
+                <div class="button-block">
+                    <button class="save-button" onclick="saveTextAbout()">Save</button>
+                    <p id="status"></p>
+                </div>
+            </div>
+            <div class="edit-inner">
+                <div class="edit-heading">
+                    <h3>Preview</h3>
+                    <p class="text-small"> — Reload to see changes</h5>
+                </div>
+                <p class="preview text-small" id="preview-about">This display is updated automatically.</p>
+            </div>
+        </div>
+
+<!-- End of Main -->
     </main>
+    
+<!-- Scripts -->
     <script>
-        async function saveText() {
+        async function saveTextAbout() {
             const plainText = document.getElementById('adminAboutText').value;
             const formattedText = _.chain(plainText)
                 .split(/\n{2,}/)
