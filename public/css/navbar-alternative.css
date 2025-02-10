@@ -18,5 +18,10 @@ Ungewöhnliche Positionierung
 }
 
 .menu li a {
-    /* color: var(--text); */
+    color: var(--text);
+}
+@media screen and (max-width: 768px) {
+    .menu li a {
+        color: var(--base);
+    }
 }
