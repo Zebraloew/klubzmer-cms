@@ -8,7 +8,7 @@ table {
     width: 100%;
     max-width: 1000px;
     border-spacing: 0 20px; /* Horizontal (0) and Vertical (20px) spacing */
-
+    padding: 0px 10px;
   }
   
   th, td {
