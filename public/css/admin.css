@@ -34,12 +34,9 @@ body{
     height: 60px;
 }
 
-.edit-inner p, h2, h3, h5{ 
+.edit-heading :is(p, h2, h3, h5) {
     margin: 0px;
     padding: 0px;
-}
-/* h3 und h5 in einer Reihe */
-.edit-inner h3, .edit-inner h5, .edit-inner p {
     display: inline-block;
 }
 
