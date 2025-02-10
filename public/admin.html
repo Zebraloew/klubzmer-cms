@@ -56,7 +56,7 @@
                 </div>
                 <textarea id="adminAboutText"></textarea>
                 <div class="button-block">
-                    <button class="save-button" onclick="saveTextAbout()">Save</button>
+                    <button  id="saveButtonAbout" class="save-button">Save</button>
                     <p id="status"></p>
                 </div>
             </div>
@@ -77,7 +77,7 @@
                 </div>
                 <textarea id="adminContactText"></textarea>
                 <div class="button-block">
-                    <button class="save-button" onclick="saveTextAbout()">Save</button>
+                    <button class="save-button" onclick="saveTextContact()">Save</button>
                     <p id="status"></p>
                 </div>
             </div>
@@ -86,37 +86,30 @@
                     <h3>Preview</h3>
                     <p class="text-small"> — Reload to see changes</h5>
                 </div>
-                <p class="preview text-small" id="preview-about">This display is updated automatically.</p>
+                <p class="preview text-small" id="preview-contact">This display is updated automatically.</p>
             </div>
         </div>
 
 <!-- End of Main -->
     </main>
+
+<!-- Importing Lodash —— it is a dependency for the text converters -->
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
     
 <!-- Scripts -->
-    <script>
-        async function saveTextAbout() {
-            const plainText = document.getElementById('adminAboutText').value;
-            const formattedText = _.chain(plainText)
-                .split(/\n{2,}/)
-                .map(paragraph => `<p>${_.replace(paragraph, /\n/g, '<br>')}</p>`)
-                .join('')
-                .value();
-    
-            try {
-                const response = await fetch('/api/update-text', {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ text: formattedText })
-                });
-                const result = await response.json();
-                document.getElementById('status').textContent = result.message || "⚠ Error saving text.";
-            } catch (error) {
-                console.error("Failed to save text:", error);
-                document.getElementById('status').textContent = "⚠ Could not save text.";
-            }
+<script type="module">
+    import saveTextAbout from './saveTextAbout.js';
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const saveButtonAbout = document.getElementById('saveButtonAbout');
+        if (saveButtonAbout) {
+            saveButtonAbout.addEventListener('click', saveTextAbout);
+        } else {
+            console.error("⚠ Error: Button with ID 'saveButtonAbout' not found.");
         }
-    </script>
+    });
+</script>
+
 <!-- New Script -->
 <script type="module">
     // ♥ Full script for admin about loader
