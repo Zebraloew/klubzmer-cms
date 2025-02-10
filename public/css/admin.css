@@ -8,6 +8,27 @@ body{
     min-height: 100vh;
     margin: 0;
 }
+
+.admin-heading {
+    padding-top: 40px;  
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-heading :is(h1, h2, h3, h4, h5, h6) {
+    margin: 0 10px;
+    padding: 0;
+    display: inline-block;
+
+    line-height: 1.4rem;
+}
+
+.admin-heading h1 {
+    line-height: 2.6rem;
+}
+
 .edit-outer {
     display: flex;
     flex-direction: row;
