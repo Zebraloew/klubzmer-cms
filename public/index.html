@@ -27,8 +27,6 @@
 <body>
     <main>
     </main>
-
-
     <!-- All modules are loaded here -->
     <script src="modules/section-about.js" type="module"></script>
     <script src="modules/section-landing.js" type="module"></script>
@@ -40,6 +38,8 @@
         import { createSectionImgContact } from './modules/section-img-contact.js';
         import { createSectionContact } from './modules/section-contact.js';
         import { createFooter } from './modules/footer.js';
+        import { loadText } from './textLoader.js';
+        
 
         createNavbar();
         createSectionLanding();
@@ -49,6 +49,9 @@
         createSectionContact();
         createFooter();
 
+        // Fetch dynamic text for sections
+        loadText("about.txt", "about-content");
+        loadText("contact.txt", "contact-content");
     </script>
     <script src="js/table.js"></script>
 </body>

@@ -9,11 +9,11 @@ export function createSectionAbout() {
       <img class="head-img" src="img/about_j.jpg" alt="Gruppenfoto">
       <div class="textwrapper">
           <h2>Über uns</h2>
-          <p id="aboutpaste"></p>
+          <p id="about-content"></p>
       </div>
     </section>
   `;
 
   document.querySelector('main').append(sectionAbout);
-  loadText("/api/about-text", "aboutpaste");
+  loadText("about.txt", "about-content");
 }

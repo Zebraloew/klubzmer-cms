@@ -1,27 +1,30 @@
 // server/utils/textHandler.js
-// CMS kind of
-// Read and write to a text file
+// Handles reading and writing to text files dynamically
 
 const _ = require('lodash');
 const fs = require('fs').promises; // Async file system operations
-const textFile = 'content/about.txt'; // Path to the text file
+const contentDir = 'content'; // Directory where text files are stored
+const defaultFile = 'about.txt'; // Default file
 
-// Function to read text from the file
-async function getText() {
+// Function to read text from a specified file (defaults to about.txt)
+async function getText(filename = defaultFile) {
     try {
-        const text = await fs.readFile(textFile, 'utf-8');
+        const filePath = `${contentDir}/${filename}`;
+        const text = await fs.readFile(filePath, 'utf-8');
         const paragraphs = _.split(_.trim(text), /\n{2,}/); // Split paragraphs by double newline
         const formattedText = _.map(paragraphs, p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join(''); // Format for display
         return formattedText;
     } catch (error) {
-        console.error("❌ Failed to read text file:", error.message);
-        return "⚠ Error loading text.";
+        console.error(`❌ Failed to read file (${filename}):`, error.message);
+        return `⚠ Error loading text from ${filename}.`;
     }
 }
 
-// Function to write new text to the file
-async function updateText(newText) {
+// Function to write new text to a specified file (defaults to about.txt)
+async function updateText(newText, filename = defaultFile) {
     try {
+        const filePath = `${contentDir}/${filename}`;
+
         // Convert from HTML back to plain text; preserving paragraphs
         const plainText = _.chain(newText)
             .replace(/<\/p><p>/g, '\n\n') // Convert paragraph separation back to double newlines
@@ -29,12 +32,12 @@ async function updateText(newText) {
             .replace(/^<p>|<\/p>$/g, '') // Remove any surrounding <p> tags
             .value();
         
-        await fs.writeFile(textFile, plainText, 'utf-8'); // Write plain text to the file
-        console.log("✅ Text file updated successfully!");
-        return { success: true, message: "✅ Text updated! Reload to see changes." };
+        await fs.writeFile(filePath, plainText, 'utf-8'); // Write plain text to the file
+        console.log(`✅ File updated successfully: ${filename}`);
+        return { success: true, message: `✅ Text updated in ${filename}! Reload to see changes.` };
     } catch (error) {
-        console.error("❌ Failed to update text file:", error.message);
-        return { success: false, error: "⚠ Error saving text." };
+        console.error(`❌ Failed to update file (${filename}):`, error.message);
+        return { success: false, error: `⚠ Error saving text to ${filename}.` };
     }
 }
 

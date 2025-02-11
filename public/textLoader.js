@@ -1,16 +1,16 @@
 // textLoader.js
-// ♥ Reusable text fetcher with type annotations
+// ♥ Reusable text fetcher with support for multiple files
 /**
- * @param {string} endpoint - API endpoint
+ * @param {string} filename - Name of the text file to fetch
  * @param {string} elementId - DOM element to populate
  * @returns {Promise<void>}
  */
-export async function loadText(endpoint, elementId) {
-    try {
-      const response = await fetch(endpoint);
+export async function loadText(filename, elementId) {
+  try {
+      const response = await fetch(`/api/text?filename=${filename}`);
       const data = await response.json();
       document.getElementById(elementId).innerHTML = data.text;
-    } catch (err) {
-      console.error("Failed to load:", err);
-    }
+  } catch (err) {
+      console.error(`⚠ Failed to load ${filename}:`, err);
   }
+}
