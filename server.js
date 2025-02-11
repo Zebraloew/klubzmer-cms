@@ -5,7 +5,7 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 const dotenv = require('dotenv');
 
 const cors = require('cors');
-const { getText, updateText } = require('./utils/textHandler'); // Import text functions
+const { getText, updateText } = require('./server/utils/textHandler'); // Import text functions
 
 dotenv.config(); 
 
