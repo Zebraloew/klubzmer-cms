@@ -1,4 +1,4 @@
-/* 
+/*
 The table on its own
 1) Desktop Ansicht
 2) Mobile Ansicht
@@ -10,7 +10,7 @@ table {
     border-spacing: 0 20px; /* Horizontal (0) and Vertical (20px) spacing */
     padding: 0px 10px;
   }
-  
+
   th, td {
     text-align: left;
     color: var(--text);
@@ -20,13 +20,13 @@ table {
   th {
     padding: 0 6px;
   }
-  
+
   tr{
     box-shadow: inset -5px -7px 25px var(--subtle);
     border-radius: 20px;
 
   }
-  
+
   tr:nth-child(1) {
     box-shadow: none;
     transform: translate(0, 15px);
@@ -64,6 +64,7 @@ table {
 
 tr:nth-child(1) {
     display: none;
+
 }
 
   td {
@@ -74,7 +75,6 @@ tr:nth-child(1) {
   }
   /* Titel Feld */
   td:nth-child(1) {
-    font-size: x-large;
     padding-left: 14px;
   }
   /* Infos */
@@ -83,7 +83,8 @@ tr:nth-child(1) {
   }
   td::before {
     content: attr(data-label);
-    width: 100px;
+    width: 90px;
+    min-width: 90px;
     font-weight: bold;
     text-transform: uppercase;
     font-size: small;
