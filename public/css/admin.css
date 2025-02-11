@@ -62,7 +62,7 @@ body{
     justify-content: flex-start;
     align-content: flex-start;  
 
-    width: 98vw;
+    max-width: 1000px;
     margin: 20px;
     padding: 10px 40px;
 
@@ -166,7 +166,7 @@ body{
 
 #admin-menu {
     position: fixed;
-    top: 10px;
+    top: 100px;
     left: 10px;
     z-index: 100;
 
