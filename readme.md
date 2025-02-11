@@ -3,6 +3,23 @@ Sooo this is my little CMS micro project, that aims to circumvent wordpress.
 is is going great so far. 
 GPT is big help
 
+# ACHIEVEMENTS
+- ✅ Text handling
+- ✅ Google API
+- ✅ Google Sheets
+- ✅ Admin Panel
+- ✅ Frontend
+- ✅ Backend
+- ✅ Database
+- ✅ Experience with new CSS possibilities
+- ✅ Experience with new JS possibilities
+- ✅ Experience with GPT
+- ✅ Experience with NodeJS
+- ✅ Experience with Git
+
+- ☐ Youtube Video Section
+
+
 # STRUCTURE
 ## Main file
 server.js
