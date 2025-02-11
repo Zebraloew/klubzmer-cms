@@ -30,6 +30,7 @@ export function createSectionLanding() {
             
             ></video>
             <div id="pixel-grid"></div> 
+            <img src="../img/Klubzmerlogo.png" alt="Klubzmer Logo" id="logo">
 
         `;
         sectionLanding.appendChild(videoContainer);
@@ -42,5 +43,20 @@ export function createSectionLanding() {
             this.height = this.videoHeight;
 
         };
+        
+
+        // Pause video when not visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    video.pause(); // Pause when not visible
+                } else {
+    video.play(); // Resume when visible
+                }
+            });
+        }, { threshold: 0.1 }); // Adjust threshold if needed
+
+    observer.observe(videoContainer);
+
     }, videoStart); // 10 seconds delay
 }
