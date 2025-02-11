@@ -1,4 +1,4 @@
-// server-modules/textHandler.js
+// utils/textHandler.js
 // CMS kind of
 // Read and write to a text file
 
