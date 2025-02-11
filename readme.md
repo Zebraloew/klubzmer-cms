@@ -18,6 +18,8 @@ GPT is big help
 - ✅ Experience with Git
 
 - ☐ Youtube Video Section
+- ☐ Youtube Video Gallerie
+- soundcloud bei about section -> sofort zum wesentlichen: musik
 
 
 # STRUCTURE
