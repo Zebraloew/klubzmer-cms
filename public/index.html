@@ -32,26 +32,22 @@
     <script src="modules/section-landing.js" type="module"></script>
     <script type="module">
         import { createNavbar } from './modules/navbar.js';
-        import { createSectionAbout } from './modules/section-about.js';
+        createNavbar();
         import { createSectionLanding } from './modules/section-landing.js';
+        createSectionLanding();
         import { createSectionTimetable } from './modules/section-timetable.js';
+        createSectionTimetable();
+        import { createSectionAbout } from './modules/section-about.js';
+        createSectionAbout();
         import { createSectionImgContact } from './modules/section-img-contact.js';
+        createSectionImgContact();
         import { createSectionContact } from './modules/section-contact.js';
+        createSectionContact();
         import { createFooter } from './modules/footer.js';
-        import { loadText } from './textLoader.js';
+        createFooter();
         
 
-        createNavbar();
-        createSectionLanding();
-        createSectionTimetable();
-        createSectionAbout();
-        createSectionImgContact();
-        createSectionContact();
-        createFooter();
 
-        // Fetch dynamic text for sections
-        loadText("about.txt", "about-content");
-        loadText("contact.txt", "contact-content");
     </script>
     <script src="js/table.js"></script>
 </body>
