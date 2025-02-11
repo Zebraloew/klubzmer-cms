@@ -23,7 +23,7 @@ async function fetchSheetData() {
         // Iterate over each row of data received from the server
         data.forEach((row, rowIndex) => {
             const tr = document.createElement('tr');
-            tr.style.boxShadow = "inset -5px -7px 25px var(--subtle)";
+            // tr.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
 
 
             row.forEach((cell, colIndex) => {
