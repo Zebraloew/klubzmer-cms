@@ -23,6 +23,8 @@ async function fetchSheetData() {
         // Iterate over each row of data received from the server
         data.forEach((row, rowIndex) => {
             const tr = document.createElement('tr');
+            tr.style.boxShadow = "inset -5px -7px 25px var(--subtle)";
+
 
             row.forEach((cell, colIndex) => {
                 // Use header labels from the first row
@@ -54,6 +56,8 @@ async function fetchSheetData() {
         // Append the newly created table to the 'sheet-data' div
         sheetDataDiv.appendChild(table);
     } catch (error) {
+        console.error(error); // Debugging für Safari-Fehler ✅
+
         const sheetDataElement = document.getElementById('sheet-data');
         sheetDataElement.style.color = 'var(--love)';
         sheetDataElement.textContent = `Error fetching data: ${error.message} ••• start server with »node server.js«`;
