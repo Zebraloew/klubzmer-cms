@@ -3,9 +3,9 @@
 const express = require('express'); 
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const dotenv = require('dotenv');
-
+const path = require('path');
 const cors = require('cors');
-const { getText, updateText } = require('./server/utils/textHandler'); // Import text functions
+const { getText, updateText } = require('./utils/textHandler'); // Import text functions
 
 dotenv.config(); 
 
@@ -18,7 +18,8 @@ app.use(express.json());
 ////// Text Micro CMS //////
 // Serve admin panel at `/admin`
 app.get('/admin', (req, res) => {
-    res.sendFile(__dirname + '/public/admin.html');
+    // res.sendFile(__dirname + '../public/admin.html');
+    path.join(__dirname, '../public/admin.html');
 });
 
 // Route to get the current about text
@@ -43,7 +44,8 @@ const sheetId = process.env.SHEET_ID;
 const apiKey = process.env.API_KEY;   
 
 // Serve static files from the "public" directory
-app.use(express.static('public'));
+// app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, '../public')));
 
 // Define a route for fetching data from Google Sheets
 app.get('/api/sheet-data', async (req, res) => {
