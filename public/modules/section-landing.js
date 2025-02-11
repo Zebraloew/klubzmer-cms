@@ -1,4 +1,4 @@
-const videoStart = 1000;
+const videoStart = 4000;
 const videoEntry = 270;
 
 export function createSectionLanding() {

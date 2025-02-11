@@ -9,6 +9,7 @@
     align-items: center;
     
     background-color: black;
+    pointer-events: none;
 
 }
 
