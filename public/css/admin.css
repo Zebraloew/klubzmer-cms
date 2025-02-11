@@ -1,10 +1,14 @@
+:root {
+    --menu-width: 140px;
+}
+
 body{
     background-color: var(--overlay);
 }
 /* Hier wird ein Hintergrund erstellt
    Rauschen mit Blur
 */
-body::before {
+#admin::before {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -16,10 +20,18 @@ body::before {
 }
 
 
-#admin main{
-    width: 100vw;
+#admin {
+    position: absolute;
+    max-width: calc(100vw - var(--menu-width));
+    left: var(--menu-width);
     min-height: 100vh;
     margin: 0;
+    
+    display:flex;
+    align-items: flex-start;
+    /* border: 5px solid green; */
+    background-color: rgba(255, 255, 255, 0.21);
+
 }
 
 .admin-heading {
@@ -155,19 +167,21 @@ body::before {
 #admin-menu {
     position: fixed;
     top: 10px;
-    right: 10px;
-    z-index: 10;
+    left: 10px;
+    z-index: 100;
 
     font-size: small;
 }
 #admin-menu ul {
+    display: flex;
+    flex-direction: column;
     list-style: none;
     padding: 0;
     margin: 0;
 }
 #admin-menu li {
     display: inline-block;
-    margin: 0 10px;
+    margin: 10px 10px;
 }
 #admin-menu a {
     color: var(--text);
