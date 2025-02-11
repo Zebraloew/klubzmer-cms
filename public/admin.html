@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Klubzmer Website — Admin Area (VIP only)</title>
-    <!-- Add lodash CDN script -->
-<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script> <!-- ✅ Kept only one lodash script -->
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/theme-light.css">
@@ -43,8 +42,8 @@
             </div>
             <div class="edit-inner">
                 <h3>How to</h3>
-               <p class="text-small">Die Tourdaten werden übersichtlich in einer Google Tabelle bearbeitet. Der Knopf öffnet eine separate Webseite. Momentan bracht es keinen Account, um die Daten zu bearbeiten, nur den Link. Aber das lässt sich schnell ändern.</p>
-               <p class="text-small">Momentan wird jeder Eintrag in der Tabelle ausgelesen. Möglich wäre es nur einen Teil der Tabelle in die Website zu übertragen.</p>
+               <p class="text-small">Die Tourdaten werden übersichtlich in einer Google Tabelle bearbeitet. Der Knopf öffnet eine separate Webseite. Momentan braucht es keinen Account, um die Daten zu bearbeiten, nur den Link. Aber das lässt sich schnell ändern.</p>
+               <p class="text-small">Momentan wird jeder Eintrag in der Tabelle ausgelesen. Möglich wäre es, nur einen Teil der Tabelle in die Website zu übertragen.</p>
             </div>
         </div>
 
@@ -56,14 +55,14 @@
                 </div>
                 <textarea id="adminAboutText"></textarea>
                 <div class="button-block">
-                    <button  id="saveButtonAbout" class="save-button">Save</button>
-                    <p id="status"></p>
+                    <button id="saveButtonAbout" class="save-button">Save</button>
+                    <p id="statusAbout"></p> <!-- ✅ Unique ID -->
                 </div>
             </div>
             <div class="edit-inner">
                 <div class="edit-heading">
                     <h3>Preview</h3>
-                    <p class="text-small"> — Reload to see changes</h5>
+                    <p class="text-small"> — Reload to see changes</p> <!-- ✅ Fixed closing tag -->
                 </div>
                 <p class="preview text-small" id="preview-about">This display is updated automatically.</p>
             </div>
@@ -77,14 +76,14 @@
                 </div>
                 <textarea id="adminContactText"></textarea>
                 <div class="button-block">
-                    <button class="save-button" onclick="saveTextContact()">Save</button>
-                    <p id="status"></p>
+                    <button id="saveButtonContact" class="save-button">Save</button> <!-- ✅ Fixed event listener -->
+                    <p id="statusContact"></p> <!-- ✅ Unique ID -->
                 </div>
             </div>
             <div class="edit-inner">
                 <div class="edit-heading">
                     <h3>Preview</h3>
-                    <p class="text-small"> — Reload to see changes</h5>
+                    <p class="text-small"> — Reload to see changes</p> <!-- ✅ Fixed closing tag -->
                 </div>
                 <p class="preview text-small" id="preview-contact">This display is updated automatically.</p>
             </div>
@@ -92,10 +91,6 @@
 
 <!-- End of Main -->
     </main>
-
-<!-- Importing Lodash —— it is a dependency for the text converters -->
-<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
-    >
 
 <!-- New Script -->
 <script type="module">
@@ -133,7 +128,7 @@
      * @param {string} filename - The file to update.
      * @param {string} textareaId - The textarea containing the new text.
      */
-    async function saveText(filename, textareaId) {
+    async function saveText(filename, textareaId, statusId) {
         const text = document.getElementById(textareaId).value;
         
         const response = await fetch("/api/update-text", {
@@ -143,15 +138,16 @@
         });
 
         const result = await response.json();
-        console.log(result.message || result.error);
+        document.getElementById(statusId).textContent = result.message || result.error;
     }
 
+    // ✅ Fixed event listeners to use unique status messages
     document.getElementById('saveButtonAbout').addEventListener('click', () => {
-        saveText("about.txt", "adminAboutText");
+        saveText("about.txt", "adminAboutText", "statusAbout");
     });
 
-    document.querySelector(".save-button[onclick='saveTextContact()']").addEventListener('click', () => {
-        saveText("contact.txt", "adminContactText");
+    document.getElementById('saveButtonContact').addEventListener('click', () => {
+        saveText("contact.txt", "adminContactText", "statusContact");
     });
 </script>
 </body>
