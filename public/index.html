@@ -4,11 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Klubzmer — Handmade Guerilla Klezmer from Hamburg</title>
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet"> -->
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"> -->
+    
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <!-- ✅ Preload critical styles for faster rendering -->
+    <link rel="preload" href="css/main.css" as="style">
+    <link rel="preload" href="css/theme-light.css" as="style">
+    <link rel="preload" href="css/typography.css" as="style">
+    <link rel="preload" href="section-landing.css">  
+
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/theme-light.css">
+    <link rel="stylesheet" href="css/theme-light.css">>
     <link rel="stylesheet" href="css/typography.css">
     <link rel="stylesheet" href="css/extras.css">
     <link rel="stylesheet" href="css/navbar.css">
@@ -25,30 +32,30 @@
     <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
-    <main>
+    <main id="main-content"> <!-- ✅ Added ID so JavaScript can append content -->
     </main>
+
     <!-- All modules are loaded here -->
-    <script src="modules/section-about.js" type="module"></script>
-    <script src="modules/section-landing.js" type="module"></script>
     <script type="module">
+        // ✅ Grouped imports together for clarity
         import { createNavbar } from './modules/navbar.js';
-        createNavbar();
         import { createSectionLanding } from './modules/section-landing.js';
-        createSectionLanding();
         import { createSectionTimetable } from './modules/section-timetable.js';
-        createSectionTimetable();
         import { createSectionAbout } from './modules/section-about.js';
-        createSectionAbout();
         import { createSectionImgContact } from './modules/section-img-contact.js';
-        createSectionImgContact();
         import { createSectionContact } from './modules/section-contact.js';
-        createSectionContact();
         import { createFooter } from './modules/footer.js';
+
+        // ✅ Initialize sections in the correct order
+        createSectionLanding();
+        createNavbar();
+        createSectionTimetable();
+        createSectionAbout();
+        createSectionImgContact();
+        createSectionContact();
         createFooter();
-        
-
-
     </script>
-    <script src="js/table.js"></script>
+
+    <script src="js/table.js"></script> <!-- ✅ Left outside the module script (correct usage) -->
 </body>
 </html>
