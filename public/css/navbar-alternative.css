@@ -3,14 +3,18 @@ Navbar unten rechts
 Ungewöhnliche Positionierung
 */
 .menu {
-    bottom: 30px;
-    right: 0;
+    bottom: 60px;
+    right: 15px;
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
     flex-direction: column;
     flex-wrap: wrap;
     align-content: flex-start;
+
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: small;
 }
 
 .menu li {
