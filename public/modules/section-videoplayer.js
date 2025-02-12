@@ -3,19 +3,19 @@
 
 export function createSectionVideoplayer() {
     const sectionVideoplayer = document.createElement("div");
-    sectionVideoplayer.className = "videoplayer-container";
+    sectionVideoplayer.className = "videoplayer-container container";
+    sectionVideoplayer.id = "videoplayer";
   
     sectionVideoplayer.innerHTML = `
       <section class="section-videoplayer">
           <div class="videoplayer">
-              <iframe id="main-videoplayer" width="640" height="360" 
+              <iframe id="main-videoplayer" 
                   src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
                   frameborder="0" allowfullscreen>
               </iframe>
           </div>
   
           <div class="video-list">
-              <h3>Weitere Videos</h3>
               <div class="video-thumbnails">
                   <img class="video-thumbnail" data-video-id="3JZ_D3ELwOQ" src="https://img.youtube.com/vi/3JZ_D3ELwOQ/hqdefault.jpg" alt="Video 1">
                   <img class="video-thumbnail" data-video-id="tgbNymZ7vqY" src="https://img.youtube.com/vi/tgbNymZ7vqY/hqdefault.jpg" alt="Video 2">
