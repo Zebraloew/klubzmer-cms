@@ -2,13 +2,14 @@
 // Video Player Module
 
 export function createSectionVideoplayer() {
-    const sectionVideoplayer = document.createElement("div");
-    sectionVideoplayer.className = "videoplayer-container container";
-    sectionVideoplayer.id = "videoplayer";
-  
-    sectionVideoplayer.innerHTML = `
+  const sectionVideoplayer = document.createElement("div");
+  sectionVideoplayer.className = "videoplayer-container container";
+  sectionVideoplayer.id = "videoplayer";
+
+  sectionVideoplayer.innerHTML = `
       <section class="section-videoplayer">
           <div class="videoplayer">
+              <h2>Videoplayer</h2>
               <iframe id="main-videoplayer" 
                   src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
                   frameborder="0" allowfullscreen>
@@ -16,6 +17,7 @@ export function createSectionVideoplayer() {
           </div>
   
           <div class="video-list">
+              <p>Weitere Videos</p>
               <div class="video-thumbnails">
                   <img class="video-thumbnail" data-video-id="3JZ_D3ELwOQ" src="https://img.youtube.com/vi/3JZ_D3ELwOQ/hqdefault.jpg" alt="Video 1">
                   <img class="video-thumbnail" data-video-id="tgbNymZ7vqY" src="https://img.youtube.com/vi/tgbNymZ7vqY/hqdefault.jpg" alt="Video 2">
@@ -27,9 +29,11 @@ export function createSectionVideoplayer() {
           </div>
       </section>
     `;
-  
-    // Event Listener for thumbnails to update the main video
-    sectionVideoplayer.querySelectorAll(".video-thumbnail").forEach((thumbnail) => {
+
+  // Event Listener for thumbnails to update the main video
+  sectionVideoplayer
+    .querySelectorAll(".video-thumbnail")
+    .forEach((thumbnail) => {
       thumbnail.addEventListener("click", function () {
         const videoId = this.getAttribute("data-video-id");
         document.getElementById(
@@ -37,6 +41,6 @@ export function createSectionVideoplayer() {
         ).src = `https://www.youtube.com/embed/${videoId}`;
       });
     });
-  
-    document.querySelector("main").append(sectionVideoplayer);
-  }
+
+  document.querySelector("main").append(sectionVideoplayer);
+}
