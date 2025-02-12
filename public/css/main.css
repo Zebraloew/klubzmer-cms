@@ -103,3 +103,7 @@ img {
     height: auto;
     border-radius: 5px;
 }
+
+.inline{
+    display: inline;
+}

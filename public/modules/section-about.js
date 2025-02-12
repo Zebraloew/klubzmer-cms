@@ -10,13 +10,46 @@ export function createSectionAbout() {
       <div class="textwrapper">
           <h2>Über uns</h2>
           <p id="about-content"></p>
-          <audio id="local-audio" controls> 
-              <source src="media/audio.mp3" type="audio/mpeg">
-          </audio>
+          
+          <!-- Minimaler Audio-Player -->
+          <div class="audio-wrapper">
+              <button class="player-button" id="play-btn">⏵</button>
+              <button class="player-button" id="stop-btn">⏹</button>
+              <audio id="about-audio">
+                  <source src="media/audio.mp3" type="audio/mpeg">
+              </audio>
+              <p class="text-small inline">Klubzmer – Lalala (2022 David Guetta feat. Klubzmer)</p>
+          </div>
       </div>
     </section>
   `;
 
-  document.querySelector('main').append(sectionAbout);
+  if (!document.querySelector("#about")) { 
+    document.querySelector("main").append(sectionAbout); 
+  }
+
   loadText("about.txt", "about-content");
+
+  // Audio-Player Steuerung
+  const audio = sectionAbout.querySelector("#about-audio");
+  const playBtn = sectionAbout.querySelector("#play-btn");
+  const stopBtn = sectionAbout.querySelector("#stop-btn");
+
+  const togglePlayPause = () => {
+    if (audio.paused) {
+      audio.play();
+      playBtn.textContent = "⏸"; 
+    } else {
+      audio.pause();
+      playBtn.textContent = "⏵"; 
+    }
+  };
+
+  playBtn.addEventListener("click", togglePlayPause);
+
+  stopBtn.addEventListener("click", () => {
+    audio.pause();
+    audio.currentTime = 0;
+    playBtn.textContent = "⏵"; 
+  });
 }
