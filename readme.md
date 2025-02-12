@@ -16,10 +16,14 @@ GPT is big help
 - ✅ Experience with GPT
 - ✅ Experience with NodeJS
 - ✅ Experience with Git
+- ✅ Music Player in About Section
+  - o Player als Modul
+  - o Player in Navbar
 
 - ☐ Youtube Video Section
 - ☐ Youtube Video Gallerie
 - soundcloud bei about section -> sofort zum wesentlichen: musik
+- 
 
 
 # STRUCTURE
