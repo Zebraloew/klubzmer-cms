@@ -1,0 +1,43 @@
+/* section-videoplayer.css */
+
+.videoplayer-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.section-videoplayer {
+  display: flex;
+  width: 100%;
+}
+
+.videoplayer iframe {
+  width: 640px;
+  height: 360px;
+  border-radius: 8px;
+}
+
+.video-list {
+  width: 220px;
+  overflow-y: auto;
+  max-height: 380px;
+  border-left: 2px solid #ddd;
+  padding-left: 10px;
+}
+
+.video-thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.video-thumbnail {
+  width: 100%;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.2s;
+}
+
+.video-thumbnail:hover {
+  transform: scale(1.05);
+}
