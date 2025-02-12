@@ -18,7 +18,7 @@ export function createSectionAbout() {
               <audio id="about-audio">
                   <source src="media/audio.mp3" type="audio/mpeg">
               </audio>
-              <p class="text-small inline">Klubzmer – Lalala (2022 David Guetta feat. Klubzmer)</p>
+              <p class="text-small inline">Klubzmer – Lalala Hey Hey (2022 David Guetta Remix)</p>
           </div>
       </div>
     </section>
