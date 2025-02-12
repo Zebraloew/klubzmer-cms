@@ -10,6 +10,9 @@ export function createSectionAbout() {
       <div class="textwrapper">
           <h2>Über uns</h2>
           <p id="about-content"></p>
+          <audio id="local-audio" controls> 
+              <source src="media/audio.mp3" type="audio/mpeg">
+          </audio>
       </div>
     </section>
   `;
