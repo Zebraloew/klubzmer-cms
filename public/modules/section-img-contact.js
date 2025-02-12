@@ -1,8 +1,8 @@
 export function createSectionImgContact() {
-    const sectionImgContact = document.createElement("div");
-    sectionImgContact.className = "container wave-container";
-    sectionImgContact.id = "img-container-1";
-    sectionImgContact.innerHTML = `
+  const sectionImgContact = document.createElement("div");
+  sectionImgContact.className = "container wave-container";
+  sectionImgContact.id = "img-container-1";
+  sectionImgContact.innerHTML = `
 
     <div class="blur">
         <div class="wave"></div>
@@ -15,6 +15,6 @@ export function createSectionImgContact() {
 
     `;
 
-    // Correctly append the section to the <main> element
-    document.querySelector('main').append(sectionImgContact);
+  // Correctly append the section to the <main> element
+  document.querySelector("main").append(sectionImgContact);
 }

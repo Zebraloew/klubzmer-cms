@@ -1,156 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Klubzmer Website — Admin Area (VIP only)</title>
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script> <!-- ✅ Kept only one lodash script -->
-    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/theme-light.css">
-    <link rel="stylesheet" href="css/typography.css">
-    <link rel="stylesheet" href="css/extras.css">
-    <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/section-about.css">
-    <link rel="stylesheet" href="css/section-landing.css">
-    <link rel="stylesheet" href="css/timetable.css">
-    <link rel="stylesheet" href="css/admin.css">
-</head>
-<body>
-
-<!-- Navbar -->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <!-- ✅ Kept only one lodash script -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/theme-light.css" />
+    <link rel="stylesheet" href="css/typography.css" />
+    <link rel="stylesheet" href="css/extras.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/section-about.css" />
+    <link rel="stylesheet" href="css/section-landing.css" />
+    <link rel="stylesheet" href="css/timetable.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
     <div id="admin-menu">
-        <ul>
-            <li><a href="#edit-gigs">Gigs</a></li>
-            <li><a href="#edit-about">Über uns</a></li>
-            <li><a href="#edit-contact">Kontakt</a></li>
-            <li><a href="#edit-youtube">Youtube</a></li>
-        </ul>
+      <ul>
+        <li><a href="#edit-gigs">Gigs</a></li>
+        <li><a href="#edit-about">Über uns</a></li>
+        <li><a href="#edit-contact">Kontakt</a></li>
+        <li><a href="#edit-youtube">Youtube</a></li>
+      </ul>
     </div>
     <main id="admin">
-        <div class="admin-heading">
-            <h5>Klubzmer Website</h5>
-            <h1>Admin Area</h1> 
-            <h5>VIP only</h5>
-        </div>
+      <div class="admin-heading">
+        <h5>Klubzmer Website</h5>
+        <h1>Admin Area</h1>
+        <h5>VIP only</h5>
+      </div>
 
-<!-- Gigs -->
-        <div class="edit-outer">
-            <div class="edit-inner">
-                <h2 id="edit-gigs">Gigs</h2>
-                <a href="https://docs.google.com/spreadsheets/d/1DUgBEpNiNear4spHeeysMkhfGlInb-StFHKaeO2laos/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
-                    <button type="button">Manage Tour Dates</button>
-                </a>
-            </div>
-            <div class="edit-inner">
-                <h3>How to</h3>
-               <p class="text-small">Die Tourdaten werden übersichtlich in einer Google Tabelle bearbeitet. Der Knopf öffnet eine separate Webseite. Momentan braucht es keinen Account, um die Daten zu bearbeiten, nur den Link. Aber das lässt sich schnell ändern.</p>
-               <p class="text-small">Momentan wird jeder Eintrag in der Tabelle ausgelesen. Möglich wäre es, nur einen Teil der Tabelle in die Website zu übertragen.</p>
-            </div>
+      <!-- Gigs -->
+      <div class="edit-outer">
+        <div class="edit-inner">
+          <h2 id="edit-gigs">Gigs</h2>
+          <a
+            href="https://docs.google.com/spreadsheets/d/1DUgBEpNiNear4spHeeysMkhfGlInb-StFHKaeO2laos/edit?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button type="button">Manage Tour Dates</button>
+          </a>
         </div>
-
-<!-- About Text -->
-        <div id="edit-about" class="edit-outer">
-            <div class="edit-inner">
-                <div class="edit-heading">
-                    <h2>About Text</h2>
-                </div>
-                <textarea id="adminAboutText"></textarea>
-                <div class="button-block">
-                    <button id="saveButtonAbout" class="save-button">Save</button>
-                    <p id="statusAbout"></p> <!-- ✅ Unique ID -->
-                </div>
-            </div>
-            <div class="edit-inner">
-                <div class="edit-heading">
-                    <h3>Preview</h3>
-                    <p class="text-small"> — Reload to see changes</p> <!-- ✅ Fixed closing tag -->
-                </div>
-                <p class="preview text-small" id="preview-about">This display is updated automatically.</p>
-            </div>
+        <div class="edit-inner">
+          <h3>How to</h3>
+          <p class="text-small">
+            Die Tourdaten werden übersichtlich in einer Google Tabelle
+            bearbeitet. Der Knopf öffnet eine separate Webseite. Momentan
+            braucht es keinen Account, um die Daten zu bearbeiten, nur den Link.
+            Aber das lässt sich schnell ändern.
+          </p>
+          <p class="text-small">
+            Momentan wird jeder Eintrag in der Tabelle ausgelesen. Möglich wäre
+            es, nur einen Teil der Tabelle in die Website zu übertragen.
+          </p>
         </div>
+      </div>
 
-<!-- Contact Text -->
-        <div id="edit-contact" class="edit-outer">
-            <div class="edit-inner">
-                <div class="edit-heading">
-                    <h2>Contact Text</h2>
-                </div>
-                <textarea id="adminContactText"></textarea>
-                <div class="button-block">
-                    <button id="saveButtonContact" class="save-button">Save</button> <!-- ✅ Fixed event listener -->
-                    <p id="statusContact"></p> <!-- ✅ Unique ID -->
-                </div>
-            </div>
-            <div class="edit-inner">
-                <div class="edit-heading">
-                    <h3>Preview</h3>
-                    <p class="text-small"> — Reload to see changes</p> <!-- ✅ Fixed closing tag -->
-                </div>
-                <p class="preview text-small" id="preview-contact">This display is updated automatically.</p>
-            </div>
+      <!-- About Text -->
+      <div id="edit-about" class="edit-outer">
+        <div class="edit-inner">
+          <div class="edit-heading">
+            <h2>About Text</h2>
+          </div>
+          <textarea id="adminAboutText"></textarea>
+          <div class="button-block">
+            <button id="saveButtonAbout" class="save-button">Save</button>
+            <p id="statusAbout"></p>
+            <!-- ✅ Unique ID -->
+          </div>
         </div>
+        <div class="edit-inner">
+          <div class="edit-heading">
+            <h3>Preview</h3>
+            <p class="text-small">— Reload to see changes</p>
+            <!-- ✅ Fixed closing tag -->
+          </div>
+          <p class="preview text-small" id="preview-about">
+            This display is updated automatically.
+          </p>
+        </div>
+      </div>
 
-<!-- End of Main -->
+      <!-- Contact Text -->
+      <div id="edit-contact" class="edit-outer">
+        <div class="edit-inner">
+          <div class="edit-heading">
+            <h2>Contact Text</h2>
+          </div>
+          <textarea id="adminContactText"></textarea>
+          <div class="button-block">
+            <button id="saveButtonContact" class="save-button">Save</button>
+            <!-- ✅ Fixed event listener -->
+            <p id="statusContact"></p>
+            <!-- ✅ Unique ID -->
+          </div>
+        </div>
+        <div class="edit-inner">
+          <div class="edit-heading">
+            <h3>Preview</h3>
+            <p class="text-small">— Reload to see changes</p>
+            <!-- ✅ Fixed closing tag -->
+          </div>
+          <p class="preview text-small" id="preview-contact">
+            This display is updated automatically.
+          </p>
+        </div>
+      </div>
+
+      <!-- End of Main -->
     </main>
 
-<!-- New Script -->
-<script type="module">
-    import { loadText } from "./textLoader.js";
+    <!-- New Script -->
+    <script type="module">
+      import { loadText } from "./textLoader.js";
 
-    /**
-     * Loads and displays text for a specific file.
-     * @param {string} filename - The filename to load.
-     * @param {string} textareaId - The textarea where the plain text is displayed.
-     * @param {string} previewId - The preview element to show formatted text.
-     */
-    async function loadAdminText(filename, textareaId, previewId) {
+      /**
+       * Loads and displays text for a specific file.
+       * @param {string} filename - The filename to load.
+       * @param {string} textareaId - The textarea where the plain text is displayed.
+       * @param {string} previewId - The preview element to show formatted text.
+       */
+      async function loadAdminText(filename, textareaId, previewId) {
         // Load formatted text into preview
         await loadText(filename, previewId);
 
         // Then also fetch again for textarea parsing
         const response = await fetch(`/api/text?filename=${filename}`);
         const data = await response.json();
-        
+
         // Convert HTML back to plain text
         const plainText = data.text
-            .replace(/<\/p><p>/g, "\n\n")
-            .replace(/<br>/g, "\n")
-            .replace(/^<p>|<\/p>$/g, "");
+          .replace(/<\/p><p>/g, "\n\n")
+          .replace(/<br>/g, "\n")
+          .replace(/^<p>|<\/p>$/g, "");
 
         document.getElementById(textareaId).value = plainText;
-    }
+      }
 
-    // Load "about.txt" by default
-    loadAdminText("about.txt", "adminAboutText", "preview-about");
-    loadAdminText("contact.txt", "adminContactText", "preview-contact");
+      // Load "about.txt" by default
+      loadAdminText("about.txt", "adminAboutText", "preview-about");
+      loadAdminText("contact.txt", "adminContactText", "preview-contact");
 
-    /**
-     * Saves text to a specific file.
-     * @param {string} filename - The file to update.
-     * @param {string} textareaId - The textarea containing the new text.
-     */
-    async function saveText(filename, textareaId, statusId) {
+      /**
+       * Saves text to a specific file.
+       * @param {string} filename - The file to update.
+       * @param {string} textareaId - The textarea containing the new text.
+       */
+      async function saveText(filename, textareaId, statusId) {
         const text = document.getElementById(textareaId).value;
-        
+
         const response = await fetch("/api/update-text", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ text, filename }),
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text, filename }),
         });
 
         const result = await response.json();
-        document.getElementById(statusId).textContent = result.message || result.error;
-    }
+        document.getElementById(statusId).textContent =
+          result.message || result.error;
+      }
 
-    // ✅ Fixed event listeners to use unique status messages
-    document.getElementById('saveButtonAbout').addEventListener('click', () => {
-        saveText("about.txt", "adminAboutText", "statusAbout");
-    });
+      // ✅ Fixed event listeners to use unique status messages
+      document
+        .getElementById("saveButtonAbout")
+        .addEventListener("click", () => {
+          saveText("about.txt", "adminAboutText", "statusAbout");
+        });
 
-    document.getElementById('saveButtonContact').addEventListener('click', () => {
-        saveText("contact.txt", "adminContactText", "statusContact");
-    });
-</script>
-</body>
+      document
+        .getElementById("saveButtonContact")
+        .addEventListener("click", () => {
+          saveText("contact.txt", "adminContactText", "statusContact");
+        });
+    </script>
+  </body>
 </html>

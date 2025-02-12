@@ -1,10 +1,10 @@
 import { loadText } from "../textLoader.js";
 
 export function createSectionContact() {
-    const sectionContact = document.createElement("div");
-    sectionContact.className = "container";
-    sectionContact.id = "contact-container";
-    sectionContact.innerHTML = `
+  const sectionContact = document.createElement("div");
+  sectionContact.className = "container";
+  sectionContact.id = "contact-container";
+  sectionContact.innerHTML = `
     <section class="section-contact" id="contact">
         <!-- <img class="head-img" src="img/hintereinander.jpg" alt="Gruppenfoto"> -->
         <div class="textwrapper">
@@ -23,7 +23,7 @@ export function createSectionContact() {
     </div>
     `;
 
-    // Correctly append the section to the <main> element
-    document.querySelector('main').append(sectionContact);
-    loadText("contact.txt", "contact-content");
+  // Correctly append the section to the <main> element
+  document.querySelector("main").append(sectionContact);
+  loadText("contact.txt", "contact-content");
 }

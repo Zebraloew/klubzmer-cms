@@ -7,10 +7,10 @@
  */
 export async function loadText(filename, elementId) {
   try {
-      const response = await fetch(`/api/text?filename=${filename}`);
-      const data = await response.json();
-      document.getElementById(elementId).innerHTML = data.text;
+    const response = await fetch(`/api/text?filename=${filename}`);
+    const data = await response.json();
+    document.getElementById(elementId).innerHTML = data.text;
   } catch (err) {
-      console.error(`⚠ Failed to load ${filename}:`, err);
+    console.error(`⚠ Failed to load ${filename}:`, err);
   }
 }

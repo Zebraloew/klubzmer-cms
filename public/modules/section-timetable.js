@@ -1,8 +1,8 @@
 export function createSectionTimetable() {
-    const sectionTimetable = document.createElement("div");
-    sectionTimetable.className = "container wave-container";
-    sectionTimetable.id = "timetable-container";
-    sectionTimetable.innerHTML = `
+  const sectionTimetable = document.createElement("div");
+  sectionTimetable.className = "container wave-container";
+  sectionTimetable.id = "timetable-container";
+  sectionTimetable.innerHTML = `
     <div class="blur">
         <div class="wave"></div>
     </div>
@@ -17,6 +17,6 @@ export function createSectionTimetable() {
     </section>
     `;
 
-    // Correctly append the section to the <main> element
-    document.querySelector('main').append(sectionTimetable);
+  // Correctly append the section to the <main> element
+  document.querySelector("main").append(sectionTimetable);
 }

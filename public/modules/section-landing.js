@@ -2,10 +2,10 @@ const videoStart = 4000;
 const videoEntry = 270;
 
 export function createSectionLanding() {
-    const sectionLanding = document.createElement("section");
-    sectionLanding.className = "section-landing";
-    sectionLanding.id = "home";
-    sectionLanding.innerHTML = `
+  const sectionLanding = document.createElement("section");
+  sectionLanding.className = "section-landing";
+  sectionLanding.id = "home";
+  sectionLanding.innerHTML = `
         <a href="#gigs">
             <img id="jumbo" src="img/Header_3000x2000.jpg" alt="Klubzmer Logo">
             <div id="landingtext">
@@ -16,13 +16,13 @@ export function createSectionLanding() {
         </a>
     `;
 
-    document.querySelector("body").prepend(sectionLanding);
+  document.querySelector("body").prepend(sectionLanding);
 
-    // Delay video insertion by 10 seconds
-    setTimeout(() => {
-        const videoContainer = document.createElement("div");
-        videoContainer.id = "video-wrapper";
-        videoContainer.innerHTML = `
+  // Delay video insertion by 10 seconds
+  setTimeout(() => {
+    const videoContainer = document.createElement("div");
+    videoContainer.id = "video-wrapper";
+    videoContainer.innerHTML = `
             <video id="promo-video" src="video/klubzmer-2022-schaltzentrale.mp4" 
             controls 
             autoplay 
@@ -33,30 +33,30 @@ export function createSectionLanding() {
             <img src="../img/Klubzmerlogo.png" alt="Klubzmer Logo" id="logo">
 
         `;
-        sectionLanding.appendChild(videoContainer);
+    sectionLanding.appendChild(videoContainer);
 
-        const video = document.getElementById("promo-video");
-        video.onloadedmetadata = () => {
-            video.currentTime = videoEntry; // Start at 1 minute in
-            video.playbackRate = 0.8; // Set speed to 0.5x (half speed)
-            this.width = this.videoWidth; // Ensure full resolution
-            this.height = this.videoHeight;
+    const video = document.getElementById("promo-video");
+    video.onloadedmetadata = () => {
+      video.currentTime = videoEntry; // Start at 1 minute in
+      video.playbackRate = 0.8; // Set speed to 0.5x (half speed)
+      this.width = this.videoWidth; // Ensure full resolution
+      this.height = this.videoHeight;
+    };
 
-        };
-        
-
-        // Pause video when not visible
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                    video.pause(); // Pause when not visible
-                } else {
-    video.play(); // Resume when visible
-                }
-            });
-        }, { threshold: 0.1 }); // Adjust threshold if needed
+    // Pause video when not visible
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            video.pause(); // Pause when not visible
+          } else {
+            video.play(); // Resume when visible
+          }
+        });
+      },
+      { threshold: 0.1 }
+    ); // Adjust threshold if needed
 
     observer.observe(videoContainer);
-
-    }, videoStart); // 10 seconds delay
+  }, videoStart); // 10 seconds delay
 }

@@ -23,7 +23,8 @@ GPT is big help
 - ☐ Youtube Video Section
 - ☐ Youtube Video Gallerie
 - soundcloud bei about section -> sofort zum wesentlichen: musik
-- 
+- o complete email template system that triggers when someone clicks on a “Mail” button
+
 
 
 # STRUCTURE

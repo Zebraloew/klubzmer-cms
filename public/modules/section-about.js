@@ -24,8 +24,8 @@ export function createSectionAbout() {
     </section>
   `;
 
-  if (!document.querySelector("#about")) { 
-    document.querySelector("main").append(sectionAbout); 
+  if (!document.querySelector("#about")) {
+    document.querySelector("main").append(sectionAbout);
   }
 
   loadText("about.txt", "about-content");
@@ -38,10 +38,10 @@ export function createSectionAbout() {
   const togglePlayPause = () => {
     if (audio.paused) {
       audio.play();
-      playBtn.textContent = "⏸"; 
+      playBtn.textContent = "⏸";
     } else {
       audio.pause();
-      playBtn.textContent = "⏵"; 
+      playBtn.textContent = "⏵";
     }
   };
 
@@ -50,6 +50,6 @@ export function createSectionAbout() {
   stopBtn.addEventListener("click", () => {
     audio.pause();
     audio.currentTime = 0;
-    playBtn.textContent = "⏵"; 
+    playBtn.textContent = "⏵";
   });
 }

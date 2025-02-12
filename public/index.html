@@ -1,65 +1,71 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Klubzmer — Handmade Guerilla Klezmer from Hamburg</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
-    
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Stylesheets -->
     <!-- ✅ Preload critical styles for faster rendering -->
-    <link rel="preload" href="css/main.css" as="style">
-    <link rel="preload" href="css/theme-light.css" as="style">
-    <link rel="preload" href="css/typography.css" as="style">
-    <link rel="preload" href="section-landing.css">  
+    <link rel="preload" href="css/main.css" as="style" />
+    <link rel="preload" href="css/theme-light.css" as="style" />
+    <link rel="preload" href="css/typography.css" as="style" />
+    <link rel="preload" href="section-landing.css" />
 
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/theme-light.css">
-    <link rel="stylesheet" href="css/typography.css">
-    <link rel="stylesheet" href="css/extras.css">
-    <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/navbar-alternative.css">
-    <link rel="stylesheet" href="css/navbar-mobile.css">
-    <link rel="stylesheet" href="css/section-about.css">
-    <link rel="stylesheet" href="css/section-img-contact.css">
-    <link rel="stylesheet" href="css/section-contact.css">
-    <link rel="stylesheet" href="css/section-landing.css">
-    <link rel="stylesheet" href="css/section-landing-video.css">
-    <link rel="stylesheet" href="css/section-video.css">
-    <link rel="stylesheet" href="css/timetable.css">
-    <link rel="stylesheet" href="css/section-timetable.css">
-    <link rel="stylesheet" href="css/wave.css">
-    <link rel="stylesheet" href="css/background.css">
-    <link rel="stylesheet" href="css/footer.css">
-</head>
-<body>
-    <main id="main-content"> <!-- ✅ Added ID so JavaScript can append content -->
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/theme-light.css" />
+    <link rel="stylesheet" href="css/typography.css" />
+    <link rel="stylesheet" href="css/extras.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/navbar-alternative.css" />
+    <link rel="stylesheet" href="css/navbar-mobile.css" />
+    <link rel="stylesheet" href="css/section-about.css" />
+    <link rel="stylesheet" href="css/section-img-contact.css" />
+    <link rel="stylesheet" href="css/section-contact.css" />
+    <link rel="stylesheet" href="css/section-landing.css" />
+    <link rel="stylesheet" href="css/section-landing-video.css" />
+    <link rel="stylesheet" href="css/section-video.css" />
+    <link rel="stylesheet" href="css/timetable.css" />
+    <link rel="stylesheet" href="css/section-timetable.css" />
+    <link rel="stylesheet" href="css/wave.css" />
+    <link rel="stylesheet" href="css/background.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+  </head>
+  
+  <body>
+    <main id="main-content">
+      <!-- ✅ Added ID so JavaScript can append content -->
     </main>
 
     <!-- All modules are loaded here -->
     <script type="module">
-        // ✅ Grouped imports together for clarity
-        import { createNavbar } from './modules/navbar.js';
-        import { createSectionLanding } from './modules/section-landing.js';
-        import { createSectionTimetable } from './modules/section-timetable.js';
-        import { createSectionAbout } from './modules/section-about.js';
-        import { createSectionImgContact } from './modules/section-img-contact.js';
-        import { createSectionContact } from './modules/section-contact.js';
-        import { createFooter } from './modules/footer.js';
-        import { createSectionVideo } from './modules/section-video.js';
+      // ✅ Grouped imports together for clarity
+      import { createNavbar } from "./modules/navbar.js";
+      import { createSectionLanding } from "./modules/section-landing.js";
+      import { createSectionTimetable } from "./modules/section-timetable.js";
+      import { createSectionAbout } from "./modules/section-about.js";
+      import { createSectionImgContact } from "./modules/section-img-contact.js";
+      import { createSectionContact } from "./modules/section-contact.js";
+      import { createFooter } from "./modules/footer.js";
+      import { createSectionVideo } from "./modules/section-video.js";
 
-        // ✅ Initialize sections in the correct order
-        createSectionLanding();
-        createNavbar();
-        createSectionTimetable();
-        createSectionAbout();
-        createSectionImgContact();
-        createSectionVideo();
-        createSectionContact();
-        createFooter();
+      // ✅ Initialize sections in the correct order
+      createSectionLanding();
+      createNavbar();
+      createSectionTimetable();
+      createSectionAbout();
+      createSectionImgContact();
+      createSectionVideo();
+      createSectionContact();
+      createFooter();
     </script>
 
-    <script src="js/table.js"></script> <!-- ✅ Left outside the module script (correct usage) -->
-</body>
+    <script src="js/table.js"></script>
+    <!-- ✅ Left outside the module script (correct usage) -->
+  </body>
 </html>

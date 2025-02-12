@@ -3,13 +3,13 @@ Typography
 */
 
 main {
-    font-family: var(--font-family);
-    color: var(--text);
-    font-size: 26px;
-    line-height: 1.5;
-    letter-spacing: 0.12rem;
+  font-family: var(--font-family);
+  color: var(--text);
+  font-size: 26px;
+  line-height: 1.5;
+  letter-spacing: 0.12rem;
 }
 
 .text-small {
-    font-size: small;
+  font-size: small;
 }

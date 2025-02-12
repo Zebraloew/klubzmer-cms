@@ -1,63 +1,56 @@
 ::selection {
-    background-color: var(--love); /* Pinkish highlight */
-    color: var(--base); /* Dark text */
+  background-color: var(--love); /* Pinkish highlight */
+  color: var(--base); /* Dark text */
 }
 
-::-moz-selection { /* Firefox support */
-    background-color: var(--love);
-    color: var(--base);
+::-moz-selection {
+  /* Firefox support */
+  background-color: var(--love);
+  color: var(--base);
 }
 
 .rotating {
-    display: inline-block;
-    font-size: 3rem;
-    animation: rotating 2s ease-in-out infinite alternate;
+  display: inline-block;
+  font-size: 3rem;
+  animation: rotating 2s ease-in-out infinite alternate;
 }
 @keyframes rotating {
-    0% {
-        transform: rotate(10deg);
-    }
-    30% {
-        transform: rotate(50deg);
-    }
-    70% {
-        transform: rotate(50deg);
-    }
-    100% {
-        transform: rotate(10deg);
-    }
+  0% {
+    transform: rotate(10deg);
+  }
+  30% {
+    transform: rotate(50deg);
+  }
+  70% {
+    transform: rotate(50deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
 }
-
 
 /* Shadow at bottom */
 .width-restrictor {
-    pointer-events: none;
-    z-index: -1;
-    position:absolute;
-    bottom: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-
-
+  pointer-events: none;
+  z-index: -1;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 .shadow {
-    position: absolute;
-    bottom: -100px;
-    z-index: 100;
-    width: 120%;
-    height: 100px;
-    /* box-shadow: 0px -10px 1011px var(--gold), 0px -10px 1011px var(--gold), 0px -10px 1011px var(--gold);    background-color: black; */
-    box-shadow: 0px -10px 1011px var(--pine), 0px -10px 1011px var(--pine), 0px -10px 1011px var(--pine);    
-    background-color: black;
-
+  position: absolute;
+  bottom: -100px;
+  z-index: 100;
+  width: 120%;
+  height: 100px;
+  /* box-shadow: 0px -10px 1011px var(--gold), 0px -10px 1011px var(--gold), 0px -10px 1011px var(--gold);    background-color: black; */
+  box-shadow: 0px -10px 1011px var(--pine), 0px -10px 1011px var(--pine),
+    0px -10px 1011px var(--pine);
+  background-color: black;
 }
-
-
-
-
-

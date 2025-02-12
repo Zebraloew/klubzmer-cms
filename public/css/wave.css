@@ -2,48 +2,53 @@
 Graphic: Wave
 This creates a wavy line
 */
-.wave{
-    
-    mix-blend-mode: multiply;
-    position: absolute;
-    top: 50%;
-    /* The Size */
-    height: 100px;
-    min-width: 120vw;
-    transform: rotate(10deg);
-    /* Color */
-    background: radial-gradient(circle at center, var(--highlight-low), var(--highlight-high));
-    /* The Wave */
-    --mask:
-      radial-gradient(67.08px at 50% 90px,#000 99%,#0000 101%) calc(50% - 60px) 0/120px 51% repeat-x,
-      radial-gradient(67.08px at 50% -60px,#0000 99%,#000 101%) 50% 30px/120px calc(51% - 30px) repeat-x,
-      radial-gradient(67.08px at 50% calc(100% - 90px),#000 99%,#0000 101%) 50% 100%/120px 51% repeat-x,
-      radial-gradient(67.08px at 50% calc(100% + 60px),#0000 99%,#000 101%) calc(50% - 60px) calc(100% - 30px)/120px calc(51% - 30px) repeat-x;
-    -webkit-mask: var(--mask);
-            mask: var(--mask);
+.wave {
+  mix-blend-mode: multiply;
+  position: absolute;
+  top: 50%;
+  /* The Size */
+  height: 100px;
+  min-width: 120vw;
+  transform: rotate(10deg);
+  /* Color */
+  background: radial-gradient(
+    circle at center,
+    var(--highlight-low),
+    var(--highlight-high)
+  );
+  /* The Wave */
+  --mask: radial-gradient(67.08px at 50% 90px, #000 99%, #0000 101%)
+      calc(50% - 60px) 0/120px 51% repeat-x,
+    radial-gradient(67.08px at 50% -60px, #0000 99%, #000 101%) 50% 30px/120px
+      calc(51% - 30px) repeat-x,
+    radial-gradient(67.08px at 50% calc(100% - 90px), #000 99%, #0000 101%) 50%
+      100%/120px 51% repeat-x,
+    radial-gradient(67.08px at 50% calc(100% + 60px), #0000 99%, #000 101%)
+      calc(50% - 60px) calc(100% - 30px) / 120px calc(51% - 30px) repeat-x;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
 
-    filter: blur(15px); 
-  }
+  filter: blur(15px);
+}
 
 .wave-container {
-    position: relative;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 
-    /* background-color: burlywood; */
-    
+  /* background-color: burlywood; */
 }
 
 .ontop {
-  position:absolute;
+  position: absolute;
   z-index: 10;
 }
 
 .testblock {
-  position:absolute;
+  position: absolute;
   z-index: 10;
   top: 30vh;
   left: 30vh;

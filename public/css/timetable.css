@@ -5,41 +5,43 @@ The table on its own
 /* border-collapse: collapse; */
 
 table {
-    width: 100%;
-    max-width: 1000px;
-    border-spacing: 0 20px; /* Horizontal (0) and Vertical (20px) spacing */
-    padding: 0px 10px;
+  width: 100%;
+  max-width: 1000px;
+  border-spacing: 0 20px; /* Horizontal (0) and Vertical (20px) spacing */
+  padding: 0px 10px;
 }
 
-th, td {
-    text-align: left;
-    color: var(--text);
-    padding: 20px 6px;
-    /* border-bottom: 1px solid var(--subtle); */
+th,
+td {
+  text-align: left;
+  color: var(--text);
+  padding: 20px 6px;
+  /* border-bottom: 1px solid var(--subtle); */
 }
 
 th {
-    padding: 0 6px;
-    opacity: 0.5;
+  padding: 0 6px;
+  opacity: 0.5;
 }
 
-tr{
-   box-shadow: inset -5px -7px 25px var(--subtle);
-   border-radius: 20px;
+tr {
+  box-shadow: inset -5px -7px 25px var(--subtle);
+  border-radius: 20px;
 }
 
 tr:nth-child(1) {
-    box-shadow: none;
-    transform: translate(0, 15px);
+  box-shadow: none;
+  transform: translate(0, 15px);
 }
 
-td:nth-child(1), th:nth-child(1){
-    font-size: x-large;
-    padding-left: 20px;
+td:nth-child(1),
+th:nth-child(1) {
+  font-size: x-large;
+  padding-left: 20px;
 }
 
-td:nth-child(6){
-    font-size: small;
+td:nth-child(6) {
+  font-size: small;
 }
 
 /* +++++++++++++++ */
@@ -48,14 +50,20 @@ td:nth-child(6){
 /* Mobile Ansicht */
 /* Stacking Display */
 @media (max-width: 1100px) {
-  table, thead, tbody, th, td, tr {
-    display: block; 
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
     width: 100%;
     max-width: 600px;
     border-radius: 20px;
   }
 
-  thead, th {
+  thead,
+  th {
     display: none;
   }
 
@@ -67,7 +75,6 @@ td:nth-child(6){
 
   tr:nth-child(1) {
     display: none;
-
   }
 
   td {

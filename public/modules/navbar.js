@@ -1,8 +1,8 @@
 export function createNavbar() {
   // Das Burger Menu und die Links oben erstellen
-    const nav = document.createElement("nav");
-    nav.className = "navbar";
-    nav.innerHTML = `
+  const nav = document.createElement("nav");
+  nav.className = "navbar";
+  nav.innerHTML = `
     <input type="checkbox" id="menu-toggle" class="menu-toggle">
     <label for="menu-toggle" class="menu-icon">
       <span></span>
@@ -17,12 +17,12 @@ export function createNavbar() {
     </ul>
     `;
 
-    document.body.prepend(nav);
+  document.body.prepend(nav);
 
   // Click schließt das Menu
-    document.querySelectorAll('.menu li a').forEach(link => {
-        link.addEventListener('click', () => {
-            document.getElementById('menu-toggle').checked = false;
-        });
+  document.querySelectorAll(".menu li a").forEach((link) => {
+    link.addEventListener("click", () => {
+      document.getElementById("menu-toggle").checked = false;
     });
+  });
 }

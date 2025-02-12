@@ -6,76 +6,79 @@ Landing Section
 */
 
 #jumbo {
-    width: 100%;
-    object-fit: cover;
-    border-radius: 0;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0;
 }
 
 #home {
-    position: relative;
-    max-width: 100vw;
-    max-height: 98vh;
-    min-height: 98vh;
-    border-radius: 0 0 30px 30px;
+  position: relative;
+  max-width: 100vw;
+  max-height: 98vh;
+  min-height: 98vh;
+  border-radius: 0 0 30px 30px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: top;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
 
-    margin: 0;
-    padding: 0;
-    
-    background-color: black;
-    color: var(--subtle);
-    box-shadow: 0 0 100px var(--text);
+  margin: 0;
+  padding: 0;
+
+  background-color: black;
+  color: var(--subtle);
+  box-shadow: 0 0 100px var(--text);
 }
 
 #landingtext {
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-    height: 100%;
-    /* width: 444px; */
-    /* left: calc(50% - 222px); */
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 100%;
+  /* width: 444px; */
+  /* left: calc(50% - 222px); */
 
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    
-    font-size: larger;
-    text-align: center;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
+  font-size: larger;
+  text-align: center;
 }
 
 #landingtext h3 {
-    font-size: xx-large;
-    transform: rotate(-1deg);
+  font-size: xx-large;
+  transform: rotate(-1deg);
 }
 
 #landingtext h2 {
-    font-size: xxx-large;
-    transform: rotate(1deg);
-}   
+  font-size: xxx-large;
+  transform: rotate(1deg);
+}
 
 #landingtext p {
-    font-size: xx-large;
-    transform: rotate(-1deg);
+  font-size: xx-large;
+  transform: rotate(-1deg);
 }
 
-#landingtext h2, #landingtext h3 ,#landingtext p {
-    background-color: rgba(0, 0, 0, 0.85);
-    color: var(--muted);
-    border-radius: 3px;
-    padding: 10px;
-    margin: 1px;
+#landingtext h2,
+#landingtext h3,
+#landingtext p {
+  background-color: rgba(0, 0, 0, 0.85);
+  color: var(--muted);
+  border-radius: 3px;
+  padding: 10px;
+  margin: 1px;
 }
 
-#landingtext a, #landingtext a:visited, #landingtext a:hover, #landingtext a:active {
-    color: rgba(255, 255, 255, 0.8);
-    
+#landingtext a,
+#landingtext a:visited,
+#landingtext a:hover,
+#landingtext a:active {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /* +++++++++++++++ */
@@ -84,29 +87,28 @@ Landing Section
 /* Desktop Ansicht */
 
 @media (min-width: 768px) {
+  #landingtext {
+    z-index: 1;
+    bottom: 0px;
+    padding: 100px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
 
-    #landingtext {
-        z-index: 1;
-        bottom: 0px;
-        padding: 100px 30px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-end;
-        
-        font-size: larger;
-        text-align: center;
-    }
+    font-size: larger;
+    text-align: center;
+  }
 
-    #landingtext h2 {
-        font-size:xx-large;
-    }
+  #landingtext h2 {
+    font-size: xx-large;
+  }
 
-    #landingtext h3 {
-        font-size:large;
-    }   
+  #landingtext h3 {
+    font-size: large;
+  }
 
-    #landingtext p {
-        font-size:x-large;
-    }
+  #landingtext p {
+    font-size: x-large;
+  }
 }

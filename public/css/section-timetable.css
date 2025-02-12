@@ -2,24 +2,24 @@
 The table itself has another ccs file
 timetable.css
  */
-#gigs{
-    box-shadow: none;
-    padding-top: 70px;;
+#gigs {
+  box-shadow: none;
+  padding-top: 70px;
 
-    width: 100vw;
-    max-width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100vw;
+  max-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    font-size: medium;
+  font-size: medium;
 }
 
 #gigs h2 {
-    padding: 0px;
-    margin: 0px;
+  padding: 0px;
+  margin: 0px;
 }
 
- #timetable-container .wave{
-    transform: rotate(-20deg);
+#timetable-container .wave {
+  transform: rotate(-20deg);
 }

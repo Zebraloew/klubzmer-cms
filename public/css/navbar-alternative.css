@@ -3,31 +3,31 @@ Navbar unten rechts
 Ungewöhnliche Positionierung
 */
 .menu {
-    bottom: 60px;
-    right: 15px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: flex-start;
+  bottom: 60px;
+  right: 15px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
 
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    font-size: small;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: small;
 }
 
 .menu li {
-    margin: 0px;
+  margin: 0px;
 }
 
 .menu li a {
-    color: var(--text);
+  color: var(--text);
 }
 
 /* Hack für Schrift-Farbe im Mobilen Modus */
 @media screen and (max-width: 768px) {
-    .menu li a {
-        color: var(--base);
-    }
+  .menu li a {
+    color: var(--base);
+  }
 }
