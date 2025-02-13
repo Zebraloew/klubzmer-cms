@@ -1,6 +1,12 @@
 // section-videoplayer.js
 // Video Player Module
 
+// Goal: Editable in the admin panel
+//Plan for modular updates
+// 1) video-thumbnails created from list
+// 2) list read from file data/video-links.yaml
+// 3) Admin panel for editing the links
+
 export function createSectionVideoplayer() {
   const sectionVideoplayer = document.createElement("div");
   sectionVideoplayer.className = "videoplayer-container container";
