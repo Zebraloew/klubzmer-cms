@@ -39,12 +39,10 @@
 
   <body>
     <main id="main-content">
-      <!-- ✅ Added ID so JavaScript can append content -->
     </main>
 
     <!-- All modules are loaded here -->
     <script type="module">
-      // ✅ Grouped imports together for clarity
       import { createNavbar } from "./modules/navbar.js";
       import { createSectionLanding } from "./modules/section-landing.js";
       import { createSectionTimetable } from "./modules/section-timetable.js";
@@ -68,6 +66,5 @@
     </script>
 
     <script src="js/table.js"></script>
-    <!-- ✅ Left outside the module script (correct usage) -->
   </body>
 </html>
