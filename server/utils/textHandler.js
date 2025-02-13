@@ -20,6 +20,31 @@ async function getText(filename = defaultFile) {
     }
 }
 
+
+// Function to just read a file without any formatting
+const path = require('path');
+async function getRawText(filename = defaultFile) {
+    try {
+        // Validate filename
+        if (!filename || typeof filename !== 'string') {
+            throw new Error('Invalid filename provided.');
+        }
+
+        // Secure file path to prevent directory traversal
+        const filePath = path.join(contentDir, path.basename(filename));
+        console.log(`📂 Reading file: ${filePath}`);
+
+        // Read file content
+        const text = await fs.readFile(filePath, 'utf-8');
+
+        // Return success response
+        return { success: true, content: text };
+    } catch (error) {
+        console.error(`❌ Failed to read file (${filename}):`, error.message);
+        return { success: false, error: `⚠ Error loading text from ${filename}.` };
+    }
+}
+
 // Function to write new text to a specified file (defaults to about.txt)
 async function updateText(newText, filename = defaultFile) {
     try {
@@ -41,4 +66,4 @@ async function updateText(newText, filename = defaultFile) {
     }
 }
 
-module.exports = { getText, updateText };
+module.exports = { getText, updateText, getRawText};

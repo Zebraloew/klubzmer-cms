@@ -9,6 +9,10 @@
 
 // Testing variable SUCCESS
 const videoIdList = ["dQw4w9WgXcQ", "KxGRhd_iWuE", "3JZ_D3ELwOQ", "tgbNymZ7vqY", "9bZkp7q19f0", "L_jWHffIx5E", "RgKAFK5djSk"];
+
+// Testing reading the video id list from a file
+// videoIdList =
+
 // Testing creating li from that array SUCCESS
 var videoList = "";
 function createVideoList() {

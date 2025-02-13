@@ -4,7 +4,7 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 const dotenv = require('dotenv');
 const path = require('path');
 const cors = require('cors');
-const { getText, updateText } = require('./utils/textHandler'); // Updated functions
+const { getRawText, getText, updateText } = require('./utils/textHandler'); // Updated functions
 
 dotenv.config(); 
 
@@ -18,6 +18,14 @@ app.use(express.json());
 // Serve admin panel at `/admin`
 app.get('/admin', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/admin.html'));
+});
+
+// Route to get RAW text from a file **new function**
+// IN DEVELOPMENT
+app.get('/api/text-raw', async (req, res) => {
+    const filename = req.query.filename || 'about.txt'; // Default to about.txt
+    const text = await getRawText(filename);
+    res.json({ filename, text });
 });
 
 // Route to get text from a file (default: about.txt)
