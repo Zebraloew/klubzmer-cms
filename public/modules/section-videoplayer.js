@@ -9,16 +9,19 @@
 
 // Testing variable SUCCESS
 const videoIdList = ["dQw4w9WgXcQ", "KxGRhd_iWuE", "3JZ_D3ELwOQ", "tgbNymZ7vqY", "9bZkp7q19f0", "L_jWHffIx5E", "RgKAFK5djSk"];
-// Testing creating li from that array
+// Testing creating li from that array SUCCESS
 var videoList = "";
 function createVideoList() {
   for (let i=0; i<videoIdList.length; i++) {
     videoList += '<img class="video-thumbnail" data-video-id="' + videoIdList[i] + '" src="https://img.youtube.com/vi/' + videoIdList[i] + '/hqdefault.jpg" alt="Video Preview">';
   }
 }
-console.log("generating video list");
-createVideoList();
-console.log(videoList);
+try {
+  createVideoList();
+  console.log("generating video list");
+} catch (error) {
+  console.error("Error creating video list:", error);
+}
 
 export function createSectionVideoplayer() {
   const sectionVideoplayer = document.createElement("div");
