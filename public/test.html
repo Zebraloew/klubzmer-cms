@@ -11,10 +11,20 @@
     <p id="vessel">Vessel</p>
     <main id="main-content"></main>
     <script type="module">
-      import { loadRawText } from "./js/textLoader.js";
-      import { createYoutubeIdExtractorResult } from "./modules/createTestSection.js";
-      createYoutubeIdExtractorResult();
-      loadRawText("videolist.txt", "vessel");
+          import { youtubeIdExtractor } from "./js/youtubeIdExtractor.js";
+          const list = await youtubeIdExtractor();
+          console.log(list);
+          let listDisplay = "<li>test</li>";
+          for (let i = 0; i < list.length; i++) {
+            listDisplay += `<li>${list[i]}</li>`;
+          }
+
+          const vesselElement = document.querySelector("#vessel");
+          if (vesselElement) {
+            vesselElement.innerHTML = listDisplay; // ✅ Correctly injects HTML
+          } else {
+            console.error("❌ #vessel not found");
+          }
     </script>
   </body>
 </html>
