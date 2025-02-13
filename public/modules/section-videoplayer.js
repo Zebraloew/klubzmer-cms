@@ -7,6 +7,9 @@
 // 2) list read from file data/video-links.yaml
 // 3) Admin panel for editing the links
 
+// Testing variable
+const videoIdList = ["dQw4w9WgXcQ", "KxGRhd_iWuE"];
+
 export function createSectionVideoplayer() {
   const sectionVideoplayer = document.createElement("div");
   sectionVideoplayer.className = "videoplayer-container container";
@@ -17,7 +20,7 @@ export function createSectionVideoplayer() {
           <div class="videoplayer">
               <h2>Videoplayer</h2>
               <iframe id="main-videoplayer" 
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                  src="https://www.youtube.com/embed/${videoIdList[1]}" 
                   frameborder="0" allowfullscreen>
               </iframe>
           </div>
