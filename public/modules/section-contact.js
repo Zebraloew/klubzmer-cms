@@ -1,4 +1,4 @@
-import { loadText } from "../textLoader.js";
+import { loadText } from "../js/textLoader.js";
 
 export function createSectionContact() {
   const sectionContact = document.createElement("div");

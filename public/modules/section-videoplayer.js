@@ -12,7 +12,7 @@ const videoIdList = ["dQw4w9WgXcQ", "KxGRhd_iWuE", "3JZ_D3ELwOQ", "tgbNymZ7vqY",
 // Testing creating li from that array SUCCESS
 var videoList = "";
 function createVideoList() {
-  for (let i=0; i<videoIdList.length; i++) {
+  for (let i=1; i<videoIdList.length; i++) {
     videoList += '<img class="video-thumbnail" data-video-id="' + videoIdList[i] + '" src="https://img.youtube.com/vi/' + videoIdList[i] + '/hqdefault.jpg" alt="Video Preview">';
   }
 }
@@ -33,7 +33,7 @@ export function createSectionVideoplayer() {
           <div class="videoplayer">
               <h2>Videoplayer</h2>
               <iframe id="main-videoplayer" 
-                  src="https://www.youtube.com/embed/${videoIdList[1]}" 
+                  src="https://www.youtube.com/embed/${videoIdList[0]}" 
                   frameborder="0" allowfullscreen>
               </iframe>
           </div>
