@@ -3,7 +3,7 @@
 
 // Goal: Editable in the admin panel
 //Plan for modular updates
-// 1) video-thumbnails created from list
+// 1) DONE video-thumbnails created from list
 // 2) list read from file data/video-links.yaml
 // 3) Admin panel for editing the links
 
