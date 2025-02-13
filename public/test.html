@@ -11,20 +11,39 @@
     <p id="vessel">Vessel</p>
     <main id="main-content"></main>
     <script type="module">
-          import { youtubeIdExtractor } from "./js/youtubeIdExtractor.js";
-          const list = await youtubeIdExtractor();
-          console.log(list);
-          let listDisplay = "<li>test</li>";
-          for (let i = 0; i < list.length; i++) {
-            listDisplay += `<li>${list[i]}</li>`;
-          }
+      import { loadRawText } from "./js/textLoader.js";
+      // read in file
+      const text = await loadRawText("videolist.txt");
+      let list = text.split("\n");
+      // filter out empty lines and comments
+      let listTemp = [];
+      for (let i = 0; i < list.length; i++) {
+        if (list[i][0] !== "#" && list[i] !== "") {
+          listTemp.push(list[i]);
+        }
+      }
+      list = listTemp;
 
-          const vesselElement = document.querySelector("#vessel");
-          if (vesselElement) {
-            vesselElement.innerHTML = listDisplay; // ✅ Correctly injects HTML
-          } else {
-            console.error("❌ #vessel not found");
-          }
+      console.log(list);
+      // create a list
+      let listDisplay = "";
+      for (let i = 0; i < list.length; i++) {
+        listDisplay += `<li id="video-${i}">
+                          <a 
+                            rel="noopener" 
+                            target="_blank"
+                            href="${list[i]}">
+                            ${list[i]}
+                          </a>
+                          <a id="trash-${i}">🗑️</a></li>`;
+      }
+
+      const vesselElement = document.querySelector("#vessel");
+      if (vesselElement) {
+        vesselElement.innerHTML = listDisplay; // ✅ Correctly injects HTML
+      } else {
+        console.error("❌ #vessel not found");
+      }
     </script>
   </body>
 </html>
