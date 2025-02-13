@@ -9,10 +9,12 @@
   <body>
     <h1>TEST SITE – 51</h1>
     <p id="vessel">Vessel</p>
-    
+    <main id="main-content"></main>
     <script type="module">
-        import { loadRawText } from './js/textLoader.js';
-        loadRawText('about.txt', "vessel");
+      import { loadRawText } from "./js/textLoader.js";
+      import { createYoutubeIdExtractorResult } from "./modules/createTestSection.js";
+      createYoutubeIdExtractorResult();
+      loadRawText("videolist.txt", "vessel");
     </script>
   </body>
 </html>

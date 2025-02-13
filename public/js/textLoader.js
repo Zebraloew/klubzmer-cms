@@ -16,13 +16,31 @@ export async function loadText(filename, elementId) {
   }
 }
 
-export async function loadRawText(filename, elementId) {
+/**
+ * Fetches raw text content from the API and returns it.
+ * @param {string} filename - Name of the text file to fetch
+ * @returns {Promise<string|null>} Raw text content or null on error
+ */
+export async function loadRawText(filename) {
   try {
     const response = await fetch(`/api/text-raw?filename=${filename}`);
+    if (!response.ok) {
+      throw new Error(`Server responded with status ${response.status}`);
+    }
+
     const data = await response.json();
-    document.getElementById(elementId).innerHTML = data.text.content;
-    console.log("Raw Text reading success?" + data.text.success);
+
+    // Validate API response structure
+    if (data?.text?.success && typeof data.text.content === "string") {
+      console.log("✅ Raw Text reading success:", data.text.success);
+      console.log("💿 Raw Text content:", data.text.content);
+      return data.text.content;
+    } else {
+      console.warn("⚠ Unexpected API response structure:", data);
+      return null;
+    }
   } catch (err) {
-    console.error(`⚠ Failed to load ${filename}:`, err);
+    console.error(`❌ Failed to load raw text from ${filename}:`, err.message);
+    return null;
   }
 }
