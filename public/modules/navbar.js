@@ -11,9 +11,10 @@ export function createNavbar() {
     </label>
     <ul class="menu">
       <li><a href="#home">Klubzmer</a></li>
-      <li><a href="#about">Über uns</a></li>
       <li><a href="#gigs">Gigs</a></li>
+      <li><a href="#about">Über uns</a></li>
       <li><a href="#contact-container">Kontakt</a></li>
+      <li><a href="#videoplayer">Videos</a></li>
     </ul>
     `;
 

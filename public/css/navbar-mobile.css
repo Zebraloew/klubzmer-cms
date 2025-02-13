@@ -12,6 +12,7 @@
       font-size: xx-large;
       background: radial-gradient(circle at 20% 30%, var(--text), var(--iris)),url('noise.svg');
       color: var(--text);
+      box-shadow: inset 50px 50px 100px rgba(0, 0, 0, 0.5);
     }
   
     .menu li {

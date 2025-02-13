@@ -3,7 +3,7 @@ Navbar unten rechts
 Ungewöhnliche Positionierung
 */
 .menu {
-  bottom: 60px;
+  top: calc(100vh - 200px);
   right: 15px;
   display: flex;
   justify-content: flex-end;
@@ -15,18 +15,58 @@ Ungewöhnliche Positionierung
   text-transform: uppercase;
   letter-spacing: 0.2em;
   font-size: small;
+  border-radius: 25px;
+  padding: 10px;
+  margin: 5px;
+  transition: 0.3s ease-in-out;
 }
+
+.menu:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu:hover li {
+  /* background-color: rgba(0, 0, 0, 0.3); */
+  box-shadow: inset 0 -10px 10px rgba(0, 0, 0, 0.05);
+}  
 
 .menu li {
   margin: 0px;
+  backdrop-filter: blur(7px); /* Wendet Blur auf den Hintergrund an */
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: 3px 0 3px 0;
+  padding: 2px 0 0 0;
+  border-radius: 25px;
+  transition: 0.3s ease-in-out;
 }
 
-.menu li a {
-  color: var(--text);
+.menu li:hover {
+  /* background-color: rgba(0, 0, 0, 0.3); */
+  transform: translateY(1px);
+}
+
+.menu li :is(a, a:hover) {
+  color: white;
 }
 
 /* Hack für Schrift-Farbe im Mobilen Modus */
 @media screen and (max-width: 768px) {
+  .menu {
+    padding: 0;
+    margin: 0;
+    right: 0;
+    border-radius: 0;
+  }
+  .menu li {
+    box-shadow: none;
+    background-color: transparent;
+  }
+  .menu li:hover {
+    box-shadow: none;
+  }
+
   .menu li a {
     color: var(--base);
   }
