@@ -20,11 +20,13 @@ GPT is big help
   - o Player als Modul
   - o Player in Navbar
 
-- ☐ Youtube Video Section
-- ☐ Youtube Video Gallerie
-- soundcloud bei about section -> sofort zum wesentlichen: musik
+- ✅ Youtube Video Section
+  - o Modular js
+- ✅ Youtube Video Gallerie
+  - o Admin Panel zum Video verwalten
+- ✅ soundcloud bei about section -> sofort zum wesentlichen: musik
 - o complete email template system that triggers when someone clicks on a “Mail” button
-
+- o Blur Effekte in Safari fixen
 
 
 # STRUCTURE
