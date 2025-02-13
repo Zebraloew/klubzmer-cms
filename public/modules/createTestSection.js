@@ -3,16 +3,17 @@ import { loadRawText } from "../js/textLoader.js";
 export async function createYoutubeIdExtractorResult() {
   const raw = await loadRawText("videolist.txt");
 
-  // ✅ Use regex with global flag to find all YouTube IDs
+  //   Use regex with global flag to find all YouTube IDs
   const youtubeIdRegex = /(?:v=|embed\/|youtu\.be\/)([\w-]+)/g;
   const youtubeIdRegexResults = [...raw.matchAll(youtubeIdRegex)];
 
-  // ✅ Extract only the YouTube IDs from capture groups
-  const ids = youtubeIdRegexResults.map(match => match[1]);
+  //   Extract only the YouTube IDs from capture groups
+  const ids = youtubeIdRegexResults.map((match) => match[1]);
 
-  // ✅ Format results into HTML
-  const htmlResults = ids.map(id => `<p>${id}</p>`).join('');
+  //   Format results into HTML
+  const htmlResults = ids.map((id) => `<p>${id}</p>`).join("");
 
+  //   Create HTML
   const youtubeIdExtractorResult = document.createElement("div");
   youtubeIdExtractorResult.id = "youtube-id-extractor-result";
   youtubeIdExtractorResult.innerHTML = `

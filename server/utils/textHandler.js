@@ -32,7 +32,6 @@ async function getRawText(filename = defaultFile) {
 
         // Secure file path to prevent directory traversal
         const filePath = path.join(contentDir, path.basename(filename));
-        console.log(`📂 Reading file: ${filePath}`);
 
         // Read file content
         const text = await fs.readFile(filePath, 'utf-8');
