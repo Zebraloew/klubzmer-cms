@@ -39,8 +39,8 @@ export function createSectionLanding() {
     video.onloadedmetadata = () => {
       video.currentTime = videoEntry; // Start at 1 minute in
       video.playbackRate = 0.8; // Set speed to 0.5x (half speed)
-      this.width = this.videoWidth; // Ensure full resolution
-      this.height = this.videoHeight;
+      video.width = video.videoWidth; // Ensure full resolution
+      video.height = video.videoHeight;
     };
 
     // Pause video when not visible

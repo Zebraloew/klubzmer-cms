@@ -8,7 +8,18 @@
 // 3) Admin panel for editing the links
 
 // Testing variable SUCCESS
-const videoIdList = ["dQw4w9WgXcQ", "KxGRhd_iWuE", "3JZ_D3ELwOQ", "tgbNymZ7vqY", "9bZkp7q19f0", "L_jWHffIx5E", "RgKAFK5djSk"];
+import { youtubeIdExtractor } from "../js/youtubeIdExtractor.js";
+
+var videoIdList = [
+  "dQw4w9WgXcQ",
+  "KxGRhd_iWuE",
+  "3JZ_D3ELwOQ",
+  "tgbNymZ7vqY",
+  "9bZkp7q19f0",
+  "L_jWHffIx5E",
+  "RgKAFK5djSk",
+];
+videoIdList = await youtubeIdExtractor();
 
 // Testing reading the video id list from a file
 // videoIdList =
@@ -16,8 +27,13 @@ const videoIdList = ["dQw4w9WgXcQ", "KxGRhd_iWuE", "3JZ_D3ELwOQ", "tgbNymZ7vqY",
 // Testing creating li from that array SUCCESS
 var videoList = "";
 function createVideoList() {
-  for (let i=1; i<videoIdList.length; i++) {
-    videoList += '<img class="video-thumbnail" data-video-id="' + videoIdList[i] + '" src="https://img.youtube.com/vi/' + videoIdList[i] + '/hqdefault.jpg" alt="Video Preview">';
+  for (let i = 1; i < videoIdList.length; i++) {
+    videoList +=
+      '<img class="video-thumbnail" data-video-id="' +
+      videoIdList[i] +
+      '" src="https://img.youtube.com/vi/' +
+      videoIdList[i] +
+      '/hqdefault.jpg" alt="Video Preview">';
   }
 }
 try {
@@ -38,7 +54,11 @@ export function createSectionVideoplayer() {
               <h2>Videoplayer</h2>
               <iframe id="main-videoplayer" 
                   src="https://www.youtube.com/embed/${videoIdList[0]}" 
-                  frameborder="0" allowfullscreen>
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen
+                  sandbox="allow-scripts allow-same-origin allow-presentation"
+                  referrerpolicy="strict-origin-when-cross-origin">
               </iframe>
           </div>
   
@@ -49,7 +69,7 @@ export function createSectionVideoplayer() {
               </div>
           </div>
       </section>
-    `;
+  `;
 
   // Event Listener for thumbnails to update the main video
   sectionVideoplayer
