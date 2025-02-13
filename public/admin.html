@@ -74,14 +74,12 @@
           <div class="button-block">
             <button id="saveButtonAbout" class="save-button">Save</button>
             <p id="statusAbout"></p>
-            <!-- ✅ Unique ID -->
           </div>
         </div>
         <div class="edit-inner">
           <div class="edit-heading">
             <h3>Preview</h3>
             <p class="text-small">— Reload to see changes</p>
-            <!-- ✅ Fixed closing tag -->
           </div>
           <p class="preview text-small" id="preview-about">
             This display is updated automatically.
@@ -98,16 +96,13 @@
           <textarea id="adminContactText"></textarea>
           <div class="button-block">
             <button id="saveButtonContact" class="save-button">Save</button>
-            <!-- ✅ Fixed event listener -->
             <p id="statusContact"></p>
-            <!-- ✅ Unique ID -->
           </div>
         </div>
         <div class="edit-inner">
           <div class="edit-heading">
             <h3>Preview</h3>
             <p class="text-small">— Reload to see changes</p>
-            <!-- ✅ Fixed closing tag -->
           </div>
           <p class="preview text-small" id="preview-contact">
             This display is updated automatically.
@@ -168,7 +163,6 @@
           result.message || result.error;
       }
 
-      // ✅ Fixed event listeners to use unique status messages
       document
         .getElementById("saveButtonAbout")
         .addEventListener("click", () => {
