@@ -7,8 +7,18 @@
 // 2) list read from file data/video-links.yaml
 // 3) Admin panel for editing the links
 
-// Testing variable
-const videoIdList = ["dQw4w9WgXcQ", "KxGRhd_iWuE"];
+// Testing variable SUCCESS
+const videoIdList = ["dQw4w9WgXcQ", "KxGRhd_iWuE", "3JZ_D3ELwOQ", "tgbNymZ7vqY", "9bZkp7q19f0", "L_jWHffIx5E", "RgKAFK5djSk"];
+// Testing creating li from that array
+var videoList = "";
+function createVideoList() {
+  for (let i=0; i<videoIdList.length; i++) {
+    videoList += '<img class="video-thumbnail" data-video-id="' + videoIdList[i] + '" src="https://img.youtube.com/vi/' + videoIdList[i] + '/hqdefault.jpg" alt="Video Preview">';
+  }
+}
+console.log("generating video list");
+createVideoList();
+console.log(videoList);
 
 export function createSectionVideoplayer() {
   const sectionVideoplayer = document.createElement("div");
@@ -28,12 +38,7 @@ export function createSectionVideoplayer() {
           <div class="video-list">
               <p>Weitere Videos</p>
               <div class="video-thumbnails">
-                  <img class="video-thumbnail" data-video-id="3JZ_D3ELwOQ" src="https://img.youtube.com/vi/3JZ_D3ELwOQ/hqdefault.jpg" alt="Video 1">
-                  <img class="video-thumbnail" data-video-id="tgbNymZ7vqY" src="https://img.youtube.com/vi/tgbNymZ7vqY/hqdefault.jpg" alt="Video 2">
-                  <img class="video-thumbnail" data-video-id="KxGRhd_iWuE" src="https://img.youtube.com/vi/KxGRhd_iWuE/hqdefault.jpg" alt="Video 3">
-                  <img class="video-thumbnail" data-video-id="9bZkp7q19f0" src="https://img.youtube.com/vi/9bZkp7q19f0/hqdefault.jpg" alt="Video 4">
-                  <img class="video-thumbnail" data-video-id="L_jWHffIx5E" src="https://img.youtube.com/vi/L_jWHffIx5E/hqdefault.jpg" alt="Video 5">
-                  <img class="video-thumbnail" data-video-id="RgKAFK5djSk" src="https://img.youtube.com/vi/RgKAFK5djSk/hqdefault.jpg" alt="Video 6">
+                  ${videoList}
               </div>
           </div>
       </section>
