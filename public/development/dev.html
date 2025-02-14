@@ -149,7 +149,13 @@
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ text: newText, filename: "default.txt" }),
         });
-      });
+        
+        // Step 11: Modules! make everything into modules
+        // Step 11 A) starting at the end
+        safeRawToFile(newText, "dev.txt");
+        
+    });
+    import { safeRawToFile } from "./textSaver.js";
     </script>
   </body>
 </html>
