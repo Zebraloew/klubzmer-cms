@@ -129,33 +129,20 @@
           });
       }
 
-      // Step 10: Preparing writing back to the file
+      // Step 10: SAVE BUTTON ———— writing back to the file
+    //   document
+    //     .querySelector("#save-list")
+    //     .addEventListener("click", async () => {
+    //       let textFromModule = await extractHyperlinksFromUl("#vessel");
+    //       await saveRawToFile(textFromModule, "dev.txt");
+    //     });
 
-      document.querySelector("#save-list").addEventListener("click", () => {
-          let newText = "";
-        //   console.log(document.querySelector("#vessel li a").href);
-        console.log("😃 printing new list");
-        for (
-          let i = 0;
-          i < document.querySelectorAll("#vessel li").length;
-          i++
-        ) {
-          newText += document.querySelectorAll("#vessel li a")[i].href + "\n";
-        }
-        console.log(newText);
-        // testing the save module
-        fetch("/api/update-raw-text", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ text: newText, filename: "default.txt" }),
-        });
-        
-        // Step 11: Modules! make everything into modules
-        // Step 11 A) starting at the end
-        safeRawToFile(newText, "dev.txt");
-        
-    });
-    import { safeRawToFile } from "./textSaver.js";
+      saveButtonForListToFile("#save-list", "#vessel", "dev.txt");
+      import {
+        saveButtonForListToFile,
+        saveRawToFile,
+        extractHyperlinksFromUl,
+      } from "./textSaver.js";
     </script>
   </body>
 </html>

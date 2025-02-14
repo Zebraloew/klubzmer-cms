@@ -35,8 +35,8 @@ export async function loadRawText(filename) {
 
     // Validate API response structure
     if (data?.text?.success && typeof data.text.content === "string") {
-      console.log("✅ Raw Text reading success:", data.text.success);
-      console.log("💿 Raw Text content:", data.text.content);
+      // console.log("✅ Raw Text reading success:", data.text.success);
+      // console.log("💿 Raw Text content:", data.text.content);
       return data.text.content;
     } else {
       console.warn("⚠ Unexpected API response structure:", data);
