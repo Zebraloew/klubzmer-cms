@@ -9,8 +9,12 @@
 
   <body>
     <h1>TEST SITE – 51</h1>
-    <p id="vessel">Vessel</p>
+    <ul id="vessel">Vessel</ul>
     <main id="main-content"></main>
+    <button id="save-list">Save List</button>
+
+
+    
     <script type="module">
       import { loadRawText } from "../js/textLoader.js";
 
@@ -30,7 +34,6 @@
       }
       list = listTemp; // ✅ Replace original list with filtered list
 
-      console.log(list); // ✅ Log the filtered video list for debugging
 
       // ✅ Step 4: Create HTML list items for each video
       let listDisplay = "";
@@ -126,6 +129,20 @@
             button.addEventListener("click", () => moveItem(index, 1));
           });
       }
+
+
+      // Step 10: Preparing writing back to the file
+      let newText = "";
+      
+      document.querySelector("#save-list").addEventListener("click", () => {
+        //   console.log(document.querySelector("#vessel li a").href);
+          console.log("😃 printing new list");
+          for (let i = 0; i < document.querySelectorAll("#vessel li").length; i++) {
+            newText += document.querySelectorAll("#vessel li a")[i].href + "\n";
+          }
+          console.log(newText);
+      });
+
     </script>
   </body>
 </html>
