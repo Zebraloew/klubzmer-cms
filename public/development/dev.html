@@ -9,12 +9,12 @@
 
   <body>
     <h1>TEST SITE – 51</h1>
-    <ul id="vessel">Vessel</ul>
+    <ul id="vessel">
+      Vessel
+    </ul>
     <main id="main-content"></main>
     <button id="save-list">Save List</button>
 
-
-    
     <script type="module">
       import { loadRawText } from "../js/textLoader.js";
 
@@ -33,7 +33,6 @@
         }
       }
       list = listTemp; // ✅ Replace original list with filtered list
-
 
       // ✅ Step 4: Create HTML list items for each video
       let listDisplay = "";
@@ -130,19 +129,27 @@
           });
       }
 
-
       // Step 10: Preparing writing back to the file
-      let newText = "";
-      
-      document.querySelector("#save-list").addEventListener("click", () => {
-        //   console.log(document.querySelector("#vessel li a").href);
-          console.log("😃 printing new list");
-          for (let i = 0; i < document.querySelectorAll("#vessel li").length; i++) {
-            newText += document.querySelectorAll("#vessel li a")[i].href + "\n";
-          }
-          console.log(newText);
-      });
 
+      document.querySelector("#save-list").addEventListener("click", () => {
+          let newText = "";
+        //   console.log(document.querySelector("#vessel li a").href);
+        console.log("😃 printing new list");
+        for (
+          let i = 0;
+          i < document.querySelectorAll("#vessel li").length;
+          i++
+        ) {
+          newText += document.querySelectorAll("#vessel li a")[i].href + "\n";
+        }
+        console.log(newText);
+        // testing the save module
+        fetch("/api/update-raw-text", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text: newText, filename: "default.txt" }),
+        });
+      });
     </script>
   </body>
 </html>

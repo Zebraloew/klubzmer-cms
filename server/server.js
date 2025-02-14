@@ -4,7 +4,7 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 const dotenv = require('dotenv');
 const path = require('path');
 const cors = require('cors');
-const { getRawText, getText, updateText } = require('./utils/textHandler'); // Updated functions
+const { getRawText, getText, updateText, updateRawText } = require('./utils/textHandler'); // Updated functions
 
 dotenv.config(); 
 
@@ -23,7 +23,7 @@ app.get('/admin', (req, res) => {
 // Route to get RAW text from a file **new function**
 // IN DEVELOPMENT
 app.get('/api/text-raw', async (req, res) => {
-    const filename = req.query.filename || 'about.txt'; // Default to about.txt
+    const filename = req.query.filename || 'default.txt';
     const text = await getRawText(filename);
     res.json({ filename, text });
 });
@@ -43,6 +43,15 @@ app.post('/api/update-text', async (req, res) => {
     const result = await updateText(text, filename);
     res.json(result);
 });
+
+app.post('/api/update-raw-text', async (req, res) => {
+   const { text, filename = 'default.txt' } = req.body;
+   if (!text) return res.status(400).json({ error: "Text is required." });
+
+   const result = await updateRawText(text, filename);
+   res.json(result);
+});
+
 
 ////// Google Sheets API //////
 // Retrieve the Google Sheets ID and API key from environment variables

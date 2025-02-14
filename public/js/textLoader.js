@@ -1,5 +1,8 @@
 // textLoader.js
 // ♥ Reusable text fetcher with support for multiple files
+// loadText("filename.txt", "elementId");
+// loadRawText("filename.txt");
+
 /**
  * @param {string} filename - Name of the text file to fetch
  * @param {string} elementId - DOM element to populate
