@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/youtube-admin.css" />
     <title>TEST SITE – 51</title>
   </head>
 
@@ -28,14 +29,19 @@
       // create a list
       let listDisplay = "";
       for (let i = 0; i < list.length; i++) {
-        listDisplay += `<li id="video-${i}">
-                          <a 
+        listDisplay += `<li id="video-${i}" class="li-video">
+                          <a class="link-video"
                             rel="noopener" 
                             target="_blank"
                             href="${list[i]}">
                             ${list[i]}
                           </a>
-                          <a id="trash-${i}">🗑️</a></li>`;
+                          <div class="button-video-container">
+                            <button class="button-video-up">up</button>
+                            <button class="button-video-down">down</button>
+                            <button class="button-video-delete">🗑️</button>
+                          </div>
+                        </li>`;
       }
 
       const vesselElement = document.querySelector("#vessel");
@@ -44,6 +50,7 @@
       } else {
         console.error("❌ #vessel not found");
       }
+      
     </script>
   </body>
 </html>
