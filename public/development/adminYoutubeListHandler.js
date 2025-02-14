@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/youtube-admin.css" />
-    <title>TEST SITE – 51</title>
-  </head>
-
-  <body>
-    <h1>TEST SITE – 51</h1>
-    <p id="vessel">Vessel</p>
-    <main id="main-content"></main>
-    <script type="module">
-      import { loadRawText } from "./js/textLoader.js";
+import { loadRawText } from "./js/textLoader.js";
 
 // ✅ Step 1: Load the video list from "videolist.txt"
 const text = await loadRawText("videolist.txt");
@@ -116,6 +102,3 @@ function refreshEventListeners() {
     button.addEventListener("click", () => moveItem(index, 1));
   });
 }
-    </script>
-  </body>
-</html>
