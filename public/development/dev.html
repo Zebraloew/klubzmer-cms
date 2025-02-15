@@ -81,63 +81,6 @@
           button.addEventListener("click", () => youtubeMoveItem(index, 1));
         });
 
-      /**
-       * ✅ Step 8: Function to move a video item up or down
-       * @param {number} index - Current index of the item in the list.
-       * @param {number} direction - -1 for up, 1 for down.
-       */
-      // function moveItem(index, direction) {
-      //   const list = document.querySelector("#vessel"); // Get the container element
-      //   const items = Array.from(list.children); // Convert HTMLCollection to Array
-      //   const currentItem = items[index]; // Get the current item
-      //   const newIndex = index + direction; // Calculate new position
-
-      //   // ✅ Prevent out-of-bounds moves
-      //   if (newIndex < 0 || newIndex >= items.length) return;
-
-      //   if (direction === -1) {
-      //     // ✅ Move item up: insert current item before the previous item
-      //     list.insertBefore(currentItem, items[newIndex]);
-      //   } else if (direction === 1) {
-      //     // ✅ Move item down: insert current item after the next item
-      //     const nextItem = items[newIndex].nextSibling;
-      //     list.insertBefore(currentItem, nextItem);
-      //   }
-
-        // ✅ Step 9: Update event listeners because nodes change after moving
-        // refreshEventListeners();
-        // youtubeListRefreshEventListeners(".button-video-up", ".button-video-down");
-      // }
-      youtubeListRefreshEventListeners(".button-video-up", ".button-video-down");
-
-      /**
-       * ✅ Step 9: Refresh event listeners to maintain proper functionality
-       */
-      function refreshEventListeners() {
-        document
-          .querySelectorAll(".button-video-up")
-          .forEach((button, index) => {
-            button.replaceWith(button.cloneNode(true)); // Clear old listeners
-          });
-        document
-          .querySelectorAll(".button-video-down")
-          .forEach((button, index) => {
-            button.replaceWith(button.cloneNode(true)); // Clear old listeners
-          });
-        // ✅ Re-add event listeners
-        document
-          .querySelectorAll(".button-video-up")
-          .forEach((button, index) => {
-            button.addEventListener("click", () => youtubeMoveItem(index, -1));
-          });
-        document
-          .querySelectorAll(".button-video-down")
-          .forEach((button, index) => {
-            button.addEventListener("click", () => youtubeMoveItem(index, 1));
-          });
-      }
-      // Modules for the list handling
-      // youtubeListRefreshEventListeners(".button-video-up", ".button-video-down");
 
       saveButtonForListToFile("#save-list", "#vessel", "dev.txt");
     </script>
