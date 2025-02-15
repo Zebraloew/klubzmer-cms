@@ -17,6 +17,12 @@
 
     <script type="module">
       import { loadRawText } from "../js/textLoader.js";
+      import { youtubeListRefreshEventListeners } from "./youtubeAdmin.js";
+      import {
+        saveButtonForListToFile,
+        saveRawToFile,
+        extractHyperlinksFromUl,
+      } from "./textSaver.js";
 
       // ✅ Step 1: Load the video list from "videolist.txt"
       const text = await loadRawText("default.txt");
@@ -99,8 +105,10 @@
         }
 
         // ✅ Step 9: Update event listeners because nodes change after moving
-        refreshEventListeners();
+        // refreshEventListeners();
+        youtubeListRefreshEventListeners(".button-video-up", ".button-video-down");
       }
+      youtubeListRefreshEventListeners(".button-video-up", ".button-video-down");
 
       /**
        * ✅ Step 9: Refresh event listeners to maintain proper functionality
@@ -128,13 +136,10 @@
             button.addEventListener("click", () => moveItem(index, 1));
           });
       }
+      // Modules for the list handling
+      // youtubeListRefreshEventListeners(".button-video-up", ".button-video-down");
 
       saveButtonForListToFile("#save-list", "#vessel", "dev.txt");
-      import {
-        saveButtonForListToFile,
-        saveRawToFile,
-        extractHyperlinksFromUl,
-      } from "./textSaver.js";
     </script>
   </body>
 </html>
