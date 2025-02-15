@@ -1,13 +1,13 @@
 // youtubeAdmin.js
 //
 // List of functions
-// -- youtubeMoveButtonHandler
-// -- youtubeMoveItem
-// -- youtubeListRefreshEventListeners
+// -- attachMoveButtons
+// -- moveVideoItem
+// -- refreshMoveButtons
 //
 
 // This function is connecting buttons to the move functions
-export function youtubeMoveButtonHandler(
+export function attachMoveButtons(
   button,
   listId = "#vessel",
   direction = "up",
@@ -15,14 +15,14 @@ export function youtubeMoveButtonHandler(
 ) {
   //  index als Parameter hinzufügen
   if (direction === "up") {
-    button.addEventListener("click", () => youtubeMoveItem(index, -1, listId));
+    button.addEventListener("click", () => moveVideoItem(index, -1, listId));
   } else if (direction === "down") {
-    button.addEventListener("click", () => youtubeMoveItem(index, 1, listId));
+    button.addEventListener("click", () => moveVideoItem(index, 1, listId));
   }
 }
 
 // This function is moving an item up or down
-export function youtubeMoveItem(index, direction, listId = "#vessel") {
+export function moveVideoItem(index, direction, listId = "#vessel") {
   const list = document.querySelector(listId); // Get the container element
   const items = Array.from(list.children); // Convert HTMLCollection to Array
   const currentItem = items[index]; // Get the current item
@@ -39,11 +39,11 @@ export function youtubeMoveItem(index, direction, listId = "#vessel") {
     const nextItem = items[newIndex].nextSibling;
     list.insertBefore(currentItem, nextItem);
   }
-  youtubeListRefreshEventListeners();
+  refreshMoveButtons();
 }
 
 // This function is keeping the move buttons aligned with the appropriate items
-export function youtubeListRefreshEventListeners() {
+export function refreshMoveButtons() {
   document.querySelectorAll(".button-video-up").forEach((button, index) => {
     button.replaceWith(button.cloneNode(true)); // Clear old listeners
   });
@@ -53,10 +53,10 @@ export function youtubeListRefreshEventListeners() {
   });
 
   document.querySelectorAll(".button-video-up").forEach((button, index) => {
-    button.addEventListener("click", () => youtubeMoveItem(index, -1));
+    button.addEventListener("click", () => moveVideoItem(index, -1));
   });
 
   document.querySelectorAll(".button-video-down").forEach((button, index) => {
-    button.addEventListener("click", () => youtubeMoveItem(index, 1));
+    button.addEventListener("click", () => moveVideoItem(index, 1));
   });
 }

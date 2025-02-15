@@ -18,9 +18,9 @@
     <script type="module">
       import { loadRawText } from "../js/textLoader.js";
       import {
-        youtubeMoveButtonHandler,
-        youtubeMoveItem,
-        youtubeListRefreshEventListeners,
+        attachMoveButtons,
+        moveVideoItem,
+        refreshMoveButtons,
       } from "./youtubeAdmin.js";
       import {
         saveButtonForListToFile,
@@ -76,12 +76,12 @@
 
       // Buttons action
       document.querySelectorAll(".button-video-up").forEach((button, index) => {
-        youtubeMoveButtonHandler(button, "#vessel", "up", index);
+        attachMoveButtons(button, "#vessel", "up", index);
       });
       document
         .querySelectorAll(".button-video-down")
         .forEach((button, index) => {
-          youtubeMoveButtonHandler(button, "#vessel", "down", index);
+          attachMoveButtons(button, "#vessel", "down", index);
         });
 
       // Save button
