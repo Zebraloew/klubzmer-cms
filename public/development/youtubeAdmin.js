@@ -1,11 +1,25 @@
 // youtubeAdmin.js
 //
-// List of functions 
+// List of functions
+// -- youtubeMoveButtonHandler
 // -- youtubeMoveItem
 // -- youtubeListRefreshEventListeners
 //
 
-
+// This function is connecting buttons to the move functions
+export function youtubeMoveButtonHandler(
+  button,
+  listId = "#vessel",
+  direction = "up",
+  index
+) {
+  //  index als Parameter hinzufügen
+  if (direction === "up") {
+    button.addEventListener("click", () => youtubeMoveItem(index, -1, listId));
+  } else if (direction === "down") {
+    button.addEventListener("click", () => youtubeMoveItem(index, 1, listId));
+  }
+}
 
 // This function is moving an item up or down
 export function youtubeMoveItem(index, direction, listId = "#vessel") {

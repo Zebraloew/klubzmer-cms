@@ -17,7 +17,11 @@
 
     <script type="module">
       import { loadRawText } from "../js/textLoader.js";
-      import { youtubeMoveItem, youtubeListRefreshEventListeners } from "./youtubeAdmin.js";
+      import {
+        youtubeMoveButtonHandler,
+        youtubeMoveItem,
+        youtubeListRefreshEventListeners,
+      } from "./youtubeAdmin.js";
       import {
         saveButtonForListToFile,
         saveRawToFile,
@@ -65,23 +69,22 @@
       // ✅ Step 5: Inject the list into the page
       const vesselElement = document.querySelector("#vessel");
       if (vesselElement) {
-        vesselElement.innerHTML = listDisplay; // ✅ Insert generated HTML into the page
+        vesselElement.innerHTML = listDisplay; // Insert generated HTML into the page
       } else {
-        console.error("❌ #vessel not found"); // ✅ Log error if element is missing
+        console.error("❌ #vessel not found"); // Log error if element is missing
       }
-      // ✅ Step 6: Add event listeners for "Up" buttons
-      document.querySelectorAll(".button-video-up").forEach((button, index) => {
-        button.addEventListener("click", () => youtubeMoveItem(index, -1));
-      });
 
-      // ✅ Step 7: Add event listeners for "Down" buttons
+      // Buttons action
+      document.querySelectorAll(".button-video-up").forEach((button, index) => {
+        youtubeMoveButtonHandler(button, "#vessel", "up", index);
+      });
       document
         .querySelectorAll(".button-video-down")
         .forEach((button, index) => {
-          button.addEventListener("click", () => youtubeMoveItem(index, 1));
+          youtubeMoveButtonHandler(button, "#vessel", "down", index);
         });
 
-
+      // Save button
       saveButtonForListToFile("#save-list", "#vessel", "dev.txt");
     </script>
   </body>
