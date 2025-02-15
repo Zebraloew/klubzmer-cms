@@ -17,7 +17,7 @@
 
     <script type="module">
       import { loadRawText } from "../js/textLoader.js";
-      import { youtubeListRefreshEventListeners } from "./youtubeAdmin.js";
+      import { youtubeMoveItem, youtubeListRefreshEventListeners } from "./youtubeAdmin.js";
       import {
         saveButtonForListToFile,
         saveRawToFile,
@@ -71,14 +71,14 @@
       }
       // ✅ Step 6: Add event listeners for "Up" buttons
       document.querySelectorAll(".button-video-up").forEach((button, index) => {
-        button.addEventListener("click", () => moveItem(index, -1));
+        button.addEventListener("click", () => youtubeMoveItem(index, -1));
       });
 
       // ✅ Step 7: Add event listeners for "Down" buttons
       document
         .querySelectorAll(".button-video-down")
         .forEach((button, index) => {
-          button.addEventListener("click", () => moveItem(index, 1));
+          button.addEventListener("click", () => youtubeMoveItem(index, 1));
         });
 
       /**
@@ -86,28 +86,28 @@
        * @param {number} index - Current index of the item in the list.
        * @param {number} direction - -1 for up, 1 for down.
        */
-      function moveItem(index, direction) {
-        const list = document.querySelector("#vessel"); // Get the container element
-        const items = Array.from(list.children); // Convert HTMLCollection to Array
-        const currentItem = items[index]; // Get the current item
-        const newIndex = index + direction; // Calculate new position
+      // function moveItem(index, direction) {
+      //   const list = document.querySelector("#vessel"); // Get the container element
+      //   const items = Array.from(list.children); // Convert HTMLCollection to Array
+      //   const currentItem = items[index]; // Get the current item
+      //   const newIndex = index + direction; // Calculate new position
 
-        // ✅ Prevent out-of-bounds moves
-        if (newIndex < 0 || newIndex >= items.length) return;
+      //   // ✅ Prevent out-of-bounds moves
+      //   if (newIndex < 0 || newIndex >= items.length) return;
 
-        if (direction === -1) {
-          // ✅ Move item up: insert current item before the previous item
-          list.insertBefore(currentItem, items[newIndex]);
-        } else if (direction === 1) {
-          // ✅ Move item down: insert current item after the next item
-          const nextItem = items[newIndex].nextSibling;
-          list.insertBefore(currentItem, nextItem);
-        }
+      //   if (direction === -1) {
+      //     // ✅ Move item up: insert current item before the previous item
+      //     list.insertBefore(currentItem, items[newIndex]);
+      //   } else if (direction === 1) {
+      //     // ✅ Move item down: insert current item after the next item
+      //     const nextItem = items[newIndex].nextSibling;
+      //     list.insertBefore(currentItem, nextItem);
+      //   }
 
         // ✅ Step 9: Update event listeners because nodes change after moving
         // refreshEventListeners();
-        youtubeListRefreshEventListeners(".button-video-up", ".button-video-down");
-      }
+        // youtubeListRefreshEventListeners(".button-video-up", ".button-video-down");
+      // }
       youtubeListRefreshEventListeners(".button-video-up", ".button-video-down");
 
       /**
@@ -128,12 +128,12 @@
         document
           .querySelectorAll(".button-video-up")
           .forEach((button, index) => {
-            button.addEventListener("click", () => moveItem(index, -1));
+            button.addEventListener("click", () => youtubeMoveItem(index, -1));
           });
         document
           .querySelectorAll(".button-video-down")
           .forEach((button, index) => {
-            button.addEventListener("click", () => moveItem(index, 1));
+            button.addEventListener("click", () => youtubeMoveItem(index, 1));
           });
       }
       // Modules for the list handling

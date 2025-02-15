@@ -1,14 +1,14 @@
 // youtubeAdmin.js
 //
 // List of functions 
-// -- moveItem
+// -- youtubeMoveItem
 // -- youtubeListRefreshEventListeners
 
 
 
 
 // This function is moving an item up or down
-export function moveItem(index, direction, listId = "#vessel") {
+export function youtubeMoveItem(index, direction, listId = "#vessel") {
   const list = document.querySelector(listId); // Get the container element
   const items = Array.from(list.children); // Convert HTMLCollection to Array
   const currentItem = items[index]; // Get the current item
@@ -39,10 +39,10 @@ export function youtubeListRefreshEventListeners() {
   });
 
   document.querySelectorAll(".button-video-up").forEach((button, index) => {
-    button.addEventListener("click", () => moveItem(index, -1));
+    button.addEventListener("click", () => youtubeMoveItem(index, -1));
   });
 
   document.querySelectorAll(".button-video-down").forEach((button, index) => {
-    button.addEventListener("click", () => moveItem(index, 1));
+    button.addEventListener("click", () => youtubeMoveItem(index, 1));
   });
 }
