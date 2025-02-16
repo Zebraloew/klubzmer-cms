@@ -21,21 +21,21 @@ export async function listCreator(file = "dev.txt", listId = "#vessel") {
 }
 
 export async function loadList(file = "default.txt") {
-  // ✅ Step 1: Load the video list from "videolist.txt"
+  //   Step 1: Load the video list from "videolist.txt"
   const text = await loadRawText(file);
 
-  // ✅ Step 2: Split the file content by new lines into an array
+  //   Step 2: Split the file content by new lines into an array
   let list = text.split("\n");
 
-  // ✅ Step 3: Filter out empty lines and comments (lines starting with "#")
+  //   Step 3: Filter out empty lines and comments (lines starting with "#")
   let listFiltered = [];
   for (let i = 0; i < list.length; i++) {
     // Check if line isn't empty and doesn't start with "#"
     if (list[i][0] !== "#" && list[i] !== "") {
-      listFiltered.push(list[i]); // ✅ Keep valid video links
+      listFiltered.push(list[i]); //   Keep valid video links
     }
   }
-  list = listFiltered; // ✅ Replace original list with filtered list
+  list = listFiltered; //   Replace original list with filtered list
   return list;
 }
 
@@ -94,14 +94,14 @@ export function moveVideoItem(index, direction, listId = "#vessel") {
   const currentItem = items[index]; // Get the current item
   const newIndex = index + direction; // Calculate new position
 
-  // ✅ Prevent out-of-bounds moves
+  //   Prevent out-of-bounds moves
   if (newIndex < 0 || newIndex >= items.length) return;
 
   if (direction === -1) {
-    // ✅ Move item up: insert current item before the previous item
+    //   Move item up: insert current item before the previous item
     list.insertBefore(currentItem, items[newIndex]);
   } else if (direction === 1) {
-    // ✅ Move item down: insert current item after the next item
+    //   Move item down: insert current item after the next item
     const nextItem = items[newIndex].nextSibling;
     list.insertBefore(currentItem, nextItem);
   }

@@ -22,7 +22,7 @@ export async function extractHyperlinksFromUl(ulId) {
       }
     }
   }
-  console.log("🙀" + text);
+  console.log("🙀\n" + text);
   return text;
 }
 
