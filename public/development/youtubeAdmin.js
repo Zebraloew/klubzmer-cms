@@ -5,8 +5,8 @@
 // -listCreator
 // HELPER
 //   -- loadList
-//   -- createListHtml
-//   -- injectList
+//   -- generateVideoListHtml
+//   -- renderVideoList
 // -Buttons
 //   -- attachMoveButtons
 //   -- moveVideoItem
@@ -15,8 +15,8 @@
 
 export async function listCreator(file = "dev.txt", listId = "#vessel") {
   const list = await loadList(file);
-  const listDisplay = createListHtml(list);
-  injectList(listDisplay, listId);
+  const listDisplay = generateVideoListHtml(list);
+  renderVideoList(listDisplay, listId);
   buttonMovement();
 }
 
@@ -28,18 +28,18 @@ export async function loadList(file = "default.txt") {
   let list = text.split("\n");
 
   // ✅ Step 3: Filter out empty lines and comments (lines starting with "#")
-  let listTemp = [];
+  let listFiltered = [];
   for (let i = 0; i < list.length; i++) {
     // Check if line isn't empty and doesn't start with "#"
     if (list[i][0] !== "#" && list[i] !== "") {
-      listTemp.push(list[i]); // ✅ Keep valid video links
+      listFiltered.push(list[i]); // ✅ Keep valid video links
     }
   }
-  list = listTemp; // ✅ Replace original list with filtered list
+  list = listFiltered; // ✅ Replace original list with filtered list
   return list;
 }
 
-export function createListHtml(list) {
+export function generateVideoListHtml(list) {
   let listDisplay = "";
   for (let i = 0; i < list.length; i++) {
     listDisplay += `
@@ -61,7 +61,7 @@ export function createListHtml(list) {
   return listDisplay;
 }
 
-export function injectList(list, listId = "#vessel") {
+export function renderVideoList(list, listId = "#vessel") {
   const vesselElement = document.querySelector(listId);
   if (vesselElement) {
     vesselElement.innerHTML = list; // Insert generated HTML into the page
@@ -127,11 +127,11 @@ export function refreshMoveButtons() {
   });
 }
 
-function buttonMovement(up = ".button-video-up", down = ".button-video-down") {
-  document.querySelectorAll(up).forEach((button, index) => {
+function buttonMovement(upButtonClass = ".button-video-up", downButtonClass = ".button-video-down") {
+  document.querySelectorAll(upButtonClass).forEach((button, index) => {
     button.addEventListener("click", () => moveVideoItem(index, -1));
   });
-  document.querySelectorAll(down).forEach((button, index) => {
+  document.querySelectorAll(downButtonClass).forEach((button, index) => {
     button.addEventListener("click", () => moveVideoItem(index, 1));
   });
 }

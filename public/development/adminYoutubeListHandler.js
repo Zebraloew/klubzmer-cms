@@ -7,14 +7,14 @@ const text = await loadRawText("videolist.txt");
 let list = text.split("\n");
 
 // ✅ Step 3: Filter out empty lines and comments (lines starting with "#")
-let listTemp = [];
+let listFiltered = [];
 for (let i = 0; i < list.length; i++) {
   // Check if line isn't empty and doesn't start with "#"
   if (list[i][0] !== "#" && list[i] !== "") {
-    listTemp.push(list[i]); // ✅ Keep valid video links
+    listFiltered.push(list[i]); // ✅ Keep valid video links
   }
 }
-list = listTemp; // ✅ Replace original list with filtered list
+list = listFiltered; // ✅ Replace original list with filtered list
 
 console.log(list); // ✅ Log the filtered video list for debugging
 
