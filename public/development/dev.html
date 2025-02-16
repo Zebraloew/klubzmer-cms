@@ -16,21 +16,11 @@
     <button id="save-list">Save List</button>
 
     <script type="module">
-      import { listCreator, attachMoveButtons } from "./youtubeAdmin.js";
+      import { listCreator} from "./youtubeAdmin.js";
       import { saveButtonForListToFile } from "./textSaver.js";
 
       // Create list
       await listCreator("dev.txt", "#vessel");
-
-      // Buttons action -- up and down
-      document.querySelectorAll(".button-video-up").forEach((button, index) => {
-        attachMoveButtons(button, "#vessel", "up", index);
-      });
-      document
-        .querySelectorAll(".button-video-down")
-        .forEach((button, index) => {
-          attachMoveButtons(button, "#vessel", "down", index);
-        });
 
       // Save button
       saveButtonForListToFile("#save-list", "#vessel", "dev.txt");
