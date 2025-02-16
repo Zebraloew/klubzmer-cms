@@ -1,3 +1,6 @@
+# Current Task
+listCreator is in progress — check for bugs
+
 # Hi
 Sooo this is my little CMS micro project, that aims to circumvent wordpress.
 is is going great so far. 

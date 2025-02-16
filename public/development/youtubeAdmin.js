@@ -5,7 +5,7 @@
 //   -- attachMoveButtons
 //   -- moveVideoItem
 //   -- refreshMoveButtons
-// - List creation
+// - listCreator
 //   -- loadList
 //   -- createListHtml
 //   -- injectList
@@ -115,4 +115,10 @@ export function injectList(list, listId = "#vessel") {
   } else {
     console.error("❌ #vessel not found"); // Log error if element is missing
   }
+}
+
+export async function listCreator(file = "dev.txt", listId = "#vessel") {
+  const list = await loadList(file);
+  const listDisplay = createListHtml(list);
+  injectList(listDisplay, listId);
 }
