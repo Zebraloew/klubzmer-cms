@@ -16,26 +16,10 @@
     <button id="save-list">Save List</button>
 
     <script type="module">
-      import { loadRawText } from "../js/textLoader.js";
-      import {
-        attachMoveButtons,
-        moveVideoItem,
-        refreshMoveButtons,
-        loadList,
-        createListHtml,
-        injectList,
-        listCreator,
-      } from "./youtubeAdmin.js";
-      import {
-        saveButtonForListToFile,
-        saveRawToFile,
-        extractHyperlinksFromUl,
-      } from "./textSaver.js";
+      import { listCreator, attachMoveButtons } from "./youtubeAdmin.js";
+      import { saveButtonForListToFile } from "./textSaver.js";
 
       // Create list
-      // const list = await loadList();
-      // const listDisplay = createListHtml(list);
-      // injectList(listDisplay, "#vessel");
       await listCreator("dev.txt", "#vessel");
 
       // Buttons action -- up and down
