@@ -6,8 +6,11 @@
 //   -- moveVideoItem
 //   -- refreshMoveButtons
 // - List creation
-//   -- createListHtml  
+//   -- loadList
+//   -- createListHtml
 //   -- injectList
+
+import { loadRawText } from "../js/textLoader.js";
 
 // This function is connecting buttons to the move functions
 export function attachMoveButtons(
@@ -62,6 +65,25 @@ export function refreshMoveButtons() {
   document.querySelectorAll(".button-video-down").forEach((button, index) => {
     button.addEventListener("click", () => moveVideoItem(index, 1));
   });
+}
+
+export async function loadList(file = "default.txt") {
+  // ✅ Step 1: Load the video list from "videolist.txt"
+  const text = await loadRawText(file);
+
+  // ✅ Step 2: Split the file content by new lines into an array
+  let list = text.split("\n");
+
+  // ✅ Step 3: Filter out empty lines and comments (lines starting with "#")
+  let listTemp = [];
+  for (let i = 0; i < list.length; i++) {
+    // Check if line isn't empty and doesn't start with "#"
+    if (list[i][0] !== "#" && list[i] !== "") {
+      listTemp.push(list[i]); // ✅ Keep valid video links
+    }
+  }
+  list = listTemp; // ✅ Replace original list with filtered list
+  return list;
 }
 
 export function createListHtml(list) {
