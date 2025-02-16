@@ -21,6 +21,8 @@
         attachMoveButtons,
         moveVideoItem,
         refreshMoveButtons,
+        createListHtml,
+        injectList,
       } from "./youtubeAdmin.js";
       import {
         saveButtonForListToFile,
@@ -45,34 +47,29 @@
       list = listTemp; // ✅ Replace original list with filtered list
 
       // ✅ Step 4: Create HTML list items for each video
-      let listDisplay = "";
-      for (let i = 0; i < list.length; i++) {
-        listDisplay += `
-    <li id="video-${i}" class="li-video">
-      <a class="link-video"
-        rel="noopener" 
-        target="_blank"
-        href="${list[i]}">
-        ${list[i]}
-      </a>
-      <div class="button-video-container">
-        <!-- Up button moves the item up -->
-        <button class="button-video-up">⬆</button>
-        <!-- Down button moves the item down -->
-        <button class="button-video-down">⬇</button>
-        <!-- Delete button (not implemented) -->
-        <button class="button-video-delete">🗑️</button>
-      </div>
-    </li>`;
-      }
+      //   let listDisplay = "";
+      //   for (let i = 0; i < list.length; i++) {
+      //     listDisplay += `
+      // <li id="video-${i}" class="li-video">
+      //   <a class="link-video"
+      //     rel="noopener"
+      //     target="_blank"
+      //     href="${list[i]}">
+      //     ${list[i]}
+      //   </a>
+      //   <div class="button-video-container">
+      //     <!-- Up button moves the item up -->
+      //     <button class="button-video-up">⬆</button>
+      //     <!-- Down button moves the item down -->
+      //     <button class="button-video-down">⬇</button>
+      //     <!-- Delete button (not implemented) -->
+      //     <button class="button-video-delete">🗑️</button>
+      //   </div>
+      // </li>`;
+      //   }
 
-      // ✅ Step 5: Inject the list into the page
-      const vesselElement = document.querySelector("#vessel");
-      if (vesselElement) {
-        vesselElement.innerHTML = listDisplay; // Insert generated HTML into the page
-      } else {
-        console.error("❌ #vessel not found"); // Log error if element is missing
-      }
+      const listDisplay = createListHtml(list);
+      injectList(listDisplay, "#vessel");
 
       // Buttons action
       document.querySelectorAll(".button-video-up").forEach((button, index) => {

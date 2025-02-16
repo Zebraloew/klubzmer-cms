@@ -1,10 +1,13 @@
 // youtubeAdmin.js
 //
 // List of functions
-// -- attachMoveButtons
-// -- moveVideoItem
-// -- refreshMoveButtons
-//
+// - Buttons
+//   -- attachMoveButtons
+//   -- moveVideoItem
+//   -- refreshMoveButtons
+// - List creation
+//   -- createListHtml  
+//   -- injectList
 
 // This function is connecting buttons to the move functions
 export function attachMoveButtons(
@@ -59,4 +62,35 @@ export function refreshMoveButtons() {
   document.querySelectorAll(".button-video-down").forEach((button, index) => {
     button.addEventListener("click", () => moveVideoItem(index, 1));
   });
+}
+
+export function createListHtml(list) {
+  let listDisplay = "";
+  for (let i = 0; i < list.length; i++) {
+    listDisplay += `
+    <li id="video-${i}" class="li-video">
+      <a class="link-video"
+        rel="noopener"
+          target="_blank"
+          href="${list[i]}">
+        ${list[i]}
+      </a>
+      <div class="button-video-container">
+          <button class="button-video-up">⬆</button>
+          <button class="button-video-down">⬇</button>
+          <!-- Delete button (not implemented) -->
+          <button class="button-video-delete">🗑️</button>
+      </div>
+    </li>`;
+  }
+  return listDisplay;
+}
+
+export function injectList(list, listId = "#vessel") {
+  const vesselElement = document.querySelector(listId);
+  if (vesselElement) {
+    vesselElement.innerHTML = list; // Insert generated HTML into the page
+  } else {
+    console.error("❌ #vessel not found"); // Log error if element is missing
+  }
 }
