@@ -4,7 +4,6 @@ youtube-admin.css
 html {
   font-size: 16px;
   font-family: Helvetica;
-  background-color: gainsboro;
 }
 .li-video {
   display: flex;
@@ -14,7 +13,7 @@ html {
   width: fit-content;
   padding: 8px;
   margin: 10px;
-
+  background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.3);
   box-shadow: inset 0 -3px 5px rgba(0, 0, 0, 0.3), 0 -2px 2px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
@@ -30,7 +29,7 @@ html {
   height: 30px;
   width: 32px;
   box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.3);
-  border:none;
+  border: none;
   border-radius: 3px;
   transition: all 0.3s ease-in-out;
 }
@@ -39,9 +38,9 @@ html {
 }
 
 .grip-symbol {
-    font-size: 2em;
-    margin-right: 0.5em;
-    color: var(--subtle);
-    cursor: grab;
-    transform: translateY(-0.1em);
+  font-size: 2em;
+  margin-right: 0.5em;
+  color: var(--subtle);
+  cursor: grab;
+  transform: translateY(-0.1em);
 }
