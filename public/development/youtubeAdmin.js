@@ -67,6 +67,7 @@ export function renderVideoList(list, listId = "#vessel") {
   if (vesselElement) {
     vesselElement.innerHTML = list; // Insert generated HTML into the page
     enableDragAndDrop(listId); // ✅ Enable drag-and-drop after rendering
+    enableDeleteButtons(listId); // ✅ Aktiviert die Löschbuttons
   } else {
     console.error("❌ #vessel not found"); // Log error if element is missing
   }
@@ -105,7 +106,8 @@ export function moveVideoItem(index, direction, listId = "#vessel") {
   } else if (direction === 1) {
     //   Move item down: insert current item after the next item
     const nextItem = items[newIndex].nextSibling;
-    list.insertBefore(currentItem, nextItem);
+    // list.insertBefore(currentItem, nextItem);
+    list.insertBefore(currentItem, items[newIndex].nextSibling || null);
   }
   refreshMoveButtons();
 }
@@ -142,7 +144,6 @@ function buttonMovement(
 }
 
 // Drag-and-Drop Video List Module integrated into youtubeAdmin.js
-
 export function enableDragAndDrop(listId = "#vessel") {
   const list = document.querySelector(listId);
   let draggedItem = null;
@@ -172,7 +173,19 @@ export function enableDragAndDrop(listId = "#vessel") {
           draggedItem,
           targetIndex > draggedIndex ? item.nextSibling : item
         ); // ✅ Insert at new position
+        refreshMoveButtons(); // ✅ Aktualisiert die Buttons nach Drag-and-Drop
       }
+    });
+  });
+}
+
+// Delete Button
+export function enableDeleteButtons(listId = "#vessel") {
+  const list = document.querySelector(listId);
+  list.querySelectorAll(".button-video-delete").forEach((button) => {
+    button.addEventListener("click", (e) => {
+      const item = button.closest("li"); // ✅ Finde das übergeordnete Listenelement
+      list.removeChild(item); // ✅ Entferne es aus der Liste
     });
   });
 }
