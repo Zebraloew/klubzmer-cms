@@ -44,6 +44,7 @@ export function generateVideoListHtml(list) {
   for (let i = 0; i < list.length; i++) {
     listDisplay += `
     <li id="video-${i}" class="li-video">
+      <span class="grip-symbol">☰</span> 
       <a class="link-video"
         rel="noopener"
           target="_blank"
@@ -65,6 +66,7 @@ export function renderVideoList(list, listId = "#vessel") {
   const vesselElement = document.querySelector(listId);
   if (vesselElement) {
     vesselElement.innerHTML = list; // Insert generated HTML into the page
+    enableDragAndDrop(listId); // ✅ Enable drag-and-drop after rendering
   } else {
     console.error("❌ #vessel not found"); // Log error if element is missing
   }
@@ -127,11 +129,50 @@ export function refreshMoveButtons() {
   });
 }
 
-function buttonMovement(upButtonClass = ".button-video-up", downButtonClass = ".button-video-down") {
+function buttonMovement(
+  upButtonClass = ".button-video-up",
+  downButtonClass = ".button-video-down"
+) {
   document.querySelectorAll(upButtonClass).forEach((button, index) => {
     button.addEventListener("click", () => moveVideoItem(index, -1));
   });
   document.querySelectorAll(downButtonClass).forEach((button, index) => {
     button.addEventListener("click", () => moveVideoItem(index, 1));
+  });
+}
+
+// Drag-and-Drop Video List Module integrated into youtubeAdmin.js
+
+export function enableDragAndDrop(listId = "#vessel") {
+  const list = document.querySelector(listId);
+  let draggedItem = null;
+
+  list.querySelectorAll("li").forEach((item) => {
+    item.setAttribute("draggable", true); // ✅ Make items draggable
+
+    item.addEventListener("dragstart", (e) => {
+      draggedItem = item; // ✅ Store dragged item
+      e.dataTransfer.effectAllowed = "move";
+    });
+
+    item.addEventListener("dragover", (e) => {
+      e.preventDefault(); // ✅ Allow drop
+      e.dataTransfer.dropEffect = "move";
+    });
+
+    item.addEventListener("drop", (e) => {
+      e.preventDefault();
+      if (draggedItem !== item) {
+        const listChildren = Array.from(list.children);
+        const draggedIndex = listChildren.indexOf(draggedItem);
+        const targetIndex = listChildren.indexOf(item);
+
+        list.removeChild(draggedItem); // ✅ Remove dragged item
+        list.insertBefore(
+          draggedItem,
+          targetIndex > draggedIndex ? item.nextSibling : item
+        ); // ✅ Insert at new position
+      }
+    });
   });
 }
