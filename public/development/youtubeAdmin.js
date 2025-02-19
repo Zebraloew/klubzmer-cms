@@ -13,7 +13,8 @@
 //   -- moveVideoItem
 //   -- refreshMoveButtons
 //   -- buttonMovement
-
+// -add Link
+//   -- addLink
 import { loadRawText } from "../js/textLoader.js";
 import { youtubeIdExtractor } from "../js/youtubeIdExtractor.js";
 
@@ -22,6 +23,7 @@ export async function listCreator(file = "dev.txt", listId = "#vessel") {
   const listDisplay = await generateVideoListHtml(list);
   await renderVideoList(listDisplay, listId);
   await buttonMovement();
+  addLink(listId);
 }
 
 export async function loadList(file = "default.txt") {
@@ -194,4 +196,18 @@ export async function enableDeleteButtons(listId = "#vessel") {
       list.removeChild(item); // ✅ Entferne es aus der Liste
     });
   });
+}
+
+function addLink(htmlContainer = "#vessel") {
+  const addLink = document.createElement("li");
+  addLink.className = "li-video add-link";
+  addLink.innerHTML = `
+    <h3>Link hinzufügen</h3>
+    <form>
+      <input type="text" name="link" placeholder="Link eingeben">
+      <button type="submit">Hinzufügen</button>
+    </form>
+  `;
+  const vesselElement = document.querySelector(htmlContainer);
+  vesselElement.append(addLink);
 }
