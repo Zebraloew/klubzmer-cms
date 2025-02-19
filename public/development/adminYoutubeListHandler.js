@@ -23,7 +23,7 @@ let listDisplay = "";
 for (let i = 0; i < list.length; i++) {
   listDisplay += `
     <li id="video-${i}" class="li-video">
-      <a class="link-video"
+      <a class="li-video-image"
         rel="noopener" 
         target="_blank"
         href="${list[i]}">

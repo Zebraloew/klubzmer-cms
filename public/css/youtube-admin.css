@@ -19,13 +19,13 @@ html {
   border-radius: 10px;
 }
 
-.link-video {
+.li-video-image {
   width: 400px;
   text-decoration: none;
   color: black;
 }
 
-.button-video-container{
+.button-video-container {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;

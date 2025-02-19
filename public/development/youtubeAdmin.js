@@ -61,7 +61,7 @@ export async function generateVideoListHtml(list) {
       </div>
 
       <img class="video-thumbnail" src="https://img.youtube.com/vi/${youtubeIds[i]}/hqdefault.jpg" alt="Video Preview">
-      <a class="link-video"
+      <a class="li-video-image"
         rel="noopener"
           target="_blank"
           href="${list[i]}">
