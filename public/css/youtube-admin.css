@@ -61,6 +61,10 @@ html {
   box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.3);
 }
 
-.add-link {
-  /* margin: 10px; */
+.add-link form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 400px;
+  max-width: 80vw;
 }

@@ -20,10 +20,11 @@ import { youtubeIdExtractor } from "../js/youtubeIdExtractor.js";
 
 export async function listCreator(file = "dev.txt", listId = "#vessel") {
   const list = await loadList(file);
-  const listDisplay = await generateVideoListHtml(list);
+  const youtubeIds = await youtubeIdExtractor(list);
+  const listDisplay = await generateVideoListHtml(list,youtubeIds);
   await renderVideoList(listDisplay, listId);
+  showAddVideoForm(listId);
   await buttonMovement();
-  addLink(listId);
 }
 
 export async function loadList(file = "default.txt") {
@@ -45,10 +46,8 @@ export async function loadList(file = "default.txt") {
   return list;
 }
 
-export async function generateVideoListHtml(list) {
+export async function generateVideoListHtml(list,youtubeIds) {
   let listDisplay = "";
-  const youtubeIds = await youtubeIdExtractor(list);
-  console.log(youtubeIds[0]);
   for (let i = 0; i < list.length; i++) {
     listDisplay += `
     <li id="video-${i}" class="li-video">
@@ -198,16 +197,56 @@ export async function enableDeleteButtons(listId = "#vessel") {
   });
 }
 
-function addLink(htmlContainer = "#vessel") {
+function showAddVideoForm(htmlContainer = "#vessel", listId = "#vessel") {
   const addLink = document.createElement("li");
   addLink.className = "li-video add-link";
   addLink.innerHTML = `
     <h3>Link hinzufügen</h3>
-    <form>
-      <input type="text" name="link" placeholder="Link eingeben">
+    <form id="add-link-form">
+      <input id="new-video-link" type="text" name="link" placeholder="Link eingeben. Zum Beispiel: https://www.youtube.com/watch?v=dQw4w9WgXcQ">
       <button type="submit">Hinzufügen</button>
     </form>
+    <p>Verschiedene Link-formate werden unterstützt</p>
   `;
   const vesselElement = document.querySelector(htmlContainer);
-  vesselElement.append(addLink);
+  vesselElement.prepend(addLink);
+
+  // ✅ Add event listener to the form
+  document
+    .getElementById("add-link-form")
+    .addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const input = document.getElementById("new-video-link");
+      const newLink = input.value.trim();
+
+      if (newLink) {
+        addNewVideoToList(newLink, listId); // ✅ Add new video to list
+        input.value = ""; // Clear input field
+      } else {
+        alert("Bitte einen gültigen Link eingeben!");
+      }
+    });
+}
+
+async function addNewVideoToList(videoUrl, listId = "#vessel") {
+  const vesselElement = document.querySelector(listId);
+  if (!vesselElement) return;
+
+  // Extract YouTube ID from URL
+  const youtubeId = await youtubeIdExtractor([videoUrl]);
+
+  // Create new list item
+  const newListItem = document.createElement("li");
+  newListItem.classList.add("li-video");
+  newListItem.innerHTML = `
+    <a class="link-video" rel="noopener" target="_blank" href="${videoUrl}">${videoUrl}</a>
+  `;
+
+  // Append new video to the list
+  vesselElement.prepend(newListItem);
+
+  // Refresh buttons for interaction
+  refreshMoveButtons();
+  enableDeleteButtons(listId);
 }
