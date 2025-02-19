@@ -12,6 +12,8 @@
 //   -- moveVideoItem
 //   -- refreshMoveButtons
 //   -- buttonMovement
+import { youtubeIdExtractor } from "./youtubeIdExtractor.js";
+
 
 export async function listCreator(file = "dev.txt", listId = "#vessel") {
   const list = await loadList(file);
