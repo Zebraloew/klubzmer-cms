@@ -1,5 +1,9 @@
 # Current Task
-listCreator is in progress — check for bugs
+- [ ] listCreator is in progress — check for bugs
+- [ ] placing youtube id reader for preview images
+
+# Ideas
+- [ ] fixed music player
 
 # Hi
 Sooo this is my little CMS micro project, that aims to circumvent wordpress.

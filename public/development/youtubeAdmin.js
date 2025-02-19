@@ -7,19 +7,21 @@
 //   -- loadList
 //   -- generateVideoListHtml
 //   -- renderVideoList
+//   -- previewImage
 // -Buttons
 //   -- attachMoveButtons
 //   -- moveVideoItem
 //   -- refreshMoveButtons
 //   -- buttonMovement
-import { youtubeIdExtractor } from "./youtubeIdExtractor.js";
 
+import { loadRawText } from "../js/textLoader.js";
+import { youtubeIdExtractor } from "../js/youtubeIdExtractor.js";
 
 export async function listCreator(file = "dev.txt", listId = "#vessel") {
   const list = await loadList(file);
-  const listDisplay = generateVideoListHtml(list);
-  renderVideoList(listDisplay, listId);
-  buttonMovement();
+  const listDisplay = await generateVideoListHtml(list);
+  await renderVideoList(listDisplay, listId);
+  await buttonMovement();
 }
 
 export async function loadList(file = "default.txt") {
@@ -41,44 +43,46 @@ export async function loadList(file = "default.txt") {
   return list;
 }
 
-export function generateVideoListHtml(list) {
+export async function generateVideoListHtml(list) {
   let listDisplay = "";
+  const youtubeIds = await youtubeIdExtractor(list);
+  console.log(youtubeIds[0]);
   for (let i = 0; i < list.length; i++) {
     listDisplay += `
     <li id="video-${i}" class="li-video">
       <span class="grip-symbol">☰</span> 
-      <a class="link-video"
-        rel="noopener"
-          target="_blank"
-          href="${list[i]}">
-        ${list[i]}
-      </a>
       <div class="button-video-container">
           <button class="button-video-up">⬆</button>
           <button class="button-video-down">⬇</button>
           <!-- Delete button (not implemented) -->
           <button class="button-video-delete">🗑️</button>
       </div>
+
+      <img class="video-thumbnail" src="https://img.youtube.com/vi/${youtubeIds[i]}/hqdefault.jpg" alt="Video Preview">
+      <a class="link-video"
+        rel="noopener"
+          target="_blank"
+          href="${list[i]}">
+        ${list[i]}
+      </a>
     </li>`;
   }
   return listDisplay;
 }
 
-export function renderVideoList(list, listId = "#vessel") {
+export async function renderVideoList(list, listId = "#vessel") {
   const vesselElement = document.querySelector(listId);
   if (vesselElement) {
     vesselElement.innerHTML = list; // Insert generated HTML into the page
-    enableDragAndDrop(listId); // ✅ Enable drag-and-drop after rendering
-    enableDeleteButtons(listId); // ✅ Aktiviert die Löschbuttons
+    await enableDragAndDrop(listId); // ✅ Enable drag-and-drop after rendering
+    await enableDeleteButtons(listId); // ✅ Aktiviert die Löschbuttons
   } else {
     console.error("❌ #vessel not found"); // Log error if element is missing
   }
 }
 
-import { loadRawText } from "../js/textLoader.js";
-
 // This function is connecting buttons to the move functions
-export function attachMoveButtons(
+export async function attachMoveButtons(
   button,
   listId = "#vessel",
   direction = "up",
@@ -115,7 +119,7 @@ export function moveVideoItem(index, direction, listId = "#vessel") {
 }
 
 // This function is keeping the move buttons aligned with the appropriate items
-export function refreshMoveButtons() {
+export async function refreshMoveButtons() {
   document.querySelectorAll(".button-video-up").forEach((button, index) => {
     button.replaceWith(button.cloneNode(true)); // Clear old listeners
   });
@@ -133,7 +137,7 @@ export function refreshMoveButtons() {
   });
 }
 
-function buttonMovement(
+async function buttonMovement(
   upButtonClass = ".button-video-up",
   downButtonClass = ".button-video-down"
 ) {
@@ -146,7 +150,7 @@ function buttonMovement(
 }
 
 // Drag-and-Drop Video List Module integrated into youtubeAdmin.js
-export function enableDragAndDrop(listId = "#vessel") {
+export async function enableDragAndDrop(listId = "#vessel") {
   const list = document.querySelector(listId);
   let draggedItem = null;
 
@@ -182,7 +186,7 @@ export function enableDragAndDrop(listId = "#vessel") {
 }
 
 // Delete Button
-export function enableDeleteButtons(listId = "#vessel") {
+export async function enableDeleteButtons(listId = "#vessel") {
   const list = document.querySelector(listId);
   list.querySelectorAll(".button-video-delete").forEach((button) => {
     button.addEventListener("click", (e) => {
