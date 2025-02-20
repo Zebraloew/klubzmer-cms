@@ -1,54 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sortable Input List</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js"></script>
     <style>
-        body { font-family: sans-serif; max-width: 400px; margin: auto; }
-        ul { list-style: none; padding: 0; }
-        li { background: #f4f4f4; padding: 10px; margin: 5px 0; cursor: grab; display: flex; align-items: center; }
-        input { flex: 1; padding: 5px; border: none; background: none; }
-        .remove { margin-left: 10px; cursor: pointer; color: red; font-weight: bold; }
+      body {
+        font-family: sans-serif;
+        max-width: 400px;
+        margin: auto;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        background: #f4f4f4;
+        padding: 10px;
+        margin: 5px 0;
+        cursor: grab;
+        display: flex;
+        align-items: center;
+      }
+      input {
+        flex: 1;
+        padding: 5px;
+        border: none;
+        background: none;
+      }
+      .remove {
+        margin-left: 10px;
+        cursor: pointer;
+        color: red;
+        font-weight: bold;
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <h3>Sortable Input List</h3>
-    <input type="text" id="itemInput" placeholder="Add item...">
+    <input type="text" id="itemInput" placeholder="Add item..." />
     <button onclick="addItem()">Add</button>
-    
+
     <ul id="sortable-list"></ul>
 
     <script>
-        // Initialize SortableJS
-        new Sortable(document.getElementById("sortable-list"), {
-            animation: 150,
-            ghostClass: "sortable-ghost"
-        });
+      // Initialize SortableJS
+      new Sortable(document.getElementById("sortable-list"), {
+        animation: 150,
+        ghostClass: "sortable-ghost",
+      });
 
-        function addItem() {
-            const input = document.getElementById("itemInput");
-            if (!input.value.trim()) return;
+      function addItem() {
+        const input = document.getElementById("itemInput");
+        if (!input.value.trim()) return;
 
-            const list = document.getElementById("sortable-list");
-            const li = document.createElement("li");
-            li.innerHTML = `<input type="text" value="${input.value}" oninput="updateValue(this)"> 
+        const list = document.getElementById("sortable-list");
+        const li = document.createElement("li");
+        li.innerHTML = `<input type="text" value="${input.value}" oninput="updateValue(this)"> 
                             <span class="remove" onclick="removeItem(this)">✖</span>`;
-            list.appendChild(li);
+        list.appendChild(li);
 
-            input.value = ""; // Clear input
-        }
+        input.value = ""; // Clear input
+      }
 
-        function removeItem(element) {
-            element.parentElement.remove();
-        }
+      function removeItem(element) {
+        element.parentElement.remove();
+      }
 
-        function updateValue(input) {
-            console.log("Updated:", input.value);
-        }
+      function updateValue(input) {
+        console.log("Updated:", input.value);
+      }
     </script>
-
-</body>
+  </body>
 </html>

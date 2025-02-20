@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🐱 Black Metal Kitty List 🖤</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap");
+
+      /* 🌑 Rose Pine Dark Colors */
+      :root {
+        /* --base: #191724; */
+        --base: black;
+        --surface: #1f1d2e;
+        --overlay: #26233a;
+        --muted: #6e6a86;
+        --subtle: #908caa;
+        --text: #e0def4;
+        --love: #eb6f92;
+        --gold: #f6c177;
+        --pine: #31748f;
+        --foam: #9ccfd8;
+        --iris: #c4a7e7;
+      }
+
+      body {
+        font-family: "UnifrakturMaguntia", cursive;
+        background: var(--base);
+        color: var(--text);
+        text-align: center;
+        padding: 20px;
+      }
+
+      h3 {
+        font-size: 2em;
+        letter-spacing: 2px;
+        text-shadow: 0 0 10px var(--love);
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      li {
+        padding: 12px;
+        margin: 6px 0;
+        background: var(--surface);
+        border: 1px solid var(--overlay);
+        display: flex;
+        align-items: center;
+        font-size: 1.2em;
+        cursor: grab;
+        transition: background 0.3s ease, transform 0.2s ease;
+        border-radius: 6px;
+      }
+
+      li:hover {
+        background: var(--overlay);
+        transform: scale(1.05);
+      }
+
+      input {
+        flex: 1;
+        padding: 8px;
+        background: var(--surface);
+        border: 1px solid var(--muted);
+        color: var(--text);
+        font-size: 1em;
+        border-radius: 5px;
+        transition: all 0.3s ease-in-out;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: var(--love);
+        box-shadow: 0 0 10px var(--love);
+      }
+
+      .remove {
+        margin-left: 15px;
+        cursor: pointer;
+        color: var(--love);
+        font-size: 1.5em;
+        font-weight: bold;
+        transition: transform 0.2s ease-in-out;
+      }
+
+      .remove:hover {
+        transform: rotate(-15deg) scale(1.3);
+        text-shadow: 0 0 10px var(--love);
+      }
+
+      button {
+        background: var(--love);
+        color: var(--base);
+        padding: 10px 15px;
+        border: none;
+        font-size: 1em;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 1px;
+        border-radius: 5px;
+        transition: all 0.3s ease-in-out;
+      }
+
+      button:hover {
+        background: var(--base);
+        color: var(--love);
+        border: 1px solid var(--love);
+        text-shadow: 0 0 10px var(--love);
+      }
+
+      li:active {
+        cursor: grabbing;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>🐱 Black Metal Kitty List 🖤</h3>
+    <input type="text" id="itemInput" placeholder="Summon a new item..." />
+    <button onclick="addItem()">Summon</button>
+
+    <ul id="sortable-list"></ul>
+
+    <script>
+      new Sortable(document.getElementById("sortable-list"), {
+        animation: 200,
+        ghostClass: "sortable-ghost",
+      });
+
+      function addItem() {
+        const input = document.getElementById("itemInput");
+        if (!input.value.trim()) return;
+
+        const list = document.getElementById("sortable-list");
+        const li = document.createElement("li");
+        li.innerHTML = `<input type="text" value="${input.value}" oninput="updateValue(this)"> 
+                            <span class="remove" onclick="removeItem(this)">✖</span>`;
+        list.appendChild(li);
+        input.value = "";
+      }
+
+      function removeItem(element) {
+        element.parentElement.remove();
+      }
+
+      function updateValue(input) {
+        console.log("Updated:", input.value);
+      }
+    </script>
+  </body>
+</html>
