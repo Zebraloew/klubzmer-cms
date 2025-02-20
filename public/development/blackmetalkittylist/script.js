@@ -1,13 +1,20 @@
 /*  
-Sortable List
+listDragDrop.js
 
-Contains:
-- Sortable
-- addItem
-- removeItem
-- updateValue
-- loadList
+# Sortable List
+The goal is an admin tool for managing the youtube videos.
 
+# Contains:
+- FUNCTIONS
+            - Sortable
+            - addItem
+            - removeItem
+            - updateValue
+            - loadList
+- EXECUTE
+            - DOMContentLoaded
+                - load video-list from file
+                - Button activation
 */
 
 // Initialize SortableJS
@@ -18,20 +25,23 @@ new Sortable(document.getElementById("sortable-list"), {
 
 // Function to add a new item to the list
 export async function addItem(preloaded = "") {
+  if (preloaded instanceof Event) preloaded = ""; // Verhindert PointerEvent-Fehler
   let input = document.getElementById("itemInput");
-  if (!input.value.trim()) return;
+  let value = preloaded ? await preloaded : input.value.trim();
+  if (!value) return;
 
   const list = document.getElementById("sortable-list");
   const li = document.createElement("li");
-  li.innerHTML = `<input type="text" value="${input.value}" oninput="updateValue(this)"> 
-                      <span class="remove" onclick="removeItem(this)">✖</span>`;
+  li.innerHTML = `<input type="text" value="${value}" oninput="updateValue(this)"> 
+                      <span class="remove" >✖</span>`;
+  li.querySelector(".remove").addEventListener("click", () => removeItem(li));
   list.appendChild(li);
   input.value = "";
 }
 
 // Function to remove an item from the list
 export function removeItem(element) {
-  element.parentElement.remove();
+  element.remove();
 }
 
 // Function to log changes in input fields
@@ -41,8 +51,8 @@ export function updateValue(input) {
 
 // load list from file
 import { loadRawText } from "../../js/textLoader.js";
-export async function loadList() {
-  const raw = await loadRawText("videolist.txt");
+export async function loadList(listfile = "videolist.txt") {
+  const raw = await loadRawText(listfile);
   const youtubeIdRegex = /(?:v=|embed\/|youtu\.be\/)([\w-]+)/g;
   const youtubeIdRegexResults = [...raw.matchAll(youtubeIdRegex)];
   const ids = youtubeIdRegexResults.map((match) => match[1]);
@@ -53,5 +63,10 @@ export async function loadList() {
     addItem(ids[i]);
   }
 }
+// Execute when DOM is loaded
+document.addEventListener("DOMContentLoaded", () => {
+  loadList();
+});
 
 document.getElementById("summon-btn").addEventListener("click", addItem);
+// Enable Delete Button
