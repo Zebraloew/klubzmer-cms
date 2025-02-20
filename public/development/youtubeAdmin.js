@@ -6,22 +6,28 @@
 // HELPER
 //   -- loadList
 //   -- generateVideoListHtml
+//   -- listElementHtml
 //   -- renderVideoList
 //   -- previewImage
+//   -- ?
 // -Buttons
 //   -- attachMoveButtons
 //   -- moveVideoItem
 //   -- refreshMoveButtons
 //   -- buttonMovement
+//   -- deleteButton
+//  drag and drop
 // -add Link
 //   -- addLink
+//   -- linkHelpr?
+
 import { loadRawText } from "../js/textLoader.js";
 import { youtubeIdExtractor } from "../js/youtubeIdExtractor.js";
 
 export async function listCreator(file = "dev.txt", listId = "#vessel") {
   const list = await loadList(file);
   const youtubeIds = await youtubeIdExtractor(list);
-  const listDisplay = await generateVideoListHtml(list,youtubeIds);
+  const listDisplay = await generateVideoListHtml(list, youtubeIds);
   await renderVideoList(listDisplay, listId);
   showAddVideoForm(listId);
   await buttonMovement();
@@ -46,11 +52,11 @@ export async function loadList(file = "default.txt") {
   return list;
 }
 
-export async function generateVideoListHtml(list,youtubeIds) {
+export async function generateVideoListHtml(list, youtubeIds) {
   let listDisplay = "";
   for (let i = 0; i < list.length; i++) {
     listDisplay += `
-    <li id="video-${i}" class="li-video">
+    <li id="vide}}o-${i}" class="li-video">
       <span class="grip-symbol">☰</span> 
       <div class="button-video-container">
           <button class="button-video-up">⬆</button>
@@ -58,7 +64,6 @@ export async function generateVideoListHtml(list,youtubeIds) {
           <!-- Delete button (not implemented) -->
           <button class="button-video-delete">🗑️</button>
       </div>
-
       <img class="video-thumbnail" src="https://img.youtube.com/vi/${youtubeIds[i]}/hqdefault.jpg" alt="Video Preview">
       <a class="li-video-image"
         rel="noopener"
@@ -71,6 +76,30 @@ export async function generateVideoListHtml(list,youtubeIds) {
   return listDisplay;
 }
 
+// List Element Html
+function listElementHtml(i = 0, youtubeId = youtubeId) {
+  const li = `
+    <li id="video-${i}" class="li-video">
+       <span class="grip-symbol">☰</span> 
+       <div class="button-video-container">
+           <button class="button-video-up">⬆</button>
+           <button class="button-video-down">⬇</button>
+           <!-- Delete button (not implemented) -->
+           <button class="button-video-delete">🗑️</button>
+       </div>
+       <img class="video-thumbnail" src="https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg" alt="Video Preview">
+       <a class="li-video-image"
+         rel="noopener"
+           target="_blank"
+           href="${list[i]}">
+         ${list[i]}
+       </a>
+    </li>
+  `;
+  return li;
+}
+
+//
 export async function renderVideoList(list, listId = "#vessel") {
   const vesselElement = document.querySelector(listId);
   if (vesselElement) {
@@ -81,7 +110,8 @@ export async function renderVideoList(list, listId = "#vessel") {
     console.error("❌ #vessel not found"); // Log error if element is missing
   }
 }
-
+////////////////////////////////////////////////////////////////////////////////////
+// BUTTONS
 // This function is connecting buttons to the move functions
 export async function attachMoveButtons(
   button,
@@ -149,7 +179,9 @@ async function buttonMovement(
     button.addEventListener("click", () => moveVideoItem(index, 1));
   });
 }
-
+////////////////////////////////////////////////////////////////////////////////////
+// DRAG-AND-DROP & DELETE BUTTONS & ADD VIDEO FORM
+//
 // Drag-and-Drop Video List Module integrated into youtubeAdmin.js
 export async function enableDragAndDrop(listId = "#vessel") {
   const list = document.querySelector(listId);
@@ -196,7 +228,7 @@ export async function enableDeleteButtons(listId = "#vessel") {
     });
   });
 }
-
+// Add new Video to List
 function showAddVideoForm(htmlContainer = "#vessel", listId = "#vessel") {
   const addLink = document.createElement("li");
   addLink.className = "li-video add-link";
@@ -228,7 +260,7 @@ function showAddVideoForm(htmlContainer = "#vessel", listId = "#vessel") {
       }
     });
 }
-
+// Helper function to add a new video to the list
 async function addNewVideoToList(videoUrl, listId = "#vessel") {
   const vesselElement = document.querySelector(listId);
   if (!vesselElement) return;
@@ -242,6 +274,7 @@ async function addNewVideoToList(videoUrl, listId = "#vessel") {
   newListItem.innerHTML = `
     <a class="link-video" rel="noopener" target="_blank" href="${videoUrl}">${videoUrl}</a>
   `;
+  // newListItem.innerHTML = listElementHtml(videoUrl, youtubeId);
 
   // Append new video to the list
   vesselElement.prepend(newListItem);
