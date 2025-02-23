@@ -1,13 +1,1 @@
-# videolist.txt
-# Place links to youtube videos here
-# this file is getting read by the server
-# it will be modifyable on the admin panel
-
-https://www.youtube.com/watch?v=WvdJp2I8RRA&t=1s
-https://www.youtube.com/embed/dQw4w9WgXcQ
-https://www.youtube.com/watch?v=3JZ_D3ELwOQ
-https://youtu.be/tgbNymZ7vqY
-https://www.youtube.com/embed/KxGRhd_iWuE
-https://www.youtube.com/watch?v=9bZkp7q19f0
-https://youtu.be/L_jWHffIx5E
-https://www.youtube.com/embed/RgKAFK5djSk
+yxcv

@@ -1,5 +1,7 @@
 # Current Task
 - [ ] listCreator is in progress — check for bugs
+  - ✅ listCreator is working
+  - [ ] add save to file function
 - [ ] placing youtube id reader for preview images
 
 # Ideas

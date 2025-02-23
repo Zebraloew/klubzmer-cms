@@ -11,6 +11,7 @@ The goal is an admin tool for managing the youtube videos.
             - removeItem
             - updateValue
             - loadList
+            - *** saveToFile *** in development
 - EXECUTE
             - DOMContentLoaded
                 - load video-list from file
@@ -63,10 +64,12 @@ export async function loadList(listfile = "videolist.txt") {
     addItem(ids[i]);
   }
 }
+
+// Button for saving to file
+import 
+
 // Execute when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   loadList();
 });
-
 document.getElementById("summon-btn").addEventListener("click", addItem);
-// Enable Delete Button

@@ -6,6 +6,7 @@ export async function saveRawToFile(text, filename) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ text, filename }),
   });
+  console.log("✅ File saved successfully:", filename, text);
 }
 
 export async function extractHyperlinksFromUl(ulId) {
@@ -25,7 +26,11 @@ export async function extractHyperlinksFromUl(ulId) {
   console.log("🙀\n" + text);
   return text;
 }
-
+/*
+button
+list in <ul>
+file to save to
+*/
 export async function saveButtonForListToFile(buttonId, listId, filename) {
   document.querySelector(buttonId).addEventListener("click", async () => {
     let textFromModule = await extractHyperlinksFromUl(listId);
