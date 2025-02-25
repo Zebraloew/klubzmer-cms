@@ -65,11 +65,15 @@ export async function loadList(listfile = "videolist.txt") {
   }
 }
 
-// Button for saving to file
-import 
-
+// testing importing save button
+import { buttonImport } from "./test.js";
 // Execute when DOM is loaded
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   loadList();
+  buttonImport("save-btn"); 
 });
 document.getElementById("summon-btn").addEventListener("click", addItem);
+
+// save to file – not working
+// import { saveButtonForListToFile } from "../textSaver.js";
+// await saveButtonForListToFile("save-btn", "sortable-list", "dev.txt");
