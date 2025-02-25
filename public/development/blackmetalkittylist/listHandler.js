@@ -1,22 +1,24 @@
 /*  
-listDragDrop.js
+listHandler.js
 
 # Sortable List
 The goal is an admin tool for managing the youtube videos.
 
 # Contains:
 - FUNCTIONS
-            - Sortable
-            - addItem
-            - removeItem
-            - updateValue
-            - loadList
-            - *** saveToFile *** in development
+    Sortable
+    addItem
+    removeItem
+    updateValue
+    loadList
+    saveToFile
 - EXECUTE
-            - DOMContentLoaded
-                - load video-list from file
-                - Button activation
+   DOMContentLoaded
+     - load video-list from file
+     - Button activation
 */
+
+import { buttonImport } from "./buttonSave.js";
 
 // Initialize SortableJS
 new Sortable(document.getElementById("sortable-list"), {
@@ -52,28 +54,17 @@ export function updateValue(input) {
 
 // load list from file
 import { loadRawText } from "../../js/textLoader.js";
-export async function loadList(listfile = "videolist.txt") {
+export async function loadList(listfile = "dev.txt") {
   const raw = await loadRawText(listfile);
-  const youtubeIdRegex = /(?:v=|embed\/|youtu\.be\/)([\w-]+)/g;
-  const youtubeIdRegexResults = [...raw.matchAll(youtubeIdRegex)];
-  const ids = youtubeIdRegexResults.map((match) => match[1]);
-  console.log("🎯 Extracted YouTube IDs:", ids);
-
-  // load items into addItem
-  for (let i = 0; i < ids.length; i++) {
-    addItem(ids[i]);
+  const rawSplit = raw.split("\n");
+  for (let i = 0; i < rawSplit.length; i++){
+    addItem(rawSplit[i]);
   }
 }
 
-// testing importing save button
-import { buttonImport } from "./test.js";
 // Execute when DOM is loaded
 document.addEventListener("DOMContentLoaded", async () => {
   loadList();
   buttonImport("save-btn"); 
 });
 document.getElementById("summon-btn").addEventListener("click", addItem);
-
-// save to file – not working
-// import { saveButtonForListToFile } from "../textSaver.js";
-// await saveButtonForListToFile("save-btn", "sortable-list", "dev.txt");
