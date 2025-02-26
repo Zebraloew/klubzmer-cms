@@ -1,14 +1,7 @@
 // section-videoplayer.js
 // Video Player Module
 
-// Goal: Editable in the admin panel
-//Plan for modular updates
-// 1) DONE video-thumbnails created from list
-// 2) list read from file data/video-links.yaml
-// 3) Admin panel for editing the links
-
-// Testing variable SUCCESS
-import { youtubeIdExtractor } from "../js/youtubeIdExtractor.js";
+import { youtubeIdListExtractor } from "../js/youtubeIdListExtractor.js";
 
 var videoIdList = [
   "dQw4w9WgXcQ",
@@ -19,12 +12,9 @@ var videoIdList = [
   "L_jWHffIx5E",
   "RgKAFK5djSk",
 ];
-videoIdList = await youtubeIdExtractor();
+videoIdList = await youtubeIdListExtractor();
 
-// Testing reading the video id list from a file
-// videoIdList =
-
-// Testing creating li from that array SUCCESS
+// creating li from that array
 var videoList = "";
 function createVideoList() {
   for (let i = 1; i < videoIdList.length; i++) {

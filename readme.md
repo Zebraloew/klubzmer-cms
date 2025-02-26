@@ -1,15 +1,17 @@
 # Current Task
 - [ ] listCreator is in progress — check for bugs
   - ✅ listCreator is working
-  - [ ] add save to file function
+  - [x] add save to file function
+  - [ ] add video preview
+  - [ ] visual order: save button placement or autosave
 - [ ] placing youtube id reader for preview images
 
 # Ideas
-- [ ] fixed music player
+- [ ] fixed music player like soundcloud
 
 # Hi
 Sooo this is my little CMS micro project, that aims to circumvent wordpress.
-is is going great so far. 
+it is going great so far. 
 GPT is big help
 
 # ACHIEVEMENTS

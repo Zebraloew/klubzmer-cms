@@ -1,6 +1,6 @@
 import { loadRawText } from "../js/textLoader.js";
 
-export async function youtubeIdExtractor() {
+export async function youtubeIdListExtractor() {
   const raw = await loadRawText("videolist.txt");
 
   //   Use regex with global flag to find all YouTube IDs
@@ -16,4 +16,6 @@ export async function youtubeIdExtractor() {
   console.log("🎯 Extracted YouTube IDs:", ids);
   return ids;
 }
-youtubeIdExtractor();
+youtubeIdListExtractor();
+
+// export async function youtubeId

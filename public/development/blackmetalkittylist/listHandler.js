@@ -12,6 +12,7 @@ The goal is an admin tool for managing the youtube videos.
     updateValue
     loadList
     saveToFile
+    thumbnail (from youtube)
 - EXECUTE
    DOMContentLoaded
      - load video-list from file
@@ -57,14 +58,25 @@ import { loadRawText } from "../../js/textLoader.js";
 export async function loadList(listfile = "dev.txt") {
   const raw = await loadRawText(listfile);
   const rawSplit = raw.split("\n");
-  for (let i = 0; i < rawSplit.length; i++){
+  for (let i = 0; i < rawSplit.length; i++) {
     addItem(rawSplit[i]);
   }
+}
+// Youtube Thumbnail
+export function thumbnail(id = "tgbNymZ7vqY") {
+  let html =
+    '<img class="video-thumbnail" data-video-id="' +
+    id +
+    '" src="https://img.youtube.com/vi/' +
+    id +
+    '/hqdefault.jpg" alt="Video Preview">';
+  document.getElementById("sortable-list").innerHTML = html;
 }
 
 // Execute when DOM is loaded
 document.addEventListener("DOMContentLoaded", async () => {
   loadList();
-  buttonImport("save-btn"); 
+  buttonImport("save-btn");
+  thumbnail();
 });
 document.getElementById("summon-btn").addEventListener("click", addItem);

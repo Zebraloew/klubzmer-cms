@@ -22,11 +22,11 @@
 //   -- linkHelpr?
 
 import { loadRawText } from "../js/textLoader.js";
-import { youtubeIdExtractor } from "../js/youtubeIdExtractor.js";
+import { youtubeIdListExtractor } from "../js/youtubeIdListExtractor.js";
 
 export async function listCreator(file = "dev.txt", listId = "#vessel") {
   const list = await loadList(file);
-  const youtubeIds = await youtubeIdExtractor(list);
+  const youtubeIds = await youtubeIdListExtractor(list);
   const listDisplay = await generateVideoListHtml(list, youtubeIds);
   await renderVideoList(listDisplay, listId);
   showAddVideoForm(listId);
@@ -266,7 +266,7 @@ async function addNewVideoToList(videoUrl, listId = "#vessel") {
   if (!vesselElement) return;
 
   // Extract YouTube ID from URL
-  const youtubeId = await youtubeIdExtractor([videoUrl]);
+  const youtubeId = await youtubeIdListExtractor([videoUrl]);
 
   // Create new list item
   const newListItem = document.createElement("li");
