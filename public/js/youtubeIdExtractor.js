@@ -1,5 +1,14 @@
+/*
+Contains:
+- FUNCTIONS
+    youtubeIdListExtractor
+    youtubeIdExtractor
+*/
+
 import { loadRawText } from "../js/textLoader.js";
 
+// list of IDs put into html
+// creates html but also returns array
 export async function youtubeIdListExtractor() {
   const raw = await loadRawText("videolist.txt");
 
@@ -13,9 +22,20 @@ export async function youtubeIdListExtractor() {
   //   Format results into HTML
   const htmlResults = ids.map((id) => `<p>${id}</p>`).join("");
 
-  console.log("🎯 Extracted YouTube IDs:", ids);
   return ids;
 }
-youtubeIdListExtractor();
 
-// export async function youtubeId
+// single ID
+export async function youtubeIdExtractor(
+  link = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+) {
+  const youtubeIdRegex = /(?:v=|embed\/|youtu\.be\/)([\w-]{11})/;
+  const match = link.match(youtubeIdRegex);
+
+  if (match && match[1]) {
+    console.log("Extracted YouTube ID:", match[1]);
+    return match[1];
+  } else {
+    console.log("No YouTube ID found.");
+  }
+}

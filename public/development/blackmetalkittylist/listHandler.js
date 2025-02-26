@@ -19,6 +19,7 @@ The goal is an admin tool for managing the youtube videos.
      - Button activation
 */
 
+import { youtubeIdExtractor } from "../../js/youtubeIdExtractor.js";
 import { buttonImport } from "./buttonSave.js";
 
 // Initialize SortableJS
@@ -63,20 +64,29 @@ export async function loadList(listfile = "dev.txt") {
   }
 }
 // Youtube Thumbnail
-export function thumbnail(id = "tgbNymZ7vqY") {
+export async function thumbnail(id = "tgbNymZ7vqY") {
+  console.log("thumbnail id: ", id);
   let html =
     '<img class="video-thumbnail" data-video-id="' +
     id +
     '" src="https://img.youtube.com/vi/' +
     id +
     '/hqdefault.jpg" alt="Video Preview">';
-  document.getElementById("sortable-list").innerHTML = html;
+  // document.getElementById("sortable-list").innerHTML = html;
+  return html;
 }
 
 // Execute when DOM is loaded
 document.addEventListener("DOMContentLoaded", async () => {
   loadList();
   buttonImport("save-btn");
-  thumbnail();
 });
+
+// test thumbnail
+const testurl = "https://www.youtube.com/watch?v=DvjmJIixzAk";
+const testextract = await youtubeIdExtractor(testurl);
+console.log("extract: ", testextract);
+document.getElementById("sortable-list").innerHTML = await thumbnail(testextract);
+
+// add button
 document.getElementById("summon-btn").addEventListener("click", addItem);
