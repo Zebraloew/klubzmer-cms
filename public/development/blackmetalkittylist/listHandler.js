@@ -52,7 +52,8 @@ export async function addItem(preloaded = "", thumbnailOn = true) {
   `;
 
   li.querySelector(".remove").addEventListener("click", () => removeItem(li));
-  list.appendChild(li);
+  // list.appendChild(li);
+  list.insertBefore(li, list.firstChild);
   input.value = "";
 }
 
@@ -70,7 +71,8 @@ export function updateValue(input) {
 export async function loadList(listfile = "dev.txt") {
   const raw = await loadRawText(listfile);
   const rawSplit = raw.split("\n");
-  for (let i = 0; i < rawSplit.length; i++) {
+  // for (let i = 0; i < rawSplit.length; i++) {
+  for (let i = rawSplit.length - 1; i >= 0; i--) {
     addItem(rawSplit[i]);
   }
 }
