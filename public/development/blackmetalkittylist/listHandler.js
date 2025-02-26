@@ -19,6 +19,7 @@ The goal is an admin tool for managing the youtube videos.
      - Button activation
 */
 
+import { loadRawText } from "../../js/textLoader.js";
 import { youtubeIdExtractor } from "../../js/youtubeIdExtractor.js";
 import { buttonImport } from "./buttonSave.js";
 
@@ -37,8 +38,12 @@ export async function addItem(preloaded = "") {
 
   const list = document.getElementById("sortable-list");
   const li = document.createElement("li");
-  li.innerHTML = `<input type="text" value="${value}" oninput="updateValue(this)"> 
+  li.innerHTML = `
+                      <span class="grip-symbol">☰</span>
+                      <input type="text" value="${value}" oninput="updateValue(this)"> 
                       <span class="remove" >✖</span>`;
+  const extract = await youtubeIdExtractor(value);
+  li.innerHTML += await thumbnail(extract);
   li.querySelector(".remove").addEventListener("click", () => removeItem(li));
   list.appendChild(li);
   input.value = "";
@@ -55,7 +60,6 @@ export function updateValue(input) {
 }
 
 // load list from file
-import { loadRawText } from "../../js/textLoader.js";
 export async function loadList(listfile = "dev.txt") {
   const raw = await loadRawText(listfile);
   const rawSplit = raw.split("\n");
@@ -63,6 +67,7 @@ export async function loadList(listfile = "dev.txt") {
     addItem(rawSplit[i]);
   }
 }
+
 // Youtube Thumbnail
 export async function thumbnail(id = "tgbNymZ7vqY") {
   console.log("thumbnail id: ", id);
@@ -86,7 +91,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 const testurl = "https://www.youtube.com/watch?v=DvjmJIixzAk";
 const testextract = await youtubeIdExtractor(testurl);
 console.log("extract: ", testextract);
-document.getElementById("sortable-list").innerHTML = await thumbnail(testextract);
+document.getElementById("sortable-list").innerHTML = await thumbnail(
+  testextract
+);
 
 // add button
 document.getElementById("summon-btn").addEventListener("click", addItem);
