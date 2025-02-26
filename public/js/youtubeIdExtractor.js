@@ -33,7 +33,7 @@ export async function youtubeIdExtractor(
   const match = link.match(youtubeIdRegex);
 
   if (match && match[1]) {
-    console.log("Extracted YouTube ID:", match[1]);
+    // console.log("Extracted YouTube ID:", match[1]);
     return match[1];
   } else {
     console.log("No YouTube ID found.");

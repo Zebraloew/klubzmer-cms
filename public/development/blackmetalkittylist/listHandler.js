@@ -30,7 +30,7 @@ new Sortable(document.getElementById("sortable-list"), {
 });
 
 // Function to add a new item to the list
-export async function addItem(preloaded = "") {
+export async function addItem(preloaded = "", thumbnailOn = true) {
   if (preloaded instanceof Event) preloaded = ""; // Verhindert PointerEvent-Fehler
   let input = document.getElementById("itemInput");
   let value = preloaded ? await preloaded : input.value.trim();
@@ -38,12 +38,19 @@ export async function addItem(preloaded = "") {
 
   const list = document.getElementById("sortable-list");
   const li = document.createElement("li");
-  li.innerHTML = `
-                      <span class="grip-symbol">☰</span>
-                      <input type="text" value="${value}" oninput="updateValue(this)"> 
-                      <span class="remove" >✖</span>`;
+  // add grip
+  li.innerHTML += `<span class="grip-symbol">☰</span>`;
+  // add thumbnail
   const extract = await youtubeIdExtractor(value);
-  li.innerHTML += await thumbnail(extract);
+  if (extract && thumbnailOn) {
+    li.innerHTML += await thumbnail(extract);
+  }
+  // add input
+  li.innerHTML += `
+    <input type="text" value="${value}" oninput="updateValue(this)"> 
+    <span class="remove" >✖</span>
+  `;
+
   li.querySelector(".remove").addEventListener("click", () => removeItem(li));
   list.appendChild(li);
   input.value = "";
@@ -70,7 +77,7 @@ export async function loadList(listfile = "dev.txt") {
 
 // Youtube Thumbnail
 export async function thumbnail(id = "tgbNymZ7vqY") {
-  console.log("thumbnail id: ", id);
+  // console.log("thumbnail id: ", id);
   let html =
     '<img class="video-thumbnail" data-video-id="' +
     id +
@@ -86,14 +93,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   loadList();
   buttonImport("save-btn");
 });
-
-// test thumbnail
-const testurl = "https://www.youtube.com/watch?v=DvjmJIixzAk";
-const testextract = await youtubeIdExtractor(testurl);
-console.log("extract: ", testextract);
-document.getElementById("sortable-list").innerHTML = await thumbnail(
-  testextract
-);
 
 // add button
 document.getElementById("summon-btn").addEventListener("click", addItem);
