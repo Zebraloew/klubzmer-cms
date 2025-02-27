@@ -1,7 +1,7 @@
 // section-videoplayer.js
 // Video Player Module
 
-import { youtubeIdListExtractor } from "../js/youtubeIdListExtractor.js";
+import { youtubeIdListExtractor } from "../js/youtubeIdExtractor.js";
 
 var videoIdList = [
   "dQw4w9WgXcQ",

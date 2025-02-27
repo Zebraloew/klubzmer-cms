@@ -22,7 +22,7 @@
 //   -- linkHelpr?
 
 import { loadRawText } from "../js/textLoader.js";
-import { youtubeIdListExtractor } from "../js/youtubeIdListExtractor.js";
+import { youtubeIdListExtractor } from "../js/youtubeIdExtractor.js";
 
 export async function listCreator(file = "dev.txt", listId = "#vessel") {
   const list = await loadList(file);
