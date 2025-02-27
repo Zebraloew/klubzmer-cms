@@ -1,6 +1,3 @@
-const videoStart = 6000;
-const videoEntry = 270;
-
 export function createSectionLanding() {
   const sectionLanding = document.createElement("section");
   sectionLanding.className = "section-landing";
@@ -18,56 +15,64 @@ export function createSectionLanding() {
 
   document.querySelector("body").prepend(sectionLanding);
 
-  // Delay video insertion by 10 seconds
+  // ✅ **Preload hidden video early**
+  const preloadedVideo = document.createElement("video");
+  preloadedVideo.id = "preload-video";
+  preloadedVideo.src = "video/klubzmer-2022-schaltzentrale.mp4";
+  preloadedVideo.preload = "auto";
+  preloadedVideo.muted = true;
+  preloadedVideo.style.display = "none"; // Hidden
+  document.body.appendChild(preloadedVideo);
+
+  // ✅ **Use the 6 seconds to fully load the video**
   setTimeout(() => {
     const videoContainer = document.createElement("div");
     videoContainer.id = "video-wrapper";
     videoContainer.innerHTML = `
-            <video poster="img/Header_3000.jpg" preload="auto" id="promo-video" src="video/klubzmer-2022-schaltzentrale.mp4" 
+        <video poster="img/Header_3000.jpg" id="promo-video"
             controls 
             autoplay 
             muted
-            
-            ></video>
-            <div id="pixel-grid"></div> 
-            <img src="../img/Klubzmerlogo.png" alt="Klubzmer Logo" id="logo">
-
-        `;
+        ></video>
+        <div id="pixel-grid"></div> 
+        <img src="../img/Klubzmerlogo.png" alt="Klubzmer Logo" id="logo">
+    `;
     sectionLanding.appendChild(videoContainer);
 
-    const video = document.getElementById("promo-video");
-    video.onloadedmetadata = () => {
-      video.currentTime = videoEntry; // Start at 1 minute in
-      video.playbackRate = 0.8; // Set speed to 0.5x (half speed)
-      video.width = video.videoWidth; // Ensure full resolution
-      video.height = video.videoHeight;
+    const promoVideo = document.getElementById("promo-video");
+
+    // ✅ **Replace video src instantly to avoid loading spinner**
+    promoVideo.src = preloadedVideo.src;
+    promoVideo.load();
+    
+    promoVideo.onloadedmetadata = () => {
+      promoVideo.currentTime = 270; // Start at 4m30s
+      promoVideo.playbackRate = 0.8;
     };
 
-    // Pause video when not visible
+    // ✅ **Visibility observer to pause video when offscreen**
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) {
-            video.pause(); // Pause when not visible
+            promoVideo.pause();
           } else {
-            video.play(); // Resume when visible
+            promoVideo.play();
           }
         });
       },
       { threshold: 0.1 }
-    ); // Adjust threshold if needed
-
+    );
     observer.observe(videoContainer);
-  }, videoStart); // 10 seconds delay
 
+    // ✅ **Remove the preloaded hidden video**
+    preloadedVideo.remove();
+  }, 6000); // Delay matches the initial 6s image display
+
+  // ✅ **Ensure service worker caches the video**
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker
-      .register("/sw.js")
-      .then(() => {
-        console.log("Service Worker Registered ✅");
-      })
-      .catch((error) => {
-        console.error("Service Worker Registration Failed ❌", error);
-      });
+    navigator.serviceWorker.register("/sw.js")
+      .then(() => console.log("Service Worker Registered ✅"))
+      .catch((error) => console.error("Service Worker Registration Failed ❌", error));
   }
 }
