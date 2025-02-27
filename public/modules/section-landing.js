@@ -23,7 +23,7 @@ export function createSectionLanding() {
     const videoContainer = document.createElement("div");
     videoContainer.id = "video-wrapper";
     videoContainer.innerHTML = `
-            <video preload="auto" id="promo-video" src="video/klubzmer-2022-schaltzentrale.mp4" 
+            <video poster="img/Header_3000.jpg" preload="auto" id="promo-video" src="video/klubzmer-2022-schaltzentrale.mp4" 
             controls 
             autoplay 
             muted
