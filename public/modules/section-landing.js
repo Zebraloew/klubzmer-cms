@@ -1,5 +1,6 @@
 const videoStart = 4000;
 const videoEntry = 270;
+const video = "short.mp4";
 
 export function createSectionLanding() {
   const sectionLanding = document.createElement("section");
@@ -23,11 +24,9 @@ export function createSectionLanding() {
     const videoContainer = document.createElement("div");
     videoContainer.id = "video-wrapper";
     videoContainer.innerHTML = `
-            <video poster="img/Header_3000.jpg" preload="auto" id="promo-video" src="video/klubzmer-2022-schaltzentrale.mp4" 
-            controls 
+            <video poster="img/Header_3000.jpg" preload="auto" id="promo-video" src="video/${video}" 
             autoplay 
             muted
-            
             ></video>
             <div id="pixel-grid"></div> 
             <img src="../img/Klubzmerlogo.png" alt="Klubzmer Logo" id="logo">
