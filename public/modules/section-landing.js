@@ -1,6 +1,6 @@
 const videoStart = 4000;
-const videoEntry = 270;
-const video = "short.mp4";
+// const videoEntry = 270;
+const videoEntry = 0;
 
 export function createSectionLanding() {
   const sectionLanding = document.createElement("section");
@@ -19,12 +19,12 @@ export function createSectionLanding() {
 
   document.querySelector("body").prepend(sectionLanding);
 
-  // Delay video insertion by 10 seconds
+  // Delay video insertion
   setTimeout(() => {
     const videoContainer = document.createElement("div");
     videoContainer.id = "video-wrapper";
     videoContainer.innerHTML = `
-            <video poster="img/Header_3000.jpg" preload="auto" id="promo-video" src="video/${video}" 
+            <video poster="img/Header_3000.jpg" preload="auto" id="promo-video" src="video/short.mp4"
             autoplay 
             muted
             ></video>
@@ -41,7 +41,7 @@ export function createSectionLanding() {
       video.width = video.videoWidth; // Ensure full resolution
       video.height = video.videoHeight;
     };
-
+    
     // Pause video when not visible
     const observer = new IntersectionObserver(
       (entries) => {
