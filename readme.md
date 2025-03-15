@@ -1,4 +1,11 @@
-# Current Task
+# current task 
+## Server 
+- [ ] the folder img is a symlink and messes with git synchronisation
+  - [ ] create a normal folder and only include relevant images
+- [ ] the server version has another package.json because of pm2
+  - [ ] ask GPT for best practices
+
+# more Task
 - [ ] listCreator is in progress — check for bugs
   - ✅ listCreator is working
   - [x] add save to file function
