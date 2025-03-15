@@ -1,4 +1,4 @@
-/*  
+/*******************************************************************************  
 listHandler.js
 
 # Sortable List
@@ -24,6 +24,24 @@ import { loadRawText } from "../../js/textLoader.js";
 import { youtubeIdExtractor } from "../../js/youtubeIdExtractor.js";
 import { buttonImport } from "./buttonSave.js";
 
+// New function: buildItemHTML
+async function buildItemHTML(value = "", thumbnailOn = true) {
+  // Builds item HTML without directly appending to the DOM
+  const extract = await youtubeIdExtractor(value);
+  let html = `<span class="grip-symbol">☰</span>`;
+
+  // Add thumbnail and title if possible
+  if (extract && thumbnailOn) {
+    html += await thumbnail(extract);
+    html += await videoTitle(extract);
+  }
+
+  // Add input + remove span
+  html += `\n<input class="input-url" type="text" value="${value}" oninput="updateValue(this)"> \n<span class="remove">✖</span>\n`;
+
+  return html;
+}
+
 // Initialize SortableJS
 new Sortable(document.getElementById("sortable-list"), {
   animation: 200,
@@ -45,8 +63,8 @@ export async function addItem(preloaded = "", thumbnailOn = true) {
   const extract = await youtubeIdExtractor(value);
   if (extract && thumbnailOn) {
     li.innerHTML += await thumbnail(extract);
+    li.innerHTML += await videoTitle(extract);
   }
-  li.innerHTML += await videoTitle(extract);
   // add input
   li.innerHTML += `
     <input class="input-url" type="text" value="${value}" oninput="updateValue(this)"> 
@@ -72,11 +90,31 @@ export function updateValue(input) {
 // load list from file
 export async function loadList(listfile = "dev.txt") {
   const raw = await loadRawText(listfile);
+  if (!raw) return;
   const rawSplit = raw.split("\n");
-  // for (let i = 0; i < rawSplit.length; i++) {
-  for (let i = rawSplit.length - 1; i >= 0; i--) {
-    addItem(rawSplit[i]);
-  }
+  const list = document.getElementById("sortable-list");
+  if (!list) return;
+
+  // Gather all items data in parallel
+  const itemsData = await Promise.all(
+    rawSplit.map(async line => {
+      const html = await buildItemHTML(line);
+      return { line, html };
+    })
+  );
+
+  // Now append items in order
+  itemsData.forEach(item => {
+    const li = document.createElement("li");
+    li.innerHTML = item.html;
+    // Hook remove button
+    const removeBtn = li.querySelector(".remove");
+    if (removeBtn) {
+      removeBtn.addEventListener("click", () => removeItem(li));
+    }
+
+    list.appendChild(li);
+  });
 }
 
 // Youtube Thumbnail
@@ -111,7 +149,7 @@ export async function videoTitle(id) {
 
 // Execute when DOM is loaded
 document.addEventListener("DOMContentLoaded", async () => {
-  loadList();
+  await loadList();
   buttonImport("save-btn");
 });
 
