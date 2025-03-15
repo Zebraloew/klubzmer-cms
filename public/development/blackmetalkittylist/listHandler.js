@@ -13,6 +13,7 @@ The goal is an admin tool for managing the youtube videos.
     loadList
     saveToFile
     thumbnail (from youtube)
+    videoTitle
 - EXECUTE
    DOMContentLoaded
      - load video-list from file
@@ -44,12 +45,17 @@ export async function addItem(preloaded = "", thumbnailOn = true) {
   const extract = await youtubeIdExtractor(value);
   if (extract && thumbnailOn) {
     li.innerHTML += await thumbnail(extract);
-  }
+    
+   // add video title
+  li.innerHTML += await videoTitle(extract); }
+
   // add input
   li.innerHTML += `
     <input type="text" value="${value}" oninput="updateValue(this)"> 
     <span class="remove" >✖</span>
   `;
+
+
 
   li.querySelector(".remove").addEventListener("click", () => removeItem(li));
   // list.appendChild(li);
@@ -88,6 +94,23 @@ export async function thumbnail(id = "tgbNymZ7vqY") {
     '/hqdefault.jpg" alt="Video Preview">';
   // document.getElementById("sortable-list").innerHTML = html;
   return html;
+}
+
+// Fetch video title using YouTube's oEmbed endpoint
+export async function videoTitle(id) {
+  try {
+    // Construct the oEmbed URL for YouTube
+    const url = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`;
+    const response = await fetch(url);
+    const data = await response.json();
+    if (data && data.title) {
+      return `<span class="video-title">${data.title}</span>`;
+    }
+    return `<span class="video-title">Unknown Title</span>`;
+  } catch (error) {
+    console.error('Error fetching video title:', error); // ✅ Error handling
+    return `<span class="video-title">Error fetching title</span>`;
+  }
 }
 
 // Execute when DOM is loaded
