@@ -10,7 +10,7 @@ async function saveFile() {
     for (let i = 0; i < list_content.length; i++) {
         text_to_export += list_content[i].value + "\n";
     }
-    saveRawToFile(text_to_export, "dev.txt");
+    saveRawToFile(text_to_export, "videolist.txt");
 }
 
 // ✅ Expose buttonImport function

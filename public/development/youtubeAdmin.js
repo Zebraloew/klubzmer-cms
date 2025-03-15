@@ -24,7 +24,7 @@
 import { loadRawText } from "../js/textLoader.js";
 import { youtubeIdListExtractor } from "../js/youtubeIdExtractor.js";
 
-export async function listCreator(file = "dev.txt", listId = "#vessel") {
+export async function listCreator(file = "videolist.txt", listId = "#vessel") {
   const list = await loadList(file);
   const youtubeIds = await youtubeIdListExtractor(list);
   const listDisplay = await generateVideoListHtml(list, youtubeIds);

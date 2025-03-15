@@ -88,7 +88,7 @@ export function updateValue(input) {
 }
 
 // load list from file
-export async function loadList(listfile = "dev.txt") {
+export async function loadList(listfile = "videolist.txt") {
   const raw = await loadRawText(listfile);
   if (!raw) return;
   const rawSplit = raw.split("\n");
