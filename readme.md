@@ -1,17 +1,20 @@
 # current task 
+## Video List
+ - [ ] Move file from development folder to right place
+
 ## Server 
-- [ ] the folder img is a symlink and messes with git synchronisation
-  - [ ] create a normal folder and only include relevant images
+- [x] the folder img is a symlink and messes with git synchronisation
+  - [x] create a normal folder and only include relevant images
 - [ ] the server version has another package.json because of pm2
   - [ ] ask GPT for best practices
 
 # more Task
-- [ ] listCreator is in progress — check for bugs
+- [x] listCreator is in progress — check for bugs
   - ✅ listCreator is working
   - [x] add save to file function
-  - [ ] add video preview
-  - [ ] visual order: save button placement or autosave
-- [ ] placing youtube id reader for preview images
+  - [x] add video preview
+  - [x] visual order: save button placement or autosave
+- [x] placing youtube id reader for preview images
 
 # Ideas
 - [ ] fixed music player like soundcloud
