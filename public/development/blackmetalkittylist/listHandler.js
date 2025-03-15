@@ -45,17 +45,13 @@ export async function addItem(preloaded = "", thumbnailOn = true) {
   const extract = await youtubeIdExtractor(value);
   if (extract && thumbnailOn) {
     li.innerHTML += await thumbnail(extract);
-    
-   // add video title
-  li.innerHTML += await videoTitle(extract); }
-
+  }
+  li.innerHTML += await videoTitle(extract);
   // add input
   li.innerHTML += `
-    <input type="text" value="${value}" oninput="updateValue(this)"> 
+    <input class="input-url" type="text" value="${value}" oninput="updateValue(this)"> 
     <span class="remove" >✖</span>
   `;
-
-
 
   li.querySelector(".remove").addEventListener("click", () => removeItem(li));
   // list.appendChild(li);
@@ -108,7 +104,7 @@ export async function videoTitle(id) {
     }
     return `<span class="video-title">Unknown Title</span>`;
   } catch (error) {
-    console.error('Error fetching video title:', error); // ✅ Error handling
+    console.error("Error fetching video title:", error); // ✅ Error handling
     return `<span class="video-title">Error fetching title</span>`;
   }
 }

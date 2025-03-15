@@ -36,17 +36,20 @@ ul {
 }
 
 li {
-  gap: 15px;
-  padding: 12px;
-  margin: 6px 0;
-  background: var(--surface);
-  border: 1px solid var(--overlay);
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+
   font-size: 1.2em;
+  padding: 12px;
+  border: 1px solid var(--overlay);
+  border-radius: 6px;
+  margin: 6px 0;
+
+  background: var(--surface);
   cursor: grab;
   transition: background 0.3s ease, transform 0.2s ease;
-  border-radius: 6px;
 }
 
 li:hover {
@@ -75,7 +78,7 @@ input:focus {
 }
 
 .remove {
-  margin-left: 15px;
+  /* margin-left: auto; */
   cursor: pointer;
   color: var(--love);
   font-size: 1.5em;
@@ -114,7 +117,7 @@ li:active {
 }
 
 img {
-  height: 100px;
+  height: 60px;
   width: auto;
 }
 
@@ -128,7 +131,7 @@ img {
   bottom: 20px;
   right: 20px;
   z-index: 100;
-  
+
   width: 500px;
   box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
 }
@@ -157,4 +160,21 @@ img {
 
 .boxed {
   min-width: 500px;
+}
+
+li input {
+  margin-left: auto;
+}
+
+.video-title {
+  font-size: small;
+  max-width: 500px;
+  text-align: left;
+  min-width: 300px;
+}
+
+.input-url {
+  width: 300px;
+  min-width: 300px;
+  font-size: small;
 }
