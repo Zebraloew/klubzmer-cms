@@ -1,6 +1,9 @@
 # current task 
+## Admin Login
+ - [ ] Admin Login
+   - [ ] Ask GPT for best practices
 ## Video List
- - [ ] Move file from development folder to right place
+ - [x] Move file from development folder to right place
 
 ## Server 
 - [x] the folder img is a symlink and messes with git synchronisation
