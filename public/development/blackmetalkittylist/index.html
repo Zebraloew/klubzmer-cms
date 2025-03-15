@@ -3,16 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🐱 Black Metal Kitty List 🖤</title>
+    <title>🐱 Klubzmer Video List Editor 🖤</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div id="listBase"></div>
-    <script type="module">
-      import { listHtmlBuilder } from "./listHtmlBuilder.js";
-      document.getElementById("listBase").innerHTML += listHtmlBuilder(); 
-    </script>
+    <div class="container">
+      <h3 class="boxed">🐱 Klubzmer Video List Editor 🖤</h3>
+      <div class="instructions">
+        <p>Instructions</p>
+        <p>1) drag and drop to reorder</p>
+        <p>2) Add videos at the top</p>
+        <p>3) Click "Save List" to save changes</p>
+      </div>
+    </div>
+    <button id="save-btn">Save List</button>
+    <div class="form-video-add">
+      <input type="text" id="itemInput" placeholder="Summon a new video" />
+      <button id="summon-btn">Add Video</button>
+    </div>
+
+    <ul id="sortable-list"></ul>
+
     <script type="module">
       import {
         addItem,
