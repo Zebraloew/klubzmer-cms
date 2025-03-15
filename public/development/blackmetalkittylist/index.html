@@ -8,13 +8,11 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h3>🐱 Black Metal Kitty List 🖤</h3>
-    <button id="save-btn">Save</button>
-    <input type="text" id="itemInput" placeholder="Summon a new item..." />
-    <button id="summon-btn">Summon</button>
-
-    <ul id="sortable-list"></ul>
-
+    <div id="listBase"></div>
+    <script type="module">
+      import { listHtmlBuilder } from "./listHtmlBuilder.js";
+      document.getElementById("listBase").innerHTML += listHtmlBuilder(); 
+    </script>
     <script type="module">
       import {
         addItem,
@@ -22,6 +20,6 @@
         updateValue,
         loadList,
       } from "./listHandler.js";
-    </script>
+</script
   </body>
 </html>
