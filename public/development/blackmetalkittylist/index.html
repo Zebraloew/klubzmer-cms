@@ -8,10 +8,20 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h3>🐱  Klubzmer Video List Editor 🖤</h3>
+    <div class="container">
+      <h3 class="boxed">🐱 Klubzmer Video List Editor 🖤</h3>
+      <div class="instructions">
+        <p>Instructions</p>
+        <p>1) drag and drop to reorder</p>
+        <p>2) Add videos at the top</p>
+        <p>3) Click "Save List" to save changes</p>
+      </div>
+    </div>
     <button id="save-btn">Save List</button>
-    <input type="text" id="itemInput" placeholder="Summon a new video" />
-    <button id="summon-btn">Add Video</button>
+    <div class="form-video-add">
+      <input type="text" id="itemInput" placeholder="Summon a new video" />
+      <button id="summon-btn">Add Video</button>
+    </div>
 
     <ul id="sortable-list"></ul>
 
